@@ -11,8 +11,8 @@
 <p>Welcome {{ user.username }} !!!</p>
 <a href="{% url 'account_logout' %}">Logout</a>
 {% else %}
-<a href="{% provider_login_url 'google' %}">Sign Up</a>
-<a href="{% provider_login_url 'twitter' %}">Sign Up</a>
+<p><a href="{% provider_login_url 'google' %}">Login with google</a></p>
+<p><a href="{% provider_login_url 'twitter' %}">Sign Up with twitter</a></p>
 {% endif %}
 
 
