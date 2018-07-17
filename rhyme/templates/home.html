@@ -1,4 +1,7 @@
-<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
 {% load socialaccount %}
 
 {{ auth_error }}
@@ -11,3 +14,6 @@
 <a href="{% provider_login_url 'google' %}">Sign Up</a>
 <a href="{% provider_login_url 'twitter' %}">Sign Up</a>
 {% endif %}
+
+
+{% endblock %}
