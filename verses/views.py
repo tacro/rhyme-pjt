@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from .models import Verse
 
-# Create your views here.
+def create(request):
+    return render(request, 'verses/create.html')
