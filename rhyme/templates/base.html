@@ -1,8 +1,7 @@
-
-
 <!doctype html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="SNS for rhymers">
@@ -49,13 +48,9 @@
       </div>
     </nav>
 
-    <main role="main" class="container">
-
       {% block content %}
 
       {% endblock %}
-
-    </main><!-- /.container -->
 
     <footer class="text-muted">
       <div class="container text-center">
