@@ -1,1 +1,18 @@
-here you can kick the verse
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Create new Verse</h3>
+
+<form method="POST" action="{% url 'create' %}">
+  {% csrf_token %}
+
+<input type="textarea" rows="15" cols="50" style="border-radius:3px;" name="body" />
+
+<br />
+
+<input class="btn btn-primary" type="submit" value="Kick the verse!" />
+
+</form>
+
+{% endblock %}

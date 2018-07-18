@@ -6,3 +6,4 @@ class Verse(models.Model):
     rhymer = models.ForeignKey(User, on_delete = models.CASCADE)
     pub_date = models.DateTimeField(auto_now = True)
     body = models.TextField(max_length = 500)
+    likes = models.IntegerField(default = 0)
