@@ -65,7 +65,7 @@ ROOT_URLCONF = 'rhyme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['rhyme/templates'],
+        'DIRS': ['rhyme/templates', os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
