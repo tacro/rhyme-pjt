@@ -7,3 +7,6 @@ class Verse(models.Model):
     pub_date = models.DateTimeField(auto_now = True)
     body = models.TextField(max_length = 500)
     likes = models.IntegerField(default = 0)
+
+    def __str__(self):
+        return self.body[:15]

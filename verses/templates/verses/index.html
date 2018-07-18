@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Verse Index</h3>
+
+{% for verse in verses.all %}
+
+<p>{{ verse.body }} </p>
+
+{% endfor %}
+
+{% endblock %}
