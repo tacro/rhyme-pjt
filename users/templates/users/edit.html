@@ -1,1 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
 edit {{ user.username }} 's info here
+
+
+<form class="form-signin" method="post" action="{% url 'edit' user.id %}" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  Username:
+  <br />
+  <input type="text" name="username" />
+  <br />
+
+  Bio:
+  <br />
+  <input type="textbox" name="biography" />
+  <br />
+
+  Email:
+  <br />
+  <input type="text" name="email" />
+  <br />
+
+  Icon:
+  <br />
+  <input type="file" name="icon" />
+  <br />
+  <button type="submit">save</button>
+</form>
+
+
+{% endblock %}

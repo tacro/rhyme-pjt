@@ -1,1 +1,30 @@
-{{ user.username }}
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-2">
+      {% if user.icon %}
+      <img src="{{ user.icon.url }}" class="img-fluid" />
+      {% else %}
+      <img src="{% static "default_icon.png" %}" class="img-fluid" alt="he doesn't have icon" />
+      {% endif %}
+    </div>
+    <div class="col-7">
+      <h3>{{user.username}}</h3>
+      <p>{{user.biography}}</p>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-8">
+      {% for post in posts.all %}
+      {{ post.body }}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
