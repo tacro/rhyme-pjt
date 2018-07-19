@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'verses.apps.VersesConfig',
     'users.apps.UsersConfig',
 
+    # to activate OAuth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -48,6 +49,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.instagram',
     # 'allauth.socialaccount.providers.twitter',
+
+    # to make forms looking better
+    'bootstrapform',
 ]
 
 
@@ -159,3 +163,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
