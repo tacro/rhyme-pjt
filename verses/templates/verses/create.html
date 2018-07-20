@@ -2,12 +2,14 @@
 
 {% block content %}
 
+<div class="container text-center p-5">
+
 <h3>Create new Verse</h3>
 
 <form method="POST" action="{% url 'create' %}">
   {% csrf_token %}
 
-<input type="textarea" rows="15" cols="50" style="border-radius:3px;" name="body" />
+<textarea style="border-radius:3px;" rows="10" cols="50" name="body"></textarea>
 
 <br />
 <br />
@@ -16,5 +18,7 @@
 <input class="btn btn-primary btn-dark" type="submit" value="Kick the verse!" />
 
 </form>
+
+</div>
 
 {% endblock %}
