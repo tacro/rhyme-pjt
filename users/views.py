@@ -15,11 +15,13 @@ def edit(request, user_id):
     if request.method == 'POST':
         if request.POST['username']:
             user.username = request.POST['username']
+        if request.POST['mcname']:
+            user.mcname = request.POST['mcname']
         if request.POST['biography']:
             user.biography = request.POST['biography']
         if request.POST['email']:
             user.email = request.POST['email']
-        if request.FILES['icon']:
+        if 'icon' in request.FILES:
             user.icon = request.FILES['icon']
         user.save()
         return redirect('/rhymers/' + str(user_id))

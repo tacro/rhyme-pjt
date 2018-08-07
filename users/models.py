@@ -18,6 +18,12 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
+    #mcname
+    mcname = models.CharField(
+        _('MC name'),
+        max_length = 50,
+        unique = False,
+    )
     #Email
     email = models.EmailField(_('email address'))
     icon = models.ImageField(_('icon'), upload_to = 'images/icons', null=True, blank=True)
