@@ -1,0 +1,20 @@
+/* =====================================
+  Create-post
+======================================*/
+#create-post {
+  padding: 25px 20px;
+  border-radius: 4px;
+}
+
+#create-post form.form-control {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  padding: 10px 15px;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+#create-post form textarea.form-control {
+  min-height: 164px;
+  margin: 30px auto 50px auto;
+  border: 1px solid #242423;
+}

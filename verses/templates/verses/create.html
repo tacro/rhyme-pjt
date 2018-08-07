@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+  <!-- Stylesheet for verses app -->
+  <link rel="stylesheet" href="{% static 'verses/css/verses.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div class="container text-center p-5">
+<section class="text-center" id="create-post">
+  <div class="content-box-sm">
+    <div class="container">
+    <h3>Create new Verse</h3>
+      <div class="row">
+        <div class="col-12">
+          <form method="POST" action="{% url 'create' %}">
+            {% csrf_token %}
+          <textarea name="body" class="form-control"></textarea>
+        </div>
+        <div class="col-12">
+          <input class="btn btn-general btn-black" type="submit" role="button" value="Kick the verse!" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h3>Create new Verse</h3>
-
-<form method="POST" action="{% url 'create' %}">
-  {% csrf_token %}
-
-<textarea style="border-radius:3px;" rows="10" cols="50" name="body"></textarea>
-
-<br />
-<br />
-
-
-<input class="btn btn-primary btn-dark" type="submit" value="Kick the verse!" />
-
-</form>
-
-</div>
 
 {% endblock %}

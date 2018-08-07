@@ -42,3 +42,78 @@ section {
 *:focus {
   outline: none;
 }
+
+/* =====================================
+  Buttons
+======================================*/
+
+.btn-general {
+  font-family: "Ubuntu", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  border-radius: 28px;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 0 6px;
+  padding: 12px 46px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.btn-home {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn-home:hover, .btn-home:focus {
+  color: #fff;
+  background-color: #FFCF35;
+  border: 1px solid #FFCF35;
+}
+
+.btn-yellow {
+  color: #FFCF35;
+  border: 1px solid #FFCF35;
+}
+
+.btn-yellow:hover, .btn-yellow:focus {
+  color: #fff;
+  background-color: #FFCF35;
+  border: 1px solid #FFCF35;
+}
+
+.btn-black {
+  color: #fff;
+  border: 1px solid #242423;
+  background-color: #242423;
+}
+
+.btn-black:hover, .btn-white:focus {
+  color: #242423;
+  background-color: #fff;
+  border: 1px solid #242423;
+}
+
+/* .btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 3px 15px;
+  border-radius: 4px;
+  font-size: 22px;
+  display: none;
+} */
+
+/* =====================================
+  Content Boxes
+======================================*/
+
+.content-box-lg {
+  padding: 120px 0;
+}
+
+.content-box-md {
+  padding: 100px 0;
+}
+
+.content-box-sm {
+  padding: 90px 0;
+}
