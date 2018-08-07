@@ -1,0 +1,44 @@
+/* =====================================
+  Default Theme
+  -------------------------------------
+  Fonts: Ubuntu & Open Sans
+  -------------------------------------
+  Colors:
+    SUNGLOW:      #FFCF35
+    Grey:         #B4B8C5
+    Isabelline:   #F2F2ED
+    White:        #FFFFFF
+    Black:        #242423
+======================================*/
+
+/* =====================================
+  Html, body
+======================================*/
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #242423;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ubuntu", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+p {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+section {
+  background: #fff;
+  overflow: hidden;
+}
+
+*:focus {
+  outline: none;
+}

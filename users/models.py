@@ -23,6 +23,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         _('MC name'),
         max_length = 50,
         unique = False,
+        blank = True,
     )
     #Email
     email = models.EmailField(_('email address'))

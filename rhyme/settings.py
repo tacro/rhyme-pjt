@@ -156,7 +156,7 @@ AUTHENTICATION_BACKENDS = [
 
 AUTH_USER_MODEL = 'users.User'
 
-ACCOUNT_ADAPTER = 'users.adapter.MySaveUserAdapter'
+# ACCOUNT_ADAPTER = 'users.adapter.MySaveUserAdapter'
 
 ACCOUNT_EMAIL_REQUIRED = True
 
