@@ -1,0 +1,23 @@
+/* =====================================
+  edit-user
+======================================*/
+#edit-user {
+  padding: 25px 20px;
+  border-radius: 4px;
+}
+
+#edit-user form.form-control {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  padding: 10px 15px;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+#edit-user form input.form-control{
+  border: 1px solid #242423;
+}
+
+#edit-user form textarea.form-control {
+  min-height: 164px;
+  border: 1px solid #242423;
+}
