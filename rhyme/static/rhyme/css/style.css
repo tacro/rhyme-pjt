@@ -107,13 +107,28 @@ section {
 ======================================*/
 
 .content-box-lg {
-  padding: 120px 0;
-}
-
-.content-box-md {
   padding: 100px 0;
 }
 
+.content-box-md {
+  padding: 80px 0;
+}
+
 .content-box-sm {
-  padding: 90px 0;
+  padding: 60px 0;
+}
+
+/* =====================================
+  Sign In
+======================================*/
+#signin a {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  color: #242423;
+}
+
+/* =====================================
+  Logout
+======================================*/
+#logout button.btn{
+  margin-top: 15px;
 }

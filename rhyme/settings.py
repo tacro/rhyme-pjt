@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.twitter',
 
     # to make forms looking better
-    'bootstrapform',
+    'bootstrap4',
 ]
 
 
