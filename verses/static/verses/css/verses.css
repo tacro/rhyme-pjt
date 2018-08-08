@@ -22,6 +22,16 @@
 /* =====================================
   Index
 ======================================*/
+.container-fluid {
+  padding: 0;
+}
+
+.verse {
+  margin: 8px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #B4B8C5;
+}
+
 #verse-left {
   margin: 0;
 }

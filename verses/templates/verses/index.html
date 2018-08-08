@@ -9,7 +9,7 @@
 
 <div class="container-fluid">
   {% for verse in verses.all %}
-    <div class="row">
+    <div class="row verse">
       <div class="col-2" id="verse-left">
         {% if verse.rhymer.icon %}
           <img src="{{ verse.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
@@ -29,6 +29,10 @@
             <div class="col-12" id="verse-body">
               <p>{{ verse.body }} </p>
             </div>
+            <div class="col-3" class="verse-reaction">answer</div>
+            <div class="col-3" class="verse-reaction">beef</div>
+            <div class="col-3" class="verse-reaction">respect</div>
+            <div class="col-3" class="verse-reaction">dis</div>
           </div>
       </div>
     </div>
