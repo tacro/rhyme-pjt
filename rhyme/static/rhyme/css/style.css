@@ -126,6 +126,33 @@ section {
   color: #242423;
 }
 
+#oauth a i {
+  font-size: 20px;
+  width: 45px;
+}
+
+#oauth a {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  padding: 8px 12px 8px 0;
+}
+
+#oauth-twitter {
+  background: #00aced;
+  border-color: transparent;
+  color: #fff;
+}
+
+#oauth-instagram {
+  background: #00aced;
+  border-color: transparent;
+  color: #fff;
+}
+
+#oauth-google {
+  background: #00aced;
+  border-color: transparent;
+  color: #fff;
+}
 /* =====================================
   Logout
 ======================================*/

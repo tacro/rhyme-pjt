@@ -18,3 +18,28 @@
   margin: 30px auto 50px auto;
   border: 1px solid #242423;
 }
+
+/* =====================================
+  Index
+======================================*/
+#verse-left {
+  margin: 0;
+}
+
+#verse-left img {
+  width: 50px;
+}
+
+#verse-right,
+#verse-rhymer,
+#verse-body {
+  padding: 0 0 0 5px;
+}
+
+#verse-rhymer h5 {
+  font-size: 18px;
+}
+
+#verse-body p {
+  font-size: 15px;
+}

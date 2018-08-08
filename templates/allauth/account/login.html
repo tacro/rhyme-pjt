@@ -5,13 +5,13 @@
 {% load staticfiles %}
 {% block content %}
 
-<div class="content-box-sm" id="signin">
+<div class="content-box-sm">
   {% if user.is_authenticated %}
     <p>Welcome {{ user.username }} !!!</p>
     <a href="{% url 'account_logout' %}">Logout</a>
   {% else %}
 
-    <form role="form" class="form-signin" method="POST" action="{% url 'account_login' %}">
+    <form role="form" id="signin" method="POST" action="{% url 'account_login' %}">
       <h1 class="text-center">Sign In</h1>
       {% csrf_token %}
       <div class="container">
@@ -35,19 +35,20 @@
     </form>
 
     <div class="container">
-      <div id="oauth" class="row">
+      <div id="oauth" class="row text-center">
         <div class="col-12">
-          <a href="{% provider_login_url 'google' %}"><i class="fab fa-twitter-square"></i><span class="text-center">Sign in with Twitter</span></a>
+          <a id="oauth-twitter" href="{% provider_login_url 'google' %}"><i class="fab fa-twitter-square"></i><span class="text-center">Sign in with Twitter</span></a>
         </div>
         <div class="col-12">
-          <a href="{% provider_login_url 'google' %}"><i class="fab fa-instagram"></i>Sign in with Instagram</a>
+          <a id="oauth-instagram" href="{% provider_login_url 'google' %}"><i class="fab fa-instagram"></i>Sign in with Instagram</a>
         </div>
         <div class="col-12">
-          <a href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>Sign in with Google</a>
+          <a id="oauth-google" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>Sign in with Google</a>
         </div>
       </div>
     </div>
-  {% endif %}
   </div>
+
+  {% endif %}
 
 {% endblock %}
