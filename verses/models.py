@@ -6,7 +6,7 @@ class Verse(models.Model):
     rhymer = models.ForeignKey(User, on_delete = models.CASCADE)
     pub_date = models.DateTimeField(auto_now = True)
     body = models.TextField(max_length = 500)
-    likes = models.IntegerField(default = 0)
+    likes = models.ManyToManyField(User, blank=True, related_name = 'verse_likes')
 
     def __str__(self):
         return self.body[:15]

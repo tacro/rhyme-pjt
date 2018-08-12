@@ -8,7 +8,6 @@
 {% block content %}
 
 <div class="container-fluid">
-  {% for verse in verses.all %}
     <div class="row verse">
       <div class="col-2" id="verse-left">
         {% if verse.rhymer.icon %}
@@ -36,7 +35,6 @@
           </div>
       </div>
     </div>
-  {% endfor %}
 </div>
 
 {% endblock %}
