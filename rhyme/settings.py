@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 
     # to make forms looking better
     'bootstrap4',
+
+    # REST framework
+    'rest_framework',
 ]
 
 

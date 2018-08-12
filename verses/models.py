@@ -10,3 +10,12 @@ class Verse(models.Model):
 
     def __str__(self):
         return self.body[:15]
+
+    def get_absolute_url(self):
+        return "/verses/%i" % self.id
+
+    def get_like_url(self):
+        return "/verses/%i/like" % self.id
+
+    def get_api_like_url(self):
+        return "/verses/api/%i/like" % self.id

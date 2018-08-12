@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
 from .models import Verse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+
 
 @login_required
 def create(request):
@@ -27,9 +32,43 @@ def detail(request, verse_id):
     verse = get_object_or_404(Verse, pk = verse_id)
     return render(request, 'verses/detail.html', {'verse':verse})
 
-class PostLikeRedirect(RedirectView):
+class PostLikeToggle(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        # slug = self.kwargs.get("slug")
-        # print(slug)
+        verse_id = self.kwargs.get("verse_id")
+        print("id is %d" % verse_id)
         verse = get_object_or_404(Verse, pk=verse_id)
-        return verse.get_absolute_url()
+        url_ = verse.get_absolute_url()
+        user = self.request.user
+        if user.is_authenticated:
+            if user in verse.likes.all():
+                verse.likes.remove(user)
+            else:
+                verse.likes.add(user)
+        return url_
+
+
+class PostLikeAPIToggle(APIView):
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, verse_id = None, format=None):
+        # verse_id = self.kwargs.get("verse_id")
+        print("id is %d" % verse_id)
+        verse = get_object_or_404(Verse, pk=verse_id)
+        url_ = verse.get_absolute_url()
+        user = self.request.user
+        updated = False
+        liked = False
+        if user.is_authenticated:
+            if user in verse.likes.all():
+                liked = False
+                verse.likes.remove(user)
+            else:
+                liked = True
+                verse.likes.add(user)
+            updated = True
+        data = {
+            "updated": updated,
+            "liked": liked,
+        }
+        return Response(data)
