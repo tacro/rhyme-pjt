@@ -9,7 +9,7 @@ function updateText(btn, newCount, verb){
 $('.like-btn').click(function(e){
   e.preventDefault()
   var likeUrl = $(this).attr("data-href")
-  var likeCount = $(this).attr("data-likes")
+  var likeCount = parseInt($(this).attr("data-likes"))
   var addLike = likeCount + 1
   var removeLike = likeCount - 1
   $.ajax({
@@ -17,12 +17,12 @@ $('.like-btn').click(function(e){
     method: "GET",
     data: {},
     success: function(data){
-      console.log(data)
-      var newLikes;
+      // console.log(data)
+      console.log($(this).text())
       if (data.liked){
-        updateText($(this), addLike, "Unlike")
+        updateText($('.like-text'), addLike, "Unlike")
       } else {
-        updateText($(this), removeLike, "Like")
+        updateText($('.like-text'), removeLike, "Like")
       }
     }, error: function(error){
       console.log(error)
