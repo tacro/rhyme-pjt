@@ -55,6 +55,7 @@ class PostLikeAPIToggle(APIView):
         # verse_id = self.kwargs.get("verse_id")
         print("id is %d" % verse_id)
         verse = get_object_or_404(Verse, pk=verse_id)
+        print("likes : %d" % verse.likes.count())
         url_ = verse.get_absolute_url()
         user = self.request.user
         updated = False
@@ -71,4 +72,5 @@ class PostLikeAPIToggle(APIView):
             "updated": updated,
             "liked": liked,
         }
+        print("new likes : %d" % verse.likes.count())
         return Response(data)

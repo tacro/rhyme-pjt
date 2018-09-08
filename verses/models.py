@@ -18,4 +18,6 @@ class Verse(models.Model):
         return "/verses/%i/like" % self.id
 
     def get_api_like_url(self):
-        return "/verses/api/%i/like" % self.id
+        url_ = '/verses/api/%i/like' % self.id
+        print(url_)
+        return url_

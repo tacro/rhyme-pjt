@@ -62,3 +62,20 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def get_followers(self):
+        relations = Relationship.objects.filter(follow=self)
+        return [relation.follower for relation in relations]
+
+
+
+'''
+medium table to connect follow/follower
+'''
+class Relationship(models.Model):
+    follow = models.ForeignKey(User,
+        on_delete = models.CASCADE,
+        related_name = 'follows')
+    follower = models.ForeignKey(User,
+        on_delete = models.CASCADE,
+        related_name = 'followers')
