@@ -15,6 +15,9 @@
     <div class="col-7">
       <h3>{{user.username}}</h3>
       <p>{{user.biography}}</p>
+      <a href="{% url 'follow' user.id %}" class="btn btn-general" type="submit" role="button" value="follow">follow</a>
+      <p><a href="{% url 'followers' user.id %}">{{ followers }} FOLLOWERS</a></p>
+      <p><a href="{% url 'follows' user.id %}">{{ follows }} FLLOWS</a></p>
     </div>
   </div>
   <div class="row pt-3">

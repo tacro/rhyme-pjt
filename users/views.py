@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User
+from .models import User, Relationship
 from verses.models import Verse
 from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.models import User
 
 
 def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     posts = Verse.objects.filter(rhymer=user)
-    return render(request, 'users/detail.html', {'user':user, 'posts':posts})
+    followees = user.get_follows() # those who user follows
+    print("user follows %d" % len(followees))
+    followers = user.get_followers() # those who following user
+    print("user's followed by %d" % len(followers))
+    return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':len(followees), 'followers':len(followers)})
 
 @login_required
 def edit(request, user_id):
@@ -27,3 +32,37 @@ def edit(request, user_id):
         return redirect('/rhymers/' + str(user_id))
     else:
         return render(request, 'users/edit.html', {'user':user})
+
+@login_required
+def follow(request, user_id):
+    # specify who followee is
+    followee = get_object_or_404(User, pk=user_id)
+    # specify who follower is
+    follower = request.user
+    # make sure that they aren't identical
+    if follower != followee:
+        # check if that follower has already followed the user
+        for followeeOfFollower in follower.get_follows():
+            if followeeOfFollower == followee:
+                # "do nothing and back to previous page
+                return redirect('index')
+        # make new relationship between them
+        relationship = Relationship(follow = followee, follower = follower, )
+        relationship.save()
+        # back to previous page
+        return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':numOfFollowees, 'followers':numOfFollowers})
+    else:
+        return redirect('index')
+
+def show_follows(request, user_id):
+    user = get_object_or_404(User, pk = user_id)
+    # get those who user follows
+    followees = user.get_follows()
+    return render(request, 'users/show_follows.html', {'followees':followees})
+
+
+def show_followers(request, user_id):
+    user = get_object_or_404(User, pk = user_id)
+    # get those who follow user
+    followers = user.get_followers()
+    return render(request, 'users/show_followers.html', {'followers':followers})

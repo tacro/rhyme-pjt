@@ -63,6 +63,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    def get_follows(self):
+        relations = Relationship.objects.filter(follower=self)
+        return [relation.follow for relation in relations]
+
     def get_followers(self):
         relations = Relationship.objects.filter(follow=self)
         return [relation.follower for relation in relations]
