@@ -9,9 +9,7 @@ def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     posts = Verse.objects.filter(rhymer=user)
     followees = user.get_follows() # those who user follows
-    print("user follows %d" % len(followees))
     followers = user.get_followers() # those who following user
-    print("user's followed by %d" % len(followers))
     return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':len(followees), 'followers':len(followers)})
 
 @login_required
@@ -50,9 +48,20 @@ def follow(request, user_id):
         relationship = Relationship(follow = followee, follower = follower, )
         relationship.save()
         # back to previous page
-        return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':numOfFollowees, 'followers':numOfFollowers})
+        return redirect('/rhymers/' + str(user_id))
     else:
         return redirect('index')
+
+@login_required
+def unfollow(request, user_id):
+    followee = get_object_or_404(User, pk=user_id)
+    follower = request.user
+    relationship = Relationship.objects.filter(follow = followee, follower = follower)
+    if relationship:
+        relationship.delete()
+        return redirect('/rhymers/' + str(user_id))
+    else:
+        return render('index')
 
 def show_follows(request, user_id):
     user = get_object_or_404(User, pk = user_id)
