@@ -9,7 +9,7 @@
       {% if user.icon %}
       <img src="{{ user.icon.url }}" class="img-fluid" />
       {% else %}
-      <img src="{% static "default_icon.png" %}" class="img-fluid" alt="he doesn't have icon" />
+      <img src="{% static "users/img/default_icon.png" %}" class="img-fluid" alt="he doesn't have icon" />
       {% endif %}
     </div>
     <div class="col-7">
@@ -23,7 +23,7 @@
         {% endif %}
       {% endif %}
       <p><a href="{% url 'followers' user.id %}">{{ followers }} FOLLOWERS</a></p>
-      <p><a href="{% url 'follows' user.id %}">{{ follows }} FLLOWS</a></p>
+      <p><a href="{% url 'follows' user.id %}">{{ follows }} FOLLOWS</a></p>
     </div>
   </div>
   <div class="row pt-3">

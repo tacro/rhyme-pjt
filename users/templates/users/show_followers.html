@@ -1,10 +1,47 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+{% block css %}
+  <!-- Stylesheet for users app -->
+  <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock %}
 {% block content %}
 
-{% for follower in followers %}
-{{ follower.username}}
-{% endfor %}
+<div id="followers">
+  <div class="container-fluid">
+    {% for follower in followers %}
+    <div class="user-summary">
+      <div class="row">
+        <div class="col-md-2">
+          <a href="{% url 'detail' follower.id %}">
+            {% if follower.icon %}
+              <img src="{{ follower.icon.url }}" alt="icon" class="img-fluid">
+            {% else %}
+              <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
+            {% endif %}
+          </a>
+        </div>
+        <div class="col-md-7">
+          <a href="{% url 'detail' follower.id %}">
+            <h5>{{ follower.username }}</h5>
+            <h6>{{ follower.mcname }}</h6>
+            <p>{{ follower.biography }}</p>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <div class="follow-btn">
+            {% if follower != request.user %}
+              {% if follower in request.user.get_follows %}
+                <a href="{% url 'unfollow' follower.id %}" class="btn btn-general" type="submit" role="button" value="following">following</a>
+              {% else %}
+                <a href="{% url 'follow' follower.id %}" class="btn btn-general" type="submit" role="button" value="follow">follow</a>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}

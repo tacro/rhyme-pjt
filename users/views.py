@@ -61,7 +61,7 @@ def unfollow(request, user_id):
         relationship.delete()
         return redirect('/rhymers/' + str(user_id))
     else:
-        return render('index')
+        return redirect('index')
 
 def show_follows(request, user_id):
     user = get_object_or_404(User, pk = user_id)
