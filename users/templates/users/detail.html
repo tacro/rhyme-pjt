@@ -1,36 +1,86 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+{% block css %}
+  <!-- Stylesheet for users app -->
+  <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+{% endblock %}
 {% block content %}
 
 <div class="container">
-  <div class="row pt-3">
-    <div class="col-2">
+  <div id="user-info" class="row pt-3">
+    <div class="col-3">
       {% if user.icon %}
       <img src="{{ user.icon.url }}" class="img-fluid" />
       {% else %}
       <img src="{% static "users/img/default_icon.png" %}" class="img-fluid" alt="he doesn't have icon" />
       {% endif %}
     </div>
-    <div class="col-7">
-      <h3>{{user.username}}</h3>
-      <p>{{user.biography}}</p>
-      {% if user != request.user %}
-        {% if user in request.user.get_follows %}
-          <a href="{% url 'unfollow' user.id %}" class="btn btn-general" type="submit" role="button" value="unfollow">unfollow</a>
-        {% else %}
-          <a href="{% url 'follow' user.id %}" class="btn btn-general" type="submit" role="button" value="follow">follow</a>
-        {% endif %}
-      {% endif %}
-      <p><a href="{% url 'followers' user.id %}">{{ followers }} FOLLOWERS</a></p>
-      <p><a href="{% url 'follows' user.id %}">{{ follows }} FOLLOWS</a></p>
+    <div class="col-9">
+      <div class="row mx-auto">
+        <div class="col-12">
+          <h3>{{user.username}}</h3>
+          {% if user.mcname %}
+            <h5>{{ user.mcname }}</h5>
+          {% endif %}
+        </div>
+        <div class="col-12">
+          <p>{{user.biography}}</p>
+        </div>
+        <div class="col-6">
+          <a href="{% url 'followers' user.id %}"><span>{{ followers }}</span> FOLLOWERS</a>
+        </div>
+        <div class="col-6">
+          <a href="{% url 'follows' user.id %}"><span>{{ follows }}</span> FOLLOWS</a>
+        </div>
+        <div class="col-12 my-3">
+          {% if user != request.user %}
+            {% if user in request.user.get_follows %}
+              <a href="{% url 'unfollow' user.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
+            {% else %}
+              <a href="{% url 'follow' user.id %}" class="btn btn-general btn-yellow" role="button" value="follow">follow</a>
+            {% endif %}
+          {% else %}
+            <a class="btn btn-general btn-black" href="{% url 'edit' user.id %}" role="button" value="Edit Profile">Edit Profile</a>
+            <a><i class="fas fa-cog"></i></a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
   <div class="row pt-3">
-    <div class="col-8">
-      {% for post in posts.all %}
-      <p>{{ post.body }}</p>
-      {% endfor %}
+    <div class="col-12">
+      <div id="posts">
+        {% for post in posts.all %}
+        <div class="row post">
+          <div class="col-2" id="post-left">
+            {% if post.rhymer.icon %}
+              <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
+            {% else %}
+              <img src="{% static 'users/img/default_icon.png' %}" alt="user's icon">
+            {% endif %}
+          </div>
+          <div class="col-10" id="post-right">
+              <div class="row">
+                <div class="col-12" id="post-rhymer">
+                  {% if post.rhymer.mcname %}
+                    <h5>{{ post.rhymer.mcname}} </h5>
+                  {% else %}
+                    <h5>{{ post.rhymer.username}} </h5>
+                  {% endif %}
+                </div>
+                <div class="col-12" id="post-body">
+                  <p>{{ post.body }} </p>
+                </div>
+                <div class="col-3" class="post-reaction"><i class="fas fa-reply"></i></div>
+                <div class="col-3" class="post-reaction"><i class="fas fa-bolt"></i></div>
+                <div class="col-3" class="post-reaction"><i class="fas fa-hand-peace"></i>{{ post.likes.count }}</div>
+                <div class="col-3" class="post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 </div>
