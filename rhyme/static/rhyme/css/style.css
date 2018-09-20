@@ -35,7 +35,7 @@ p {
 }
 
 section {
-  background: #fff;
+  background: #F2F2ED;
   overflow: hidden;
 }
 
@@ -118,6 +118,8 @@ section {
   padding: 60px 0;
 }
 
+
+
 /* =====================================
   Sign In
 ======================================*/
@@ -153,9 +155,42 @@ section {
   border-color: transparent;
   color: #fff;
 }
+
 /* =====================================
   Logout
 ======================================*/
 #logout button.btn{
   margin-top: 15px;
+}
+
+
+/* =====================================
+  Static Pages
+======================================*/
+
+/* privacy, terms */
+#privacy, #terms {
+  margin: 0 20px;
+}
+
+#privacy .content-box-lg, #terms .content-box-lg {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
+#privacy h2, #terms h2 {
+  margin: 10px 0 20px 0;
+}
+
+#privacy h3, #terms h3 {
+  font-size: 22px;
+}
+
+#privacy p, #terms p {
+  font-size: 14px;
+}
+
+#privacy ul>li, #terms ul>li{
+  font-size: 13px;
+  line-height: 22px;
 }
