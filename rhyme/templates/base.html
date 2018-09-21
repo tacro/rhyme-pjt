@@ -97,13 +97,28 @@
             </a>
           </div>
         </section>
+      {% else %}
+        <footer class="text-center text-muted">
+          <div class="container px-sm-0">
+            <div class="row">
+              <div class="col-4">
+                <a href="{% url 'help' %}">Help</a>
+              </div>
+              <div class="col-4">
+                <a href="{% url 'privacy' %}">Privacy Policy</a>
+              </div>
+              <div class="col-4">
+                <a href="{% url 'terms' %}">Terms of Conditions</a>
+              </div>
+              <div class="col-12">
+                <p>&copy rhyme.live {% now "Y" %}</p>
+              </div>
+            </div>
+          </div>
+        </footer>
       {% endif %}
 
-      <footer class="text-muted">
-        <div class="container text-center">
-          <p>&copy rhyme.live {% now "Y" %}</p>
-          </div>
-      </footer>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

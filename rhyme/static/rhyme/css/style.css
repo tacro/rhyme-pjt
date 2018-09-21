@@ -43,6 +43,9 @@ section {
   outline: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
 /* =====================================
   Buttons
 ======================================*/
@@ -307,4 +310,37 @@ section {
 
 #help .faq, #help .contact-list {
   margin: 30px 25px 40px 25px;
+}
+
+/* =====================================
+  Footer
+======================================*/
+footer {
+  background: #212226;
+  padding: 0 0 5px 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+footer p {
+  color: #fff;
+  line-height: 16px;
+  margin: 0;
+}
+
+footer p span {
+  color: #FFCF35;
+}
+
+footer a {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 10px;
+  line-height: 10px;
+  color: #fff;
+}
+
+footer a:hover {
+  color: #fff;
 }
