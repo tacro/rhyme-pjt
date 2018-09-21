@@ -28,7 +28,7 @@
             <div class="col-12" id="verse-body">
               <p>{{ verse.body }} </p>
             </div>
-            <div class="col-3" class="verse-reaction"><i class="fas fa-reply"></i></div>
+            <div class="col-3" class="verse-reaction"><a href="{% url 'answer' verse.id %}"><i class="fas fa-reply"></i></a></div>
             <div class="col-3" class="verse-reaction"><i class="fas fa-bolt"></i></div>
             <div class="col-3" class="verse-reaction"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text">{{ verse.likes.count }}</span></a></div>
             <div class="col-3" class="verse-reaction"><i class="fas fa-ellipsis-h"></i></div>

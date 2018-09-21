@@ -32,6 +32,25 @@ def detail(request, verse_id):
     verse = get_object_or_404(Verse, pk = verse_id)
     return render(request, 'verses/detail.html', {'verse':verse})
 
+@login_required
+def answer(request, verse_id):
+    target = get_object_or_404(Verse, pk = verse_id)
+    if request.method == 'POST':
+        if request.POST['body']:
+            verse = Verse()
+            verse.body = request.POST['body']
+            verse.rhymer = request.user
+            verse.target = target
+            verse.type = 1
+            verse.save()
+            return redirect('index')
+        else:
+            return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
+    else:
+        print('verse_id : %d' % verse_id)
+        return render(request, 'verses/answer.html', {'target':target})
+
+
 class PostLikeToggle(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         verse_id = self.kwargs.get("verse_id")
