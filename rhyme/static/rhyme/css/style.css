@@ -46,6 +46,7 @@ section {
 a:hover {
   text-decoration: none;
 }
+
 /* =====================================
   Buttons
 ======================================*/
@@ -95,16 +96,6 @@ a:hover {
   border: 1px solid #242423;
 }
 
-/* .btn-back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 3px 15px;
-  border-radius: 4px;
-  font-size: 22px;
-  display: none;
-} */
-
 /* =====================================
   Content Boxes
 ======================================*/
@@ -120,6 +111,59 @@ a:hover {
 .content-box-sm {
   padding: 60px 0;
 }
+
+/* =====================================
+  Header
+======================================*/
+header {
+  background-color: #242423;
+  margin: 0;
+  padding-top: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header a>h2 {
+  color: #FFCF35;
+  line-height: 35px;
+  font-size: 30px;
+}
+
+header .navbar {
+  padding: 0 25px;
+  transition: all 300ms linear;
+}
+
+header .navbar-brand {
+  padding: 8px 15px 5px 5px;
+}
+
+header .navbar-toggler-icon {
+  color: #FFCF35;
+  font-size: 18px;
+  padding-top: 5px;
+  outline: none;
+}
+
+
+ul.navbar-nav>li>a {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-left: 20px;
+}
+
+ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
+  color: #FFCF35;
+}
+
+#space {
+  margin-top: 50px;
+}
+
 
 /* =====================================
   Footer Menu
@@ -211,7 +255,7 @@ a:hover {
   width: auto;
   height: auto;
   z-index: -1;
-  background: url("../video/solo.jpg") no-repeat;
+  background: url("../rhyme/static/rhyme/img/rhymer_live.jpg") no-repeat;
   background-size: cover;
 }
 

@@ -27,47 +27,40 @@
 
   </head>
 
-  <body style="padding-top:70px;">
+  <body>
+    <header>
+    {% if user.is_authenticated %}
+        <a class="text-center" href="{% url 'home' %}"><h2>Rhyme</h2></a>
+    {% else %}
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid ">
+          <div class="navbar-header">
+            <!-- logo -->
+            <a href="{% url 'home' %}" class="navbar-brand smooth-scroll">
+                <h2>Rhyme</h2>
+            </a>
+          </div>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="{% url 'home' %}">Rhyme</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        {% if user.is_authenticated %}
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'create' %}">Kick</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}">index</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="{% url 'detail' user.id %}">my page</a>
-              <a class="dropdown-item" href="{% url 'edit' user.id %}">setting</a>
-              <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-            </div>
-          </li>
-        </ul>
-        {% else %}
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">signup</a>
-          </li>
-        </ul>
-        {% endif %}
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon text-center">&#9776;</span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav nav-pills ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% endif %}
+    </header>
+    <div id="space"></div>
+
 
       {% block content %}
 
