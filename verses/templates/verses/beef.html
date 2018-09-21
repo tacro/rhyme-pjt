@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+  <!-- Stylesheet for verses app -->
+  <link rel="stylesheet" href="{% static 'verses/css/verses.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="text-center" id="beef-post">
+  <div class="content-box-sm">
+    <div class="container">
+    <h3>Beef against the verse</h3>
+    <h4>{{ target.body }}</h4>
+      <div class="row">
+        <div class="col-12">
+          <form method="POST" action="{% url 'beef' target.id %}">
+            {% csrf_token %}
+          <div class="form-group">
+          <textarea name="body" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="col-12">
+          <input class="btn btn-general btn-black" type="submit" role="button" value="Kick the verse!" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

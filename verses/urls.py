@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:verse_id>/like/',PostLikeToggle.as_view(), name='like'),
     path('api/<int:verse_id>/like/',PostLikeAPIToggle.as_view(), name='like-api'),
     path('<int:verse_id>/answer/',views.answer, name = 'answer'),
+    path('<int:verse_id>/beef/',views.beef, name = 'beef'),
 ]

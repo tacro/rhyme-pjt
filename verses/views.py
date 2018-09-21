@@ -50,6 +50,24 @@ def answer(request, verse_id):
         print('verse_id : %d' % verse_id)
         return render(request, 'verses/answer.html', {'target':target})
 
+@login_required
+def beef(request, verse_id):
+    target = get_object_or_404(Verse, pk = verse_id)
+    if request.method == 'POST':
+        if request.POST['body']:
+            verse = Verse()
+            verse.body = request.POST['body']
+            verse.rhymer = request.user
+            verse.target = target
+            verse.type = 2
+            verse.save()
+            return redirect('index')
+        else:
+            return render(request, 'verses/beef.html', {'error': 'Something went wrong'})
+    else:
+        print('verse_id : %d' % verse_id)
+        return render(request, 'verses/beef.html', {'target':target})
+
 
 class PostLikeToggle(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
