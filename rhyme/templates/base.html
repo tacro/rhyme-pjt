@@ -20,6 +20,7 @@
 
     <!-- custom stylesheet -->
     <link rel="stylesheet" href="{% static 'rhyme/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'rhyme/css/ex.css' %}">
 
     {% block css %}
     {% endblock %}
@@ -71,6 +72,32 @@
       {% block content %}
 
       {% endblock %}
+
+      {% if user.is_authenticated %}
+        <section id="footer-menu" class="text-center">
+          <div class="col-1-5">
+            <a href="{% url 'index' %}"><i class="fas fa-home"></i></a>
+          </div>
+          <div class="col-1-5">
+            <a href=""><i class="fas fa-search"></i></a>
+          </div>
+          <div class="col-1-5">
+            <a href="{% url 'create' %}"><i class="fas fa-plus-square"></i></a>
+          </div>
+          <div class="col-1-5">
+            <a href=""><i class="fas fa-bell"></i></a>
+          </div>
+          <div class="col-1-5">
+            <a href="{% url 'detail' user.id %}">
+              {% if user.icon %}
+                <img src="{{ user.icon.url }}" class="img-fluid rounded-circle" />
+              {% else %}
+                <i class="fas fa-user"></i>
+              {% endif %}
+            </a>
+          </div>
+        </section>
+      {% endif %}
 
       <footer class="text-muted">
         <div class="container text-center">
