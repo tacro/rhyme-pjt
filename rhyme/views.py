@@ -1,14 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.contrib.auth.decorators import login_required
 import operator
 
-@login_required
 def home(request):
-    return render(request, 'home.html')
-
-def about(request):
-    return render_to_response('about.html')
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        return render(request, 'home.html')
 
 def help(request):
     return render_to_response('help.html')
