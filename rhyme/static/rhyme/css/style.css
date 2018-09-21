@@ -168,14 +168,14 @@ section {
   Static Pages
 ======================================*/
 
+#privacy .content-box-lg, #terms .content-box-lg, #help .content-box-lg {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
 /* privacy, terms */
 #privacy, #terms {
   margin: 0 20px;
-}
-
-#privacy .content-box-lg, #terms .content-box-lg {
-  background-color: #fff;
-  padding: 10px 20px;
 }
 
 #privacy h2, #terms h2 {
@@ -193,4 +193,35 @@ section {
 #privacy ul>li, #terms ul>li{
   font-size: 13px;
   line-height: 22px;
+}
+
+
+#help h3, h4, h5 {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#help h3 {
+  font-size: 24px;
+}
+
+#help h3 span, #help h4 span {
+  font-family: "Ubuntu", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: 400;
+}
+
+#help h4 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+#help h5 {
+  font-size: 18px;
+}
+
+#help .heading {
+  margin: 15px 20px;
+}
+
+#help .faq, #help .contact-list {
+  margin: 30px 25px 40px 25px;
 }

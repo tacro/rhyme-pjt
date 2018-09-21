@@ -1,40 +1,45 @@
-<div class="main">
-  <div class="container">
-    <div class="form-heading"></div>
-      <h3>よくある質問</h3>
+{% extends 'base.html' %}
+{% block content %}
+<section id="help">
+  <div class="content-box-lg">
+    <div class="heading">
+      <h2>FAQ</h2>
+    </div>
         <div class="faq">
-          <h3>Q.サイト利用は無料ですか？登録なしでも見れますか？</h3>
-          <h5>
-            A. 無料です。登録なしでもご覧いただけます。
-          </h5>
+          <h3><span>Q. </span>サイト利用は無料ですか？登録なしでも見れますか？</h3>
+          <h4>
+            <span>A. </span>無料です。登録なしでもご覧いただけます。
+          </h4>
         </div>
         <div class="faq">
-         <h3>Q.どんなものがアップロードできますか？</h3>
-         <h5>
-           A. ご自身で創作された、ファッション関連のアイテムであればなんでもアップロード可能です。
-         </h5>
+         <h3><span>Q. </span>何を投稿すればいいの？</h3>
+         <h4>
+           <span>A. </span>日々感じている思いやあなたの考えを、熱いライムにしたためて投稿してください。
+         </h4>
         </div>
         <div class="faq">
-         <h3>Q.服以外の小物もアップロードできますか？</h3>
-         <h5>
-           A. はい！財布やアクセサリーなどの小物類もどんどんアップロードしてください。
-         </h5>
+         <h3><span>Q. </span>DISもありなのですか？</h3>
+         <h4>
+           <span>A. </span>「DISは愛があるゆえ」という般若さんの言葉を忘れず、リスペクトを持ってディスりましょう。
+         </h4>
         </div>
          <div class="faq">
-           <h3>Q.欲しいアイテムを見つけたのですが、購入できますか？</h3>
-           <h5>
-             A. 今のところ、投稿されたアイテムを売買できる機能はありませんが、ゆくゆくは可能になる予定です。
-             <br>そういったご希望は、<%= link_to("Instagram(runaclo)", "https://www.instagram.com/runaclo/") %>、<%= link_to("Twitter(@runaclo_)", "https://twitter.com/runaclo_") %>、もしくはメールでどしどしお寄せください！
-           </h5>
+           <h3><span>Q. </span>投稿にbeatつけたいんだけど</h3>
+           <h4>
+             <span>A. </span>今後、皆様の声に合わせて機能をアップデートして参ります。ぜひ色んなご意見をお寄せください。
+           </h4>
         </div>
-      <h3>お問合せ</h3>
-      <div style="margin: 5px 3px">
+      <div class="heading">
+        <h2>Contact</h2>
+      </div>
+      <div class="contact-list">
         <h5>サービスに関するご意見ご要望、または質問などございましたら、以下までご連絡をお願いします。</h5>
-        <div style="margin: 3px 5px">
-          <h5>Instagram: <%= link_to("runaclo", "https://www.instagram.com/runaclo/") %></h5>
-          <h5>Twitter: <%= link_to("@runaclo_", "https://twitter.com/runaclo_") %></h5>
-          <h5>メール: support@runaclo.io</h5>
+        <div>
+          <h5>Instagram: </h5>
+          <h5>Twitter:</h5>
+          <h5>メール: support@rhyme.live</h5>
        </div>
       </div>
     </div>
-  </div>
+  </section>
+  {% endblock %}
