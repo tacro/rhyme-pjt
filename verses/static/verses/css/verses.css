@@ -102,6 +102,8 @@
 
 #verse-rhymer h6 {
   color: #B4B8C5;
+  font-weight: 300;
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 #verse-body p {

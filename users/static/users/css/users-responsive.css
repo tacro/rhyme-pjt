@@ -5,32 +5,73 @@
 /* extra large devices (laptop & desktop) */
 
 @media (min-width:1200px) {
+  .user-summary img {
+    width: 100px;
+  }
 
+  #user-summary-center h5{
+    font-size: 22px;
+  }
 }
 
 /* large devices (laptop & desktop) */
 
 @media (min-width: 992px) and (max-width: 1199px) {
+  .user-summary img {
+    width: 90px;
+  }
 
-
+  #user-summary-center h5{
+    font-size: 22px;
+  }
 }
 
 /* medium devices (tablets) */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .user-summary img {
+    width: 75px;
+    height: 75px;
+  }
 
+  #user-summary-center h5{
+    font-size: 22px;
+  }
 
+  #user-summary-center {
+    padding: 10px 0 5px 0;
+  }
+
+  #user-summary-right{
+    padding: 20px 0 5px 0;
+  }
 }
 
 /* small devices */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .user-summary img {
+    width: 70px;
+    object-fit: contain;
+  }
 
+  #user-summary-center h5{
+    font-size: 22px;
+  }
+
+  #user-summary-center {
+    padding: 5px 0 5px 0;
+  }
+
+  #user-summary-right{
+    padding: 15px 0 5px 0;
+  }
 }
 
 /* extra small devices (phones) */
 
 @media (min-width: 321px) and (max-width: 575px) {
+  /* detail */
   #user-info h3{
     font-size: 22px;
   }
@@ -50,6 +91,33 @@
   #user-info a {
     font-size: 12px;
   }
+
+  /* f/f */
+  .user-summary img {
+    width: 60px;
+    object-fit: contain;
+  }
+
+  #user-summary-center h5{
+    font-size: 18px;
+  }
+
+  #user-summary-center h6{
+    font-size: 12px;
+  }
+
+  #user-summary-center {
+    padding: 8px 0 5px 0;
+  }
+
+  #user-summary-right{
+    padding: 18px 0 5px 0;
+  }
+
+  #user-summary-right .btn-yellow{
+    padding: 8px 15px;
+  }
+
 }
 
 @media (max-width: 320px) {
@@ -110,5 +178,33 @@
   #post-body p {
     padding-right: 5px;
     font-size: 13px;
+  }
+
+  /* f/f */
+  .user-summary img {
+    width: 60px;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  #user-summary-center h5{
+    font-size: 14px;
+  }
+
+  #user-summary-center h6{
+    font-size: 10px;
+  }
+
+  #user-summary-center {
+    padding: 8px 0 5px 0;
+  }
+
+  #user-summary-right{
+    padding: 18px 0 5px 0;
+  }
+
+  #user-summary-right .btn-yellow{
+    padding: 8px 15px;
+    font-size: 10px;
   }
 }

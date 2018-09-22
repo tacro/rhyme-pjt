@@ -3,6 +3,8 @@
 {% block css %}
   <!-- Stylesheet for users app -->
   <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/users-responsive.css' %}">
+
 {% endblock %}
 {% block content %}
 
@@ -11,33 +13,38 @@
     {% for follower in followers %}
     <div class="user-summary">
       <div class="row">
-        <div class="col-md-2">
+        <div class="offset-lg-1"></div>
+        <div class="col-3 col-sm-2 col-lg-2">
           <a href="{% url 'detail' follower.id %}">
             {% if follower.icon %}
-              <img src="{{ follower.icon.url }}" alt="icon" class="img-fluid">
+              <img src="{{ follower.icon.url }}" alt="icon" class="img-fluid float-right">
             {% else %}
-              <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
+              <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid float-right">
             {% endif %}
           </a>
         </div>
-        <div class="col-md-7">
+        <div id="user-summary-center" class="col-5 col-sm-6 col-lg-5">
           <a href="{% url 'detail' follower.id %}">
-            <h5>{{ follower.username }}</h5>
-            <h6>{{ follower.mcname }}</h6>
-            <p>{{ follower.biography }}</p>
+              {% if follower.mcname %}
+              <h5>{{ follower.mcname }}</h5>
+              <h6>a.k.a. {{ follower.username }}</h6>
+              {% else %}
+              <h5>{{ follower.username }}</h5>
+              {% endif %}
           </a>
         </div>
-        <div class="col-md-3">
+        <div class="col-4" id="user-summary-right">
           <div class="follow-btn">
             {% if follower != request.user %}
               {% if follower in request.user.get_follows %}
-                <a href="{% url 'unfollow' follower.id %}" class="btn btn-general" type="submit" role="button" value="following">following</a>
+                <a href="{% url 'unfollow' follower.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
               {% else %}
-                <a href="{% url 'follow' follower.id %}" class="btn btn-general" type="submit" role="button" value="follow">follow</a>
+                <a href="{% url 'follow' follower.id %}" class="btn btn-general" role="button" value="follow">follow</a>
               {% endif %}
             {% endif %}
           </div>
         </div>
+        <div class="offset-lg-1"></div>
       </div>
     </div>
     {% endfor %}
