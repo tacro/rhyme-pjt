@@ -15,22 +15,32 @@
     <div id="home-overlay"></div>
 
     <!-- home content -->
-    <div id="home-content">
+    <div id="home-content" class="container">
       <div id="home-content-inner">
-
-        <div id="home-heading" class="text-left">
-          <h1 id="home-heading-1">日常を、感情を、</h1><br>
-          <h1 id="home-heading-2"><span>リズム</span>に乗せよう。</h1>
+        <div class="row">
+          <div id="tagline" class="col-12 col-md-7">
+            <div id="home-heading" class="text-left">
+              <h1 id="home-heading-1">日常を、感情を、</h1><br/>
+              <h1 id="home-heading-2"><span>リズム</span>に乗せよう。</h1>
+            </div>
+          </div>
+          <div id="body-copy" class="col-12 col-md-5">
+            <div id="home-text" class="text-left">
+              <p>Rhymeは、全てのコミュニケーションが</p>
+              <p>ラップで交わされるSNSです。</p>
+              <p>嬉しいことも、</p>
+              <p>ムカつくことも、</p>
+              <p>つまらないことも、</p>
+              <p>韻に乗せてしまえば、それは立派なうたになります。</p>
+              <p>さあ、言葉で遊びましょう。</p>
+            </div>
+          </div>
         </div>
-
         <div id="home-btn" class="text-center">
           <a class="btn btn-outline-primary btn-general btn-home smooth-scroll" href="{% url 'account_signup' %}" title="Sign Up" role="button">Sign Up</a>
         </div>
-
       </div>
     </div>
 </section>
-
-
 
 {% endblock %}

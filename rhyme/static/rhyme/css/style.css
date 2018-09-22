@@ -147,6 +147,14 @@ header .navbar-toggler-icon {
   outline: none;
 }
 
+ul.nav.navbar-nav.nav-pills{
+  background-color: #242423;
+}
+
+.navbar-collapse ul.navbar-nav>li>a{
+  color: #fff;
+}
+
 
 ul.navbar-nav>li>a {
   font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -200,9 +208,18 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
   color: #242423;
 }
 
+#signin .btn-black {
+  font-size: 15px;
+}
+
 #oauth a i {
   font-size: 20px;
   width: 45px;
+}
+
+#oauth span {
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
 #oauth a {
@@ -211,22 +228,43 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
 }
 
 #oauth-twitter {
-  background: #00aced;
-  border-color: transparent;
+  border: 1px solid #00aced;
+  color: #00aced;
+  margin: 5px 0;
+}
+
+
+#oauth-twitter:hover, #oauth-twitter:focus {
   color: #fff;
+  background-color: #00aced;
+  border: 1px solid #00aced;
 }
 
 #oauth-instagram {
-  background: #00aced;
-  border-color: transparent;
+  border: 1px solid #cd486b;
+  margin: 5px 0;
+  color: #cd486b;
+}
+
+#oauth-instagram:hover, #oauth-instagram:focus {
   color: #fff;
+  background-color: #cd486b;
+  border: 1px solid #cd486b;
 }
 
 #oauth-google {
-  background: #00aced;
-  border-color: transparent;
-  color: #fff;
+  border: 1px solid #dd4b39;
+  margin: 5px 0;
+  color: #dd4b39;
 }
+
+#oauth-google:hover, #oauth-google:focus {
+  color: #fff;
+  background-color: #dd4b39;
+  border: 1px solid #dd4b39;
+}
+
+
 
 /* =====================================
   Logout
@@ -282,7 +320,11 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
 }
 
 #home-heading {
-  margin: 0 30px 60px 30px;
+  margin: 0 15px 60px 15px;
+}
+
+#tagline, #body-copy {
+  padding: 0;
 }
 
 #home-heading h1 {
@@ -299,14 +341,25 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
   font-weight: 500;
 }
 
+#home-text p {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 100;
+  margin: 0 0px 20px 0px;
+}
+
+#home-btn {
+  margin-top: 20px;
+}
+
 #privacy .content-box-lg, #terms .content-box-lg, #help .content-box-lg {
   background-color: #fff;
   padding: 10px 20px;
 }
 
 /* privacy, terms */
-#privacy, #terms {
-  margin: 0 20px;
+#privacy, #terms, #help {
+  margin: 0 20px 30px 20px;
 }
 
 #privacy h2, #terms h2 {

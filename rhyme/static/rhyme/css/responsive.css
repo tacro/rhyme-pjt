@@ -11,7 +11,17 @@
 /* large devices (laptop & desktop) */
 
 @media (min-width: 992px) and (max-width: 1199px) {
+  #home-heading {
+    margin: 0 10px 60px 10px;
+  }
 
+  #home-heading h1 {
+    font-size: 60px;
+  }
+
+  #home-text p {
+    font-size: 15px;
+  }
 
 }
 
@@ -32,13 +42,16 @@
     margin: 10px 0 10px 30px;
     color: #212226;
   }
+
   /* home */
+
   #home-heading h1 {
     font-size: 41px;
   }
   #home-text p {
-    font-size: 13px;
+    font-size: 11px;
   }
+
   /* generic */
   .btn-general {
     padding: 8px 35px;
@@ -64,9 +77,18 @@
     color: #212226;
   }
   /* home */
+  #home-heading {
+    margin: 0 0 60px 0;
+  }
+
+  #tagline, #body-copy {
+    padding-left: 20px;
+  }
+
   #home-heading h1 {
     font-size: 22px;
   }
+
   #home-text p {
     font-size: 13px;
     line-height: 15px;
@@ -101,15 +123,26 @@
     margin: 10px 0 10px 20px;
     color: #212226;
   }
+
   /* home */
+  #home-heading {
+    margin: 0 0 30px 0;
+  }
+
+  #tagline, #body-copy {
+    padding-left: 20px;
+  }
+
   #home-heading h1 {
-    font-size: 20px;
+    font-size: 30px;
   }
+
   #home-text p {
-    font-size: 11px;
-    line-height: 16px;
-    margin: 8px 10px 10px 10px;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0 0 0 5px;
   }
+
   /* generic */
   .btn-general {
     padding: 8px 25px 6px 25px;
@@ -121,6 +154,21 @@
   .content-box-md {
     padding: 80px 0;
   }
+
+  /* help, privacy, terms */
+  #help h3 {
+    font-size: 20px;
+  }
+
+  #help h4 {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  #help h5 {
+    font-size: 14px;
+  }
+
   /* footer */
   footer p {
     font-size: 12px;
@@ -128,8 +176,69 @@
 }
 
 @media (max-width: 320px) {
-  
+  /* footer menu */
+  #footer-menu {
+    font-size: 24px;
+  }
+
+  /* home */
+  #home-heading {
+    margin: 0 0 20px 0;
+  }
+
+  #tagline, #body-copy {
+    padding-left: 20px;
+  }
+
+  #home-heading h1 {
+    font-size: 30px;
+  }
+
+  #home-text p {
+    font-size: 10px;
+    line-height: 18px;
+    margin: 0 0 0 8px;
+  }
+
+  /* oauth */
+  #oauth {
+    margin-bottom: 30px;
+  }
+
+  /* help, privacy, terms */
+  #help h3 {
+    font-size: 16px;
+  }
+
+  #help h4 {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  #help h5 {
+    font-size: 11px;
+  }
+
+  #help h2, #privacy h2, #terms h2{
+    font-size: 24px;
+  }
+
+  help .faq, #help .contact-list {
+    margin: 10px 25px 30px 25px;
+  }
+
+  #privacy h3, #terms h3 {
+    font-size: 15px;
+  }
+
+  #privacy p, #terms p {
+    font-size: 12px;
+  }
+
   /* footer */
+  footer a {
+    font-size: 8px;
+  }
   footer p {
     font-size: 10px;
   }
