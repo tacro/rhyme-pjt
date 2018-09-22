@@ -16,7 +16,7 @@ def create(request):
             verse.body = request.POST['body']
             verse.rhymer = request.user
             verse.save()
-            return redirect('index')
+            return redirect('/verses/index')
         else:
             return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
     else:
@@ -43,7 +43,7 @@ def answer(request, verse_id):
             verse.target = target
             verse.type = 1
             verse.save()
-            return redirect('index')
+            return redirect('/verses/index')
         else:
             return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
     else:
@@ -61,7 +61,7 @@ def beef(request, verse_id):
             verse.target = target
             verse.type = 2
             verse.save()
-            return redirect('index')
+            return redirect('/verses/index')
         else:
             return render(request, 'verses/beef.html', {'error': 'Something went wrong'})
     else:

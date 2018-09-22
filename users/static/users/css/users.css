@@ -136,6 +136,10 @@
 /* =====================================
   follows/followers
 ======================================*/
+#followers, #followees {
+  margin-bottom: 45px;
+}
+
 .user-summary a {
   color: #242423;
   text-decoration: none;

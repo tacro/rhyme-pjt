@@ -43,14 +43,14 @@ def follow(request, user_id):
         for followeeOfFollower in follower.get_follows():
             if followeeOfFollower == followee:
                 # "do nothing and back to previous page
-                return redirect('index')
+                return redirect('/verses/index')
         # make new relationship between them
         relationship = Relationship(follow = followee, follower = follower, )
         relationship.save()
         # back to previous page
         return redirect('/rhymers/' + str(user_id))
     else:
-        return redirect('index')
+        return redirect('/verses/index')
 
 @login_required
 def unfollow(request, user_id):
@@ -61,7 +61,7 @@ def unfollow(request, user_id):
         relationship.delete()
         return redirect('/rhymers/' + str(user_id))
     else:
-        return redirect('index')
+        return redirect('/verses/index')
 
 def show_follows(request, user_id):
     user = get_object_or_404(User, pk = user_id)
