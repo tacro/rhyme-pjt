@@ -21,22 +21,36 @@
   border: 150px solid #242423;
 } */
 
-/* Answer */
-#answer-post .target {
+/* Answer, Beef */
+#answer-post .target,
+#beef-post .target {
   margin: 15px auto;
 }
 
-#answer-post .target h6 {
+#answer-post .target h6,
+#beef-post .target h6 {
   margin: 5px 0 0 0;
 }
 
-#answer-post .target img {
+#answer-post .target img,
+#beef-post .target img {
   max-height: 60px;
 }
 
-#answer-post h4 {
+#answer-post h4,
+#beef-post h4 {
   font-size: 18px;
 }
+
+#beef-post .vs {
+  margin: 10px 0;
+}
+
+#beef-post .vs i {
+  color: #FFCF35;
+}
+
+
 
 /* =====================================
   Index
