@@ -61,12 +61,10 @@
     {% endif %}
     </header>
     <div id="space"></div>
-
-
       {% block content %}
 
       {% endblock %}
-
+      
       {% if user.is_authenticated %}
         <section id="footer-menu" class="text-center">
           <div class="col-1-5">

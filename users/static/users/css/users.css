@@ -4,6 +4,7 @@
 #edit-user {
   padding: 25px 20px;
   border-radius: 4px;
+  margin-bottom: 60px;
 }
 
 #edit-user form.form-control {
@@ -20,6 +21,11 @@
 #edit-user form textarea.form-control {
   min-height: 164px;
   border: 1px solid #242423;
+}
+
+#edit-user img.preview  {
+  max-width: 80px;
+  object-fit: contain;
 }
 
 /* =====================================
