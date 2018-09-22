@@ -3,6 +3,7 @@
 {% block css %}
   <!-- Stylesheet for users app -->
   <link rel="stylesheet" href="{% static 'users/css/users.css' %}">
+  <link rel="stylesheet" href="{% static 'users/css/users-responsive.css' %}">
 {% endblock %}
 {% block content %}
 
@@ -10,9 +11,9 @@
   <div id="user-info" class="row pt-3">
     <div class="col-3">
       {% if user.icon %}
-      <img src="{{ user.icon.url }}" class="img-fluid" />
+      <img src="{{ user.icon.url }}" class="img-fluid float-right" />
       {% else %}
-      <img src="{% static "users/img/default_icon.png" %}" class="img-fluid" alt="he doesn't have icon" />
+      <img src="{% static "users/img/default_icon.png" %}" class="img-fluid float-right" alt="he doesn't have icon" />
       {% endif %}
     </div>
     <div class="col-9">
@@ -20,8 +21,10 @@
         <div class="col-12">
           {% if user.mcname %}
           <h3>{{ user.mcname }}</h5>
-          {% endif %}
+          <h5>a.k.a. {{ user.username }}</h5>
+          {% else %}
           <h5>{{user.username}}</h5>
+          {% endif %}
         </div>
         <div class="col-12">
           <p>{{user.biography}}</p>
@@ -54,27 +57,30 @@
         <div class="row post">
           <div class="col-2" id="post-left">
             {% if post.rhymer.icon %}
-              <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
+              <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
             {% else %}
-              <img src="{% static 'users/img/default_icon.png' %}" alt="user's icon">
+              <img src="{% static 'default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
             {% endif %}
           </div>
           <div class="col-10" id="post-right">
               <div class="row">
                 <div class="col-12" id="post-rhymer">
                   {% if post.rhymer.mcname %}
-                    <h5>{{ post.rhymer.mcname}} </h5>
+                    <h5>{{ post.rhymer.mcname }} </h5>
+                    <h6>a.k.a. {{ post.rhymer.username}}</h6>
                   {% else %}
                     <h5>{{ post.rhymer.username}} </h5>
                   {% endif %}
                 </div>
                 <div class="col-12" id="post-body">
-                  <p>{{ post.body }} </p>
+                  <p>{{ post.body }}</p>
                 </div>
-                <div class="col-3" class="post-reaction"><i class="fas fa-reply"></i></div>
-                <div class="col-3" class="post-reaction"><i class="fas fa-bolt"></i></div>
-                <div class="col-3" class="post-reaction"><i class="fas fa-hand-peace"></i>{{ post.likes.count }}</div>
-                <div class="col-3" class="post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+                <div class="offset-lg-1"></div>
+                <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'answer' post.id %}"><i class="fas fa-reply"></i></a></div>
+                <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'beef' post.id %}"><i class="fas fa-bolt"></i></a></div>
+                <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href="{{ post.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ post.likes.count }}</span></a></div>
+                <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+                <div class="offset-lg-1"></div>
               </div>
           </div>
         </div>

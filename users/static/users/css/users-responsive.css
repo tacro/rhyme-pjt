@@ -31,10 +31,84 @@
 /* extra small devices (phones) */
 
 @media (min-width: 321px) and (max-width: 575px) {
+  #user-info h3{
+    font-size: 22px;
+  }
 
+  #user-info h5{
+    font-size: 16px;
+  }
 
+  #user-info p {
+    font-size: 13px;
+  }
+
+  #user-info a span {
+    font-size: 16px;
+  }
+
+  #user-info a {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 320px) {
 
+  #user-info {
+    padding: 0;
+  }
+  #user-info h3{
+    font-size: 18px;
+  }
+
+  #user-info h5{
+    font-size: 14px;
+  }
+
+  #user-info p {
+    font-size: 11px;
+    line-height: 12px;
+  }
+
+  #user-info a span {
+    font-size: 13px;
+  }
+
+  #user-info a {
+    font-size: 8px;
+  }
+
+  #user-info .btn-black {
+    color: #FFF;
+    padding: 5px 30px;
+  }
+
+  #user-info a i{
+    font-size: 18px;
+    vertical-align: middle;
+    margin: 0 0 5px 5px;
+  }
+
+  #post-left {
+    padding: 0 5px 0 0;
+  }
+
+  #post-left img {
+    width: 35px;
+  }
+
+  #post-rhymer h5 {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  #post-rhymer h6 {
+    font-size: 10px;
+    margin: 0 0 5px 0;
+  }
+
+  #post-body p {
+    padding-right: 5px;
+    font-size: 13px;
+  }
 }
