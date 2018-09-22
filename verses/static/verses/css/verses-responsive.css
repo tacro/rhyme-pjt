@@ -1,0 +1,153 @@
+/* =====================================
+  Bootstrap media queries
+======================================*/
+
+/* extra large devices (laptop & desktop) */
+
+@media (min-width:1200px) {
+  .verse-reaction a {
+    font-size: 22px;
+  }
+
+  #verse-left img {
+    width: 75px;
+  }
+
+  #verse-rhymer,
+  #verse-body {
+    margin-left: 5px;
+  }
+
+  #verse-rhymer h5 {
+    font-size: 20px;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 15px;
+  }
+
+  #verse-body p {
+    font-size: 22px;
+  }
+}
+
+/* large devices (laptop & desktop) */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .verse-reaction a {
+    font-size: 22px;
+  }
+
+  #verse-left img {
+    width: 75px;
+  }
+
+  #verse-rhymer,
+  #verse-body {
+    margin-left: 5px;
+  }
+
+  #verse-rhymer h5 {
+    font-size: 20px;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 15px;
+  }
+
+  #verse-body p {
+    font-size: 22px;
+  }
+}
+
+/* medium devices (tablets) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #verse-rhymer h5 {
+    font-size: 18px;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 13px;
+  }
+
+  #verse-body p {
+    font-size: 20px;
+  }
+}
+
+/* small devices */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #verse-rhymer h5 {
+    font-size: 18px;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 13px;
+  }
+
+  #verse-body p {
+    font-size: 20px;
+  }
+}
+
+/* extra small devices (phones) */
+
+@media (min-width: 321px) and (max-width: 575px) {
+  #answer-target-left, #answer-target-right, #beef-target-left, #beef-target-right {
+    padding: 0;
+  }
+
+  #answer-post .target img,
+  #beef-post .target img {
+    max-height: 50px;
+  }
+
+  #verse-rhymer h5 {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 10px;
+    margin: 0 0 5px 0;
+  }
+
+  #verse-body p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  #answer-target-left, #answer-target-right, #beef-target-left, #beef-target-right {
+    padding: 0;
+  }
+
+  #answer-post .target img,
+  #beef-post .target img {
+    max-height: 45px;
+  }
+
+  #verse-left {
+    padding: 0 5px 0 0;
+  }
+
+  #verse-left img {
+    width: 35px;
+  }
+
+  #verse-rhymer h5 {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  #verse-rhymer h6 {
+    font-size: 10px;
+    margin: 0 0 5px 0;
+  }
+
+  #verse-body p {
+    font-size: 15px;
+  }
+}

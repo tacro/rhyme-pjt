@@ -1,0 +1,136 @@
+/* =====================================
+  Bootstrap media queries
+======================================*/
+
+/* extra large devices (laptop & desktop) */
+
+@media (min-width:1200px) {
+
+}
+
+/* large devices (laptop & desktop) */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+
+}
+
+/* medium devices (tablets) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Navbar */
+  .site-new-wrapper {
+    padding: 0;
+  }
+  ul.navbar-nav {
+    background: #fff;
+    opacity: 0.9;
+    padding: 10px 0 30px 0;
+  }
+  ul.navbar-nav>li>a {
+    font-size: 18px;
+    margin: 10px 0 10px 30px;
+    color: #212226;
+  }
+  /* home */
+  #home-heading h1 {
+    font-size: 41px;
+  }
+  #home-text p {
+    font-size: 13px;
+  }
+  /* generic */
+  .btn-general {
+    padding: 8px 35px;
+    font-size: 10px;
+  }
+
+}
+
+/* small devices */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Navbar */
+  .site-new-wrapper {
+    padding: 0;
+  }
+  ul.navbar-nav {
+    background: #fff;
+    opacity: 0.9;
+    padding: 10px 0 30px 0;
+  }
+  ul.navbar-nav>li>a {
+    margin: 10px 0 10px 30px;
+    color: #212226;
+  }
+  /* home */
+  #home-heading h1 {
+    font-size: 22px;
+  }
+  #home-text p {
+    font-size: 13px;
+    line-height: 15px;
+    margin: 8px 2px 13px 2px;
+  }
+  /* generic */
+  .btn-general {
+    padding: 8px 25px 6px 25px;
+    font-size: 10px;
+  }
+  .content-box-lg {
+    padding: 96px 0;
+  }
+  .content-box-md {
+    padding: 80px 0;
+  }
+}
+
+/* extra small devices (phones) */
+
+@media (min-width: 321px) and (max-width: 575px) {
+  /* Navbar */
+  .site-new-wrapper {
+    padding: 0;
+  }
+  ul.navbar-nav {
+    background: #fff;
+    opacity: 0.9;
+    padding: 10px 0 30px 0;
+  }
+  ul.navbar-nav>li>a {
+    margin: 10px 0 10px 20px;
+    color: #212226;
+  }
+  /* home */
+  #home-heading h1 {
+    font-size: 20px;
+  }
+  #home-text p {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 8px 10px 10px 10px;
+  }
+  /* generic */
+  .btn-general {
+    padding: 8px 25px 6px 25px;
+    font-size: 10px;
+  }
+  .content-box-lg {
+    padding: 96px 0;
+  }
+  .content-box-md {
+    padding: 80px 0;
+  }
+  /* footer */
+  footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  
+  /* footer */
+  footer p {
+    font-size: 10px;
+  }
+}

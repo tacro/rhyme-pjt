@@ -3,40 +3,46 @@
 {% block css %}
   <!-- Stylesheet for verses app -->
   <link rel="stylesheet" href="{% static 'verses/css/verses.css' %}">
+  <link rel="stylesheet" href="{% static 'verses/css/verses-responsive.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="container-fluid pt-2">
-  {% for verse in verses.all %}
+<section id="verse-index">
+  <div class="container-fluid pt-2">
+    {% for verse in verses.all %}
     <div class="row verse">
       <div class="col-2" id="verse-left">
         {% if verse.rhymer.icon %}
-          <img src="{{ verse.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
+          <img src="{{ verse.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
         {% else %}
-          <img src="{% static 'default_icon.png' %}" alt="user's icon">
+          <img src="{% static 'default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
         {% endif %}
       </div>
       <div class="col-10" id="verse-right">
           <div class="row">
             <div class="col-12" id="verse-rhymer">
-              {% if verse.mcname %}
-                <h5>{{ verse.rhymer.mcname}} </h5>
+              {% if verse.rhymer.mcname %}
+                <h5>{{ verse.rhymer.mcname }} </h5>
+                <h6>a.k.a. {{ verse.rhymer.username}}</h6>
               {% else %}
                 <h5>{{ verse.rhymer.username}} </h5>
               {% endif %}
             </div>
             <div class="col-12" id="verse-body">
-              <p>{{ verse.body }} </p>
+              <p>{{ verse.body }}</p>
             </div>
-            <div class="col-3" class="verse-reaction"><i class="fas fa-reply"></i></div>
-            <div class="col-3" class="verse-reaction"><i class="fas fa-bolt"></i></div>
-            <div class="col-3" class="verse-reaction"><i class="fas fa-hand-peace"></i>{{ verse.likes.count }}</div>
-            <div class="col-3" class="verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
+            <div class="offset-lg-1"></div>
+            <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'answer' verse.id %}"><i class="fas fa-reply"></i></a></div>
+            <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'beef' verse.id %}"><i class="fas fa-bolt"></i></a></div>
+            <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ verse.likes.count }}</span></a></div>
+            <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
+            <div class="offset-lg-1"></div>
           </div>
       </div>
     </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
+</section>
 
 {% endblock %}

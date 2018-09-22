@@ -3,6 +3,7 @@
 {% block css %}
   <!-- Stylesheet for verses app -->
   <link rel="stylesheet" href="{% static 'verses/css/verses.css' %}">
+  <link rel="stylesheet" href="{% static 'verses/css/verses-responsive.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -12,14 +13,14 @@
     <div class="container">
     <h2>Answer</h2>
     <div class="row target">
-      <div class="col-2">
+      <div class="col-3 col-sm-2" id="answer-target-left">
         {% if target.rhymer.icon %}
           <img src="{{ target.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
         {% else %}
           <img src="{% static 'default_icon.png' %}" alt="user's icon">
         {% endif %}
       </div>
-      <div class="col-10 text-left">
+      <div class="col-9 col-sm-10 text-left" id="answer-target-right">
         {% if target.rhymer.mcname %}
           <h6>{{ target.rhymer.mcname }}</h6>
         {% else %}
