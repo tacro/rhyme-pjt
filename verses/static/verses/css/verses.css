@@ -1,22 +1,41 @@
 /* =====================================
-  Create-post
+  Create, Answer, Beef
 ======================================*/
-#create-post {
-  padding: 25px 20px;
-  border-radius: 4px;
+#create-post, #answer-post, #beef-post {
+  padding: 0px 20px;
 }
 
-#create-post form.form-control {
+#create-post h3, #answer-post h3, #beef-post h3 {
+  font-size: 20px;
+}
+
+#create-post .form-group {
   font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  padding: 10px 15px;
-  font-size: 12px;
-  line-height: 24px;
+  margin: 15px 5px;
+}
+/*
+#create-post .form-control form textarea,
+#answer-post .form-control form textarea,
+#beef-post .form-control form textarea, {
+  margin: 30px auto 50px auto;
+  border: 150px solid #242423;
+} */
+
+/* Answer */
+#answer-post .target {
+  margin: 15px auto;
 }
 
-#create-post form textarea.form-control {
-  min-height: 164px;
-  margin: 30px auto 50px auto;
-  border: 1px solid #242423;
+#answer-post .target h6 {
+  margin: 5px 0 0 0;
+}
+
+#answer-post .target img {
+  max-height: 60px;
+}
+
+#answer-post h4 {
+  font-size: 18px;
 }
 
 /* =====================================

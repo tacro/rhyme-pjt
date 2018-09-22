@@ -10,17 +10,17 @@
 <section class="text-center" id="create-post">
   <div class="content-box-sm">
     <div class="container">
-    <h3>Create new Verse</h3>
+    <h3>Kick the verse</h3>
       <div class="row">
         <div class="col-12">
           <form method="POST" action="{% url 'create' %}">
             {% csrf_token %}
           <div class="form-group">
-          <textarea name="body" class="form-control"></textarea>
+          <textarea name="body" class="form-control" rows="6"></textarea>
           </div>
         </div>
         <div class="col-12">
-          <input class="btn btn-general btn-black" type="submit" role="button" value="Kick the verse!" />
+          <input class="btn btn-general btn-black" type="submit" role="button" value="On Air!" />
           </form>
         </div>
       </div>
