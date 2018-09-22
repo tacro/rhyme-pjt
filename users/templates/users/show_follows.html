@@ -15,7 +15,7 @@
       <div class="row">
         <div class="offset-lg-1"></div>
         <div class="col-3 col-sm-2 col-lg-2">
-          <a href="{% url 'detail' followee.id %}">
+          <a href="{% url 'users:detail' followee.id %}">
             {% if followee.icon %}
               <img src="{{ followee.icon.url }}" alt="icon" class="img-fluid float-right">
             {% else %}
@@ -24,7 +24,7 @@
           </a>
         </div>
         <div id="user-summary-center" class="col-5 col-sm-6 col-lg-5">
-          <a href="{% url 'detail' followee.id %}">
+          <a href="{% url 'users:detail' followee.id %}">
               {% if followee.mcname %}
               <h5>{{ followee.mcname }}</h5>
               <h6>a.k.a. {{ followee.username }}</h6>
@@ -37,9 +37,9 @@
           <div class="follow-btn">
             {% if followee != request.user %}
               {% if followee in request.user.get_follows %}
-                <a href="{% url 'unfollow' followee.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
+                <a href="{% url 'users:unfollow' followee.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
               {% else %}
-                <a href="{% url 'follow' followee.id %}" class="btn btn-general" role="button" value="follow">follow</a>
+                <a href="{% url 'users:follow' followee.id %}" class="btn btn-general" role="button" value="follow">follow</a>
               {% endif %}
             {% endif %}
           </div>

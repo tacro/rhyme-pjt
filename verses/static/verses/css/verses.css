@@ -86,6 +86,7 @@
 
 #verse-left img {
   width: 50px;
+  object-fit: contain;
   padding-right: 5px;
 }
 

@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-12">
           <h4 class="text-left">Your verse : </h4>
-          <form method="POST" action="{% url 'answer' target.id %}">
+          <form method="POST" action="{% url 'verses:answer' target.id %}">
             {% csrf_token %}
           <div class="form-group">
           <textarea name="body" class="form-control" rows="6"></textarea>

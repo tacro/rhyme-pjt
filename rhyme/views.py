@@ -5,7 +5,7 @@ import operator
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect('index')
+        return redirect('/verses/index')
     else:
         return render(request, 'home.html')
 

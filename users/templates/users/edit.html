@@ -8,7 +8,7 @@
 
 <section id="edit-user">
     <h3 class="text-center">Edit info</h3>
-    <form method="post" action="{% url 'edit' user.id %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'users:edit' user.id %}" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="container">
         <div class="row">

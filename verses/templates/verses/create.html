@@ -13,7 +13,7 @@
     <h3>Kick the verse</h3>
       <div class="row">
         <div class="col-12">
-          <form method="POST" action="{% url 'create' %}">
+          <form method="POST" action="{% url 'verses:create' %}">
             {% csrf_token %}
           <div class="form-group">
           <textarea name="body" class="form-control" rows="6"></textarea>

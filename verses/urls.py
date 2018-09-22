@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from .views import PostLikeToggle, PostLikeAPIToggle
 
+app_name = 'verses'
+
 urlpatterns = [
     path('create/',  views.create, name = 'create'),
     path('index/', views.index, name='index'),

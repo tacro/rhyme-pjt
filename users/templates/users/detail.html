@@ -7,88 +7,99 @@
 {% endblock %}
 {% block content %}
 
-<div class="container">
-  <div id="user-info" class="row pt-3">
-    <div class="col-3">
-      {% if user.icon %}
-      <img src="{{ user.icon.url }}" class="img-fluid float-right" />
-      {% else %}
-      <img src="{% static "users/img/default_icon.png" %}" class="img-fluid float-right" alt="he doesn't have icon" />
-      {% endif %}
-    </div>
-    <div class="col-9">
-      <div class="row mx-auto">
-        <div class="col-12">
-          {% if user.mcname %}
-          <h3>{{ user.mcname }}</h5>
-          <h5>a.k.a. {{ user.username }}</h5>
-          {% else %}
-          <h5>{{user.username}}</h5>
-          {% endif %}
-        </div>
-        <div class="col-12">
-          <p>{{user.biography}}</p>
-        </div>
-        <div class="col-6">
-          <a href="{% url 'followers' user.id %}"><span>{{ followers }}</span> FOLLOWERS</a>
-        </div>
-        <div class="col-6">
-          <a href="{% url 'follows' user.id %}"><span>{{ follows }}</span> FOLLOWS</a>
-        </div>
-        <div class="col-12 my-3">
-          {% if user != request.user %}
-            {% if user in request.user.get_follows %}
-              <a href="{% url 'unfollow' user.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
+<section id="user-mypage">
+  <div class="container">
+    <div id="user-info" class="row pt-3">
+      <div class="col-3">
+        {% if user.icon %}
+        <img src="{{ user.icon.url }}" class="img-fluid float-right" />
+        {% else %}
+        <img src="{% static "users/img/default_icon.png" %}" class="img-fluid float-right" alt="he doesn't have icon" />
+        {% endif %}
+      </div>
+      <div class="col-9">
+        <div class="row mx-auto">
+          <div class="col-12">
+            {% if user.mcname %}
+            <h3>{{ user.mcname }}</h5>
+            <h5>a.k.a. {{ user.username }}</h5>
             {% else %}
-              <a href="{% url 'follow' user.id %}" class="btn btn-general btn-yellow" role="button" value="follow">follow</a>
+            <h5>{{user.username}}</h5>
             {% endif %}
-          {% else %}
-            <a class="btn btn-general btn-black" href="{% url 'edit' user.id %}" role="button" value="Edit Profile">Edit Profile</a>
-            <a><i class="fas fa-cog"></i></a>
-          {% endif %}
+          </div>
+          <div class="col-12">
+            <p>{{user.biography}}</p>
+          </div>
+          <div class="col-6">
+            <a href="{% url 'users:followers' user.id %}"><span>{{ followers }}</span> FOLLOWERS</a>
+          </div>
+          <div class="col-6">
+            <a href="{% url 'users:follows' user.id %}"><span>{{ follows }}</span> FOLLOWS</a>
+          </div>
+          <div class="col-12 my-3">
+            {% if user != request.user %}
+              {% if user in request.user.get_follows %}
+                <a href="{% url 'users:unfollow' user.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
+              {% else %}
+                <a href="{% url 'users:follow' user.id %}" class="btn btn-general btn-yellow" role="button" value="follow">follow</a>
+              {% endif %}
+            {% else %}
+              <a class="btn btn-general btn-black" href="{% url 'users:edit' user.id %}" role="button" value="Edit Profile">Edit Profile</a>
+              <a><i class="fas fa-cog"></i></a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row pt-3">
-    <div class="col-12">
-      <div id="posts">
-        {% for post in posts.all %}
-        <div class="row post">
-          <div class="col-2" id="post-left">
-            {% if post.rhymer.icon %}
-              <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
-            {% else %}
-              <img src="{% static 'default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
-            {% endif %}
-          </div>
-          <div class="col-10" id="post-right">
-              <div class="row">
-                <div class="col-12" id="post-rhymer">
-                  {% if post.rhymer.mcname %}
-                    <h5>{{ post.rhymer.mcname }} </h5>
-                    <h6>a.k.a. {{ post.rhymer.username}}</h6>
-                  {% else %}
-                    <h5>{{ post.rhymer.username}} </h5>
-                  {% endif %}
+    <div class="row pt-3">
+      <div class="col-12">
+        <div id="posts">
+          {% for post in posts.all %}
+          <div class="row post">
+            <div class="col-2" id="post-left">
+              {% if post.rhymer.icon %}
+              <a href="{% url 'users:detail' post.rhymer.id %}">
+                <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+              </a>
+              {% else %}
+              <a href="{% url 'users:detail' post.rhymer.id %}">
+                <img src="{% static 'default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+              </a>
+              {% endif %}
+            </div>
+            <div class="col-10" id="post-right">
+                <div class="row">
+                  <div class="col-12" id="post-rhymer">
+                    <a href="{% url 'users:detail' post.rhymer.id %}">
+                    {% if post.rhymer.mcname %}
+                      <h5>{{ post.rhymer.mcname }} </h5>
+                      <h6>a.k.a. {{ post.rhymer.username}}</h6>
+                    {% else %}
+                      <h5>{{ post.rhymer.username}} </h5>
+                    {% endif %}
+                    </a>
+                  </div>
+                  <div class="col-12" id="post-body">
+                    <a href="{% url 'verses:detail' post.id %}">
+                      <p>{{ post.body }}</p>
+                    </a>
+                  </div>
+                  <div class="offset-lg-1"></div>
+                  <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:answer' post.id %}"><i class="fas fa-reply"></i></a></div>
+                  <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:beef' post.id %}"><i class="fas fa-bolt"></i></a></div>
+                  <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href="{{ post.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ post.likes.count }}</span></a></div>
+                  <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+                  <div class="offset-lg-1"></div>
                 </div>
-                <div class="col-12" id="post-body">
-                  <p>{{ post.body }}</p>
-                </div>
-                <div class="offset-lg-1"></div>
-                <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'answer' post.id %}"><i class="fas fa-reply"></i></a></div>
-                <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'beef' post.id %}"><i class="fas fa-bolt"></i></a></div>
-                <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href="{{ post.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ post.likes.count }}</span></a></div>
-                <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
-                <div class="offset-lg-1"></div>
-              </div>
+            </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
+
+</section>
 
 {% endblock %}

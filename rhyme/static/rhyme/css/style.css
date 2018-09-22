@@ -34,6 +34,10 @@ p {
   line-height: 24px;
 }
 
+a, a:hover {
+  color: #242423;
+}
+
 section {
   background: #fff;
   overflow: hidden;
@@ -294,7 +298,7 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
   width: auto;
   height: auto;
   z-index: -1;
-  background: url("../rhyme/static/rhyme/img/rhymer_live.jpg") no-repeat;
+  background: url("../img/rhymer_live.jpg") no-repeat;
   background-size: cover;
 }
 
