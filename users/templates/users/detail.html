@@ -81,7 +81,7 @@
                   </div>
                   <div class="col-12" id="post-body">
                     <a href="{% url 'verses:detail' post.id %}">
-                      <p>{{ post.body }}</p>
+                      <p>{{ post.body|linebreaks }}</p>
                     </a>
                   </div>
                   <div class="offset-lg-1"></div>

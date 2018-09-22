@@ -23,7 +23,7 @@ def create(request):
         return render(request, 'verses/create.html')
 
 def index(request):
-    verses = Verse.objects
+    verses = Verse.objects.order_by('-pub_date')
     return render(request, 'verses/index.html', {'verses':verses})
 
 # First I have to write verse/detail page

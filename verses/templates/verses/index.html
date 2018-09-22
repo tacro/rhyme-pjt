@@ -38,7 +38,7 @@
               {% endif %}
             </div>
             <div class="col-12" id="verse-body">
-              <a href="{% url 'verses:detail' verse.id %}"><p>{{ verse.body }}</p></a>
+              <a href="{% url 'verses:detail' verse.id %}"><p>{{ verse.body|linebreaks }}</p></a>
             </div>
             <div class="offset-lg-1"></div>
             <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' verse.id %}"><i class="fas fa-reply"></i></a></div>
