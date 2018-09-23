@@ -7,6 +7,7 @@ django-bootstrap-form==3.4
 django-bootstrap4==0.0.6
 django-filter==2.0.0
 djangorestframework==3.8.2
+gunicorn==19.9.0
 idna==2.7
 Markdown==2.6.11
 oauthlib==2.1.0
