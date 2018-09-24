@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zqew5lufs%h4gzmjro^&7#ozyh^xmm#a=ho()xz0apex0&)0=x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -73,7 +73,10 @@ ROOT_URLCONF = 'rhyme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['rhyme/templates', os.path.join(BASE_DIR, 'templates', 'allauth')],
+        'DIRS': ['rhyme/templates',
+                 os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'templates', 'allauth')
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -33,5 +33,5 @@ class Verse(models.Model):
 
     def get_api_like_url(self):
         url_ = '/verses/api/%i/like' % self.id
-        print(url_)
+        # print(url_)
         return url_

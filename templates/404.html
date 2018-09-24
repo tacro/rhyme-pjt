@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<section id="page404">
+  <img src="{% static 'rhyme/img/404-bg.jpg' %}" id="page404-bg-img"/>
+  <div id="page404-overlay"></div>
+  <div id="page404-text">
+    <h2>Sorry...</h2>
+    <h4>page not found</h4>
+  </div>
+</section>
+{% endblock %}
