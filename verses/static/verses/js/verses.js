@@ -2,12 +2,14 @@
   Like Button Ajax
 ======================================*/
 
-function updateText(btn, newCount){
+// getelementbyid.innnertext can change the text
+// do it dynamically
+
+
+function updateText(btn, id, newCount){
   btn.removeAttr("data-likes")
   btn.attr("data-likes", newCount)
-  console.log("data's sent. new count is " + newCount)
-  console.log("ok actual attr is " + btn.attr("data-likes"))
-  btn.attr("like-text",newCount)
+  document.getElementById(id).innerText = newCount
 }
 
 $('.like-btn').click(function(e){
@@ -28,12 +30,12 @@ $('.like-btn').click(function(e){
       // var newLikes;
       if (data.liked){
         // newLikes = likeCount + 1
-        updateText($(this), addLike)
+        updateText($(this), 'like-text', addLike)
         console.log("data-likes: " + $(this).attr("data-likes"))
 
       } else {
         // newLikes = likeCount - 1
-        updateText($(this), removeLike)
+        updateText($(this), 'like-text', removeLike)
         console.log("data-likes: " + $(this).attr("data-likes"))
       }
     }, error: function(error){
