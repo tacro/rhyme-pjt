@@ -13,9 +13,11 @@
     <!-- Popup menu for setting and logout, cancellation -->
     <div class="popup-overlay">
       <div class="popup-content">
-        <h2>Pop-Up</h2>
-        <p> This is an example pop-up that you can make using jQuery.</p>
-        <button id="close-popup">Close</button>
+        <p id="close-popup"><i class="fas fa-times"></i></p>
+        <a href="{% url 'account_logout' %}"><p>Log Out</p></a>
+        <a href="{% url 'account_reset_password' %}"><p>Change Password</p></a>
+        <a href="{% url 'privacy' %}"><p>Privacy Policy</p></a>
+        <a href="{% url 'terms' %}"><p>Terms of Conditions</p></a>
       </div>
     </div>
 
