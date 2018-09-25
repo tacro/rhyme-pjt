@@ -31,6 +31,36 @@
 /* =====================================
   detail
 ======================================*/
+/* Popup menu */
+.popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  position:absolute;
+  background:#B4B8C5;
+  border:3px solid #B4B8C5;
+  width:50%;
+  height:50%;
+  left:25%;
+  z-index: 2;
+}
+
+.popup-overlay.active{
+  /*displays pop-up when "active" class is present*/
+  visibility:visible;
+  text-align:center;
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+ visibility:hidden;
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility:visible;
+}
+
+/* Content */
 #user-mypage {
   margin-bottom: 45px;
 }

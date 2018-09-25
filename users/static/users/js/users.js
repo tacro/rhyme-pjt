@@ -32,3 +32,19 @@ $(function(){
     reader.readAsDataURL(file);
   });
 });
+
+
+/* =====================================
+  Pop up menu @ detail
+======================================*/
+$(function(){
+  //appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+  $("#open-popup").on("click", function(e){
+      $(".popup-overlay, .popup-content").addClass("active");
+  });
+
+  //removes the "active" class to .popup and .popup-content when the "Close" button is clicked
+  $("#close-popup").on("click", function(e){
+      $(".popup-overlay, .popup-content").removeClass("active");
+  });
+});
