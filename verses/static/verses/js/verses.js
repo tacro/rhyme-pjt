@@ -1,5 +1,5 @@
 /* =====================================
-  Like Button Ajax
+Like Button Ajax
 ======================================*/
 
 // getelementbyid.innnertext can change the text
@@ -8,36 +8,31 @@
 
 function updateText(btn, id, newCount){
   btn.removeAttr("data-likes")
+  console.log("data-likes removed.")
   btn.attr("data-likes", newCount)
+  console.log("data-likes added again, value is : " + btn.attr("data-likes"))
   document.getElementById(id).innerText = newCount
 }
 
 $('.like-btn').click(function(e){
   e.preventDefault()
   var likeUrl = $(this).attr("data-href")
-  console.log("before update data-likes: " + $(this).attr("data-likes"))
   var likeCount = parseInt($(this).attr("data-likes"))
-  console.log("now like counts " + likeCount)
-  var addLike = likeCount + 1
-  var removeLike = likeCount - 1
   $.ajax({
     url: likeUrl,
     method: "GET",
     data: {},
     success: function(data){
-      console.log(data)
-      // console.log($(this).text())
-      // var newLikes;
       if (data.liked){
-        // newLikes = likeCount + 1
-        updateText($(this), 'like-text', addLike)
-        console.log("data-likes: " + $(this).attr("data-likes"))
-
+        likeCount = likeCount + 1
+        updateText($('.like-btn'), 'like-text', likeCount)
+        console.log("data-likes: " + $('.like-btn').attr("data-likes"))
       } else {
-        // newLikes = likeCount - 1
-        updateText($(this), 'like-text', removeLike)
-        console.log("data-likes: " + $(this).attr("data-likes"))
+        likeCount = likeCount - 1
+        updateText($('.like-btn'), 'like-text', likeCount)
+        console.log("data-likes: " + $('.like-btn').attr("data-likes"))
       }
+      console.log('ajax ends')
     }, error: function(error){
       console.log(error)
       console.log("error")
