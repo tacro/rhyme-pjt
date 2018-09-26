@@ -30,7 +30,8 @@ def index(request):
 
 def detail(request, verse_id):
     verse = get_object_or_404(Verse, pk = verse_id)
-    return render(request, 'verses/detail.html', {'verse':verse})
+    answers = verse.get_answers().order_by('-pub_date')
+    return render(request, 'verses/detail.html', {'verse':verse, 'answers':answers})
 
 @login_required
 def answer(request, verse_id):

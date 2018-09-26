@@ -35,3 +35,7 @@ class Verse(models.Model):
         url_ = '/verses/api/%i/like' % self.id
         # print(url_)
         return url_
+
+    def get_answers(self):
+        answers = Verse.objects.filter(target = self, type = 1)
+        return answers
