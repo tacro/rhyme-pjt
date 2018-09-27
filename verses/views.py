@@ -6,6 +6,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from django.contrib.auth.models import User
+# To post verses to Twitter
+from requests_oauthlib import OAuth1Session
+import json
+from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 
 
 @login_required
@@ -16,6 +20,17 @@ def create(request):
             verse.body = request.POST['body']
             verse.rhymer = request.user
             verse.save()
+            # if user is associated with twitter
+            if request.user in SocialAccount.objects:
+                # post to twitter
+                twitterAccount = get_object_or_404(SocialAccount, pk = request.user)
+                twitterApp = get_object_or_404(SocialApp, pk = 'twitter')
+                accessTokenSecret = SocialToken.objects.filter(account__user=request.user, account__provider='twitter')
+                # get twitter from socailapp
+                twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, twitterAccount.uid, accessTokenSecret)
+                tweet = verse.body + "#rhyme"
+                params = {"status": tweet}
+                req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
         else:
             return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
