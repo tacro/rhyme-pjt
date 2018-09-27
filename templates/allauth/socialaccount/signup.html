@@ -8,14 +8,13 @@
 
 {% block content %}
 
-
 <div class="content-box-sm text-center">
   <h2>{% trans "Sign Up" %}</h2>
 
-  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+  <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}{{provider_name}}のアカウントを使って、{{site_name}}へログインしようとしています。</p>
+  <p>最後のステップとして、以下のフォームに記入してください。{% endblocktrans %}</p>
 
-  <form class="form-vertical" id="signup-form" method="post" action="{% url 'account_signup' %}">
-    {% csrf_token %}
+  <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
     <div class="container">
       <div class="row">
         {% for field in form %}
@@ -34,8 +33,6 @@
       </div>
     </div>
   </form>
-
-
 </div>
 
 {% endblock %}
