@@ -31,7 +31,8 @@ def index(request):
 def detail(request, verse_id):
     verse = get_object_or_404(Verse, pk = verse_id)
     answers = verse.get_answers().order_by('-pub_date')
-    return render(request, 'verses/detail.html', {'verse':verse, 'answers':answers})
+    beefs = verse.get_beefs().order_by('-pub_date')
+    return render(request, 'verses/detail.html', {'verse':verse, 'answers':answers, 'beefs':beefs})
 
 @login_required
 def answer(request, verse_id):
@@ -48,8 +49,8 @@ def answer(request, verse_id):
         else:
             return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
     else:
-        print('verse_id : %d' % verse_id)
-        return render(request, 'verses/answer.html', {'target':target})
+        answers = target.get_answers().order_by('-pub_date')
+        return render(request, 'verses/answer.html', {'target':target, 'answers':answers})
 
 @login_required
 def beef(request, verse_id):
@@ -66,8 +67,8 @@ def beef(request, verse_id):
         else:
             return render(request, 'verses/beef.html', {'error': 'Something went wrong'})
     else:
-        print('verse_id : %d' % verse_id)
-        return render(request, 'verses/beef.html', {'target':target})
+        beefs = target.get_beefs().order_by('-pub_date')
+        return render(request, 'verses/beef.html', {'target':target, 'beefs':beefs})
 
 
 class PostLikeToggle(RedirectView):

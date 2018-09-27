@@ -39,3 +39,7 @@ class Verse(models.Model):
     def get_answers(self):
         answers = Verse.objects.filter(target = self, type = 1)
         return answers
+
+    def get_beefs(self):
+        beefs = Verse.objects.filter(target = self, type = 2)
+        return beefs

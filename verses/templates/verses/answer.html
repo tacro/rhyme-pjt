@@ -28,6 +28,42 @@
         {% endif %}
         <p>{{ target.body|linebreaks }}</p>
       </div>
+
+      <!-- Existing answers -->
+      {% if answers %}
+      <!-- Answers -->
+      <div class="row verse">
+        {% for answer in answers %}
+        <div class="col-2" id="answer-left">
+          <a href="{% url 'users:detail' answer.rhymer.id %}">
+          {% if answer.rhymer.icon %}
+            <img src="{{ answer.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+          {% else %}
+            <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+          {% endif %}
+          </a>
+        </div>
+        <div class="col-10" id="answer-right">
+            <div class="row">
+              <div class="col-12" id="answer-rhymer">
+                <a href="{% url 'users:detail' answer.rhymer.id %}">
+                {% if answer.rhymer.mcname %}
+                  <h5>{{ answer.rhymer.mcname }} </h5>
+                  <h6>a.k.a. {{ answer.rhymer.username}}</h6>
+                {% else %}
+                  <h5>{{ answer.rhymer.username}} </h5>
+                {% endif %}
+                </a>
+              </div>
+              <div class="col-12" id="answer-body">
+                <p>{{ answer.body|linebreaks }} </p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+      {% endif %}
+      
     </div>
       <div class="row">
         <div class="col-12">

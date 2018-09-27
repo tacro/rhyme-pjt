@@ -30,6 +30,40 @@
           <p>{{ target.body|linebreaks }}</p>
         </div>
         <div class="offset-2"></div>
+
+        <!-- Existing Beefs -->
+        {% if beefs %}
+        <div class="row verse">
+          {% for beef in beefs %}
+          <div class="col-2" id="beef-left">
+            <a href="{% url 'users:detail' beef.rhymer.id %}">
+            {% if beef.rhymer.icon %}
+              <img src="{{ beef.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            {% else %}
+              <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            {% endif %}
+            </a>
+          </div>
+          <div class="col-10" id="beef-right">
+              <div class="row">
+                <div class="col-12" id="beef-rhymer">
+                  <a href="{% url 'users:detail' beef.rhymer.id %}">
+                  {% if beef.rhymer.mcname %}
+                    <h5>{{ beef.rhymer.mcname }} </h5>
+                    <h6>a.k.a. {{ beef.rhymer.username}}</h6>
+                  {% else %}
+                    <h5>{{ beef.rhymer.username}} </h5>
+                  {% endif %}
+                  </a>
+                </div>
+                <div class="col-12" id="beef-body">
+                  <p>{{ beef.body|linebreaks }} </p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
       </div>
       <div class="row vs">
         <div class="col-5 text-right"><i class="fas fa-bolt"></i></div>
@@ -37,7 +71,6 @@
         <div class="col-5 text-left"><i class="fas fa-bolt"></i></div>
       </div>
       <div class="row">
-
         <div class="col-12">
           <h4 class="text-right">Your verse</h4>
           <form method="POST" action="{% url 'verses:answer' target.id %}">
