@@ -17,3 +17,6 @@ def privacy(request):
 
 def terms(request):
     return render_to_response('terms.html')
+
+def search(request, w = None):
+    return render(request, 'search.html')

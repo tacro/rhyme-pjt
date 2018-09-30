@@ -15,4 +15,5 @@ urlpatterns = [
     path('help/', views.help, name='help'),
     path('privacy/', views.privacy, name='privacy'),
     path('terms/', views.terms, name='terms'),
+    path('search/', views.search, name='search'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
