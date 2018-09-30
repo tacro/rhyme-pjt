@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+{% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
+
+{% block content %}
+
+<div class="content-box-sm text-center">
+  <h2>{% trans "Login Cancelled" %}</h2>
+
+  {% url 'account_login' as login_url %}
+
+  <p>連携ログインをキャンセルしました。間違えてこの操作を行ってしまった場合は、<a href="{{login_url}}">こちらのリンク</a>からログインできます。</p>
+
+</div>
+
+{% endblock %}
