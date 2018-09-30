@@ -21,14 +21,16 @@ def create(request):
             verse.rhymer = request.user
             verse.save()
             # if user is associated with twitter
-            if request.user in SocialAccount.objects:
+            # specify the uesr's twitter account
+            twitterAccount = get_object_or_404(SocialAccount, user = request.user)
+            if twitterAccount:
                 # post to twitter
-                twitterAccount = get_object_or_404(SocialAccount, pk = request.user)
-                twitterApp = get_object_or_404(SocialApp, pk = 'twitter')
+                # specify the app from SocialApp objs (by what?)
+                twitterApp = get_object_or_404(SocialApp, name = 'twitter')
+                # to authenticate, get client_id and secret key of app and access key and secret key of account
                 accessTokenSecret = SocialToken.objects.filter(account__user=request.user, account__provider='twitter')
-                # get twitter from socailapp
                 twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, twitterAccount.uid, accessTokenSecret)
-                tweet = verse.body + "#rhyme"
+                tweet = verse.body + " #rhyme"
                 params = {"status": tweet}
                 req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')

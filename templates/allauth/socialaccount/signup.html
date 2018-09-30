@@ -15,6 +15,7 @@
   <p>最後のステップとして、以下のフォームに記入してください。{% endblocktrans %}</p>
 
   <form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+    {% csrf_token %}
     <div class="container">
       <div class="row">
         {% for field in form %}
