@@ -53,7 +53,7 @@ def follow(request, user_id):
         # make new relationship between them
         relationship = Relationship(follow = followee, follower = follower, )
         relationship.save()
-        notify.send(follower, recipient = followee, verb = (follower.username + ' followed you:'), action_object=follower, target=followee, description = 'follow')
+        notify.send(follower, recipient = followee, verb = ' followed you:', action_object=follower, target=followee, description = 'follow')
         # back to previous page
         return redirect('/rhymers/' + str(user_id))
     else:

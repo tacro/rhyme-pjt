@@ -29,7 +29,7 @@
               </a>
             </div>
             <div class="col-10">
-              <h5> {{ notification.verb }}</h5>
+              <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
             </div>
             <div class="col-12">
               <p> {{ notification.target.body }}</p>
@@ -50,7 +50,7 @@
               </a>
             </div>
             <div class="col-10">
-              <h5> {{ notification.verb }}</h5>
+              <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
             </div>
             <div class="col-12">
               <p> {{ notification.action_object.body }}</p>
@@ -71,7 +71,7 @@
               </a>
             </div>
             <div class="col-10">
-              <h5> {{ notification.verb }}</h5>
+              <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
             </div>
             <div class="col-12">
               <p> {{ notification.action_object.body }}</p>
@@ -92,7 +92,7 @@
               </a>
             </div>
             <div class="col-10">
-              <h5> {{ notification.verb }}</h5>
+              <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
             </div>
           </div>
         </div>
