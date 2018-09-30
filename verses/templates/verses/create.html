@@ -11,19 +11,22 @@
   <div class="content-box-sm">
     <div class="container">
     <h3>Kick the verse</h3>
-      <div class="row">
-        <div class="col-12">
-          <form method="POST" action="{% url 'verses:create' %}">
-            {% csrf_token %}
-          <div class="form-group">
-          <textarea name="body" class="form-control" rows="6"></textarea>
+    <form method="POST" action="{% url 'verses:create' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <div class="row">
+          <div class="col-12">
+            <textarea name="body" class="form-control" rows="6"></textarea>
+          </div>
+          <div class="col-12">
+            <input type="checkbox" name="tweetBtn" value="1"><i class="fab fa-twitter"></i><span>Share on Twitter</span>
+          </div>
+          <div class="col-12">
+            <input class="btn btn-general btn-black" type="submit" role="button" value="On Air!" />
           </div>
         </div>
-        <div class="col-12">
-          <input class="btn btn-general btn-black" type="submit" role="button" value="On Air!" />
-          </form>
-        </div>
       </div>
+    </form>
     </div>
   </div>
 </section>

@@ -43,3 +43,9 @@ class Verse(models.Model):
     def get_beefs(self):
         beefs = Verse.objects.filter(target = self, type = 2)
         return beefs
+
+    def tweet(self):
+        if len(self.body) < 90:
+            return self.body
+        else:
+            return self.body[:85] + '...'
