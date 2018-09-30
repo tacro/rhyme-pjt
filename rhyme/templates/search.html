@@ -20,14 +20,91 @@
         </div>
       </div>
     </form>
+    </div>
 
+  <div class="container-fluid pt-2">
+    <div class="row verse">
     {% if results %}
       {% for result in results %}
-       {{ result.body }}
+      <div class="row verse">
+        <div class="col-2" id="verse-left">
+          {% if result.rhymer.icon %}
+            <a href="{% url 'users:detail' result.rhymer.id %}">
+              <img src="{{ result.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            </a>
+          {% else %}
+            <a href="{% url 'users:detail' result.rhymer.id %}">
+              <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            </a>
+          {% endif %}
+        </div>
+        <div class="col-10" id="verse-right">
+            <div class="row">
+              <div class="col-12" id="verse-rhymer">
+                {% if result.rhymer.mcname %}
+                <a href="{% url 'users:detail' result.rhymer.id %}">
+                  <h5>{{ result.rhymer.mcname }} </h5>
+                  <h6>a.k.a. {{ result.rhymer.username}}</h6>
+                </a>
+                {% else %}
+                <a href="{% url 'users:detail' result.rhymer.id %}">
+                  <h5>{{ result.rhymer.username}} </h5>
+                </a>
+                {% endif %}
+              </div>
+              <div class="col-12" id="verse-body">
+                <a href="{% url 'verses:detail' result.id %}"><p>{{ result.body|linebreaks }}</p></a>
+              </div>
+              <div class="offset-lg-1"></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' result.id %}"><i class="fas fa-reply"></i> {{ result.get_answers.count }}</a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' result.id %}"><i class="fas fa-bolt"></i> {{ result.get_beefs.count }}</a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ result.get_api_like_url }}" data-likes="{{ result.likes.count }}" href="{{ result.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ result.likes.count }}</span></a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
+              <div class="offset-lg-1"></div>
+            </div>
+        </div>
+      </div>
       {% endfor %}
     {% else %}
       {% for trend in trends %}
-       {{ trend.body }}
+      <div class="row verse">
+        <div class="col-2" id="verse-left">
+          {% if trend.rhymer.icon %}
+            <a href="{% url 'users:detail' trend.rhymer.id %}">
+              <img src="{{ trend.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            </a>
+          {% else %}
+            <a href="{% url 'users:detail' trend.rhymer.id %}">
+              <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            </a>
+          {% endif %}
+        </div>
+        <div class="col-10" id="verse-right">
+            <div class="row">
+              <div class="col-12" id="verse-rhymer">
+                {% if trend.rhymer.mcname %}
+                <a href="{% url 'users:detail' trend.rhymer.id %}">
+                  <h5>{{ trend.rhymer.mcname }} </h5>
+                  <h6>a.k.a. {{ trend.rhymer.username}}</h6>
+                </a>
+                {% else %}
+                <a href="{% url 'users:detail' trend.rhymer.id %}">
+                  <h5>{{ trend.rhymer.username}} </h5>
+                </a>
+                {% endif %}
+              </div>
+              <div class="col-12" id="verse-body">
+                <a href="{% url 'verses:detail' trend.id %}"><p>{{ trend.body|linebreaks }}</p></a>
+              </div>
+              <div class="offset-lg-1"></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' trend.id %}"><i class="fas fa-reply"></i> {{ trend.get_answers.count }}</a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' trend.id %}"><i class="fas fa-bolt"></i> {{ trend.get_beefs.count }}</a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ trend.get_api_like_url }}" data-likes="{{ trend.likes.count }}" href="{{ trend.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ trend.likes.count }}</span></a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
+              <div class="offset-lg-1"></div>
+            </div>
+        </div>
+      </div>
       {% endfor %}
     {% endif %}
     </div>
