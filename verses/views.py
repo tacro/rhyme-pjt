@@ -32,7 +32,7 @@ def create(request):
                     # to authenticate, get client_id and secret key of app and access key and secret key of account
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    tweet = verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
@@ -75,7 +75,10 @@ def answer(request, verse_id):
                     # to authenticate, get client_id and secret key of app and access key and secret key of account
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    if target.rhymer.mcname:
+                        tweet = "Answering to " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    else:
+                        tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
@@ -107,7 +110,10 @@ def beef(request, verse_id):
                     # to authenticate, get client_id and secret key of app and access key and secret key of account
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    if target.rhymer.mcname:
+                        tweet = "Battle with " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    else:
+                        tweet = "Battle with " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')

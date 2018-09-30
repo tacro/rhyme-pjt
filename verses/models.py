@@ -45,7 +45,7 @@ class Verse(models.Model):
         return beefs
 
     def tweet(self):
-        if len(self.body) < 90:
+        if len(self.body) < 50:
             return self.body
         else:
-            return self.body[:85] + '...'
+            return self.body[:46] + '...'
