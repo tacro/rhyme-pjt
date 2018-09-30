@@ -66,52 +66,116 @@
         </div>
       </div>
     </div>
-    <div class="row pt-3">
-      <div class="col-12">
-        <div id="posts">
-          {% for post in posts.all %}
-          <div class="row post">
-            <div class="col-2" id="post-left">
-              {% if post.rhymer.icon %}
-              <a href="{% url 'users:detail' post.rhymer.id %}">
-                <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
-              </a>
-              {% else %}
-              <a href="{% url 'users:detail' post.rhymer.id %}">
-                <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
-              </a>
-              {% endif %}
-            </div>
-            <div class="col-10" id="post-right">
-                <div class="row">
-                  <div class="col-12" id="post-rhymer">
-                    <a href="{% url 'users:detail' post.rhymer.id %}">
-                    {% if post.rhymer.mcname %}
-                      <h5>{{ post.rhymer.mcname }} </h5>
-                      <h6>a.k.a. {{ post.rhymer.username}}</h6>
-                    {% else %}
-                      <h5>{{ post.rhymer.username}} </h5>
-                    {% endif %}
-                    </a>
-                  </div>
-                  <div class="col-12" id="post-body">
-                    <a href="{% url 'verses:detail' post.id %}">
-                      <p>{{ post.body|linebreaks }}</p>
-                    </a>
-                  </div>
-                  <div class="offset-lg-1"></div>
-                  <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:answer' post.id %}"><i class="fas fa-reply"></i>{{ post.get_answers.count }}</a></div>
-                  <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:beef' post.id %}"><i class="fas fa-bolt"></i>{{ post.get_beefs.count }}</a></div>
-                  <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href="{{ post.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ post.likes.count }}</span></a></div>
-                  <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
-                  <div class="offset-lg-1"></div>
-                </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
 
+    <!-- Tabs to switch posts/likes -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#posts" class="nav-link" data-toggle="tab">Verses</a>
+        <a href="#likes" class="nav-link" data-toggle="tab">Likes</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- Posts -->
+      <div id="posts" class="tab-pane active">
+        <div class="row pt-3">
+          <div class="col-12">
+            <!-- <div id="posts"> -->
+              {% for post in posts.all %}
+              <div class="row post">
+                <div class="col-2" id="post-left">
+                  {% if post.rhymer.icon %}
+                  <a href="{% url 'users:detail' post.rhymer.id %}">
+                    <img src="{{ post.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+                  </a>
+                  {% else %}
+                  <a href="{% url 'users:detail' post.rhymer.id %}">
+                    <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="col-10" id="post-right">
+                    <div class="row">
+                      <div class="col-12" id="post-rhymer">
+                        <a href="{% url 'users:detail' post.rhymer.id %}">
+                        {% if post.rhymer.mcname %}
+                          <h5>{{ post.rhymer.mcname }} </h5>
+                          <h6>a.k.a. {{ post.rhymer.username}}</h6>
+                        {% else %}
+                          <h5>{{ post.rhymer.username}} </h5>
+                        {% endif %}
+                        </a>
+                      </div>
+                      <div class="col-12" id="post-body">
+                        <a href="{% url 'verses:detail' post.id %}">
+                          <p>{{ post.body|linebreaks }}</p>
+                        </a>
+                      </div>
+                      <div class="offset-lg-1"></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:answer' post.id %}"><i class="fas fa-reply"></i> {{ post.get_answers.count }}</a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:beef' post.id %}"><i class="fas fa-bolt"></i> {{ post.get_beefs.count }}</a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ post.get_api_like_url }}" data-likes="{{ post.likes.count }}" href="{{ post.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ post.likes.count }}</span></a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+                      <div class="offset-lg-1"></div>
+                    </div>
+                </div>
+              </div>
+              {% endfor %}
+            <!-- </div> -->
+          </div>
+        </div>
       </div>
+
+      <!-- likes -->
+      <div id="likes" class="tab-pane">
+        <div class="row pt-3">
+          <div class="col-12">
+            <!-- <div id="likes"> -->
+              {% for like in likes.all %}
+              <div class="row post">
+                <div class="col-2" id="like-left">
+                  {% if like.rhymer.icon %}
+                  <a href="{% url 'users:detail' like.rhymer.id %}">
+                    <img src="{{ like.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+                  </a>
+                  {% else %}
+                  <a href="{% url 'users:detail' like.rhymer.id %}">
+                    <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="col-10" id="like-right">
+                    <div class="row">
+                      <div class="col-12" id="like-rhymer">
+                        <a href="{% url 'users:detail' like.rhymer.id %}">
+                        {% if like.rhymer.mcname %}
+                          <h5>{{ like.rhymer.mcname }} </h5>
+                          <h6>a.k.a. {{ like.rhymer.username}}</h6>
+                        {% else %}
+                          <h5>{{ like.rhymer.username}} </h5>
+                        {% endif %}
+                        </a>
+                      </div>
+                      <div class="col-12" id="like-body">
+                        <a href="{% url 'verses:detail' like.id %}">
+                          <p>{{ like.body|linebreaks }}</p>
+                        </a>
+                      </div>
+                      <div class="offset-lg-1"></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:answer' like.id %}"><i class="fas fa-reply"></i> {{ like.get_answers.count }}</a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:beef' like.id %}"><i class="fas fa-bolt"></i> {{ like.get_beefs.count }}</a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ like.get_api_like_url }}" data-likes="{{ like.likes.count }}" href="{{ like.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ like.likes.count }}</span></a></div>
+                      <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-ellipsis-h"></i></div>
+                      <div class="offset-lg-1"></div>
+                    </div>
+                </div>
+              </div>
+              {% endfor %}
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

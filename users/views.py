@@ -11,9 +11,10 @@ from notifications.models import Notification
 def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     posts = Verse.objects.filter(rhymer=user).order_by('-pub_date')
+    likes = Verse.objects.filter(likes = user).order_by('-pub_date')
     followees = user.get_follows() # those who user follows
     followers = user.get_followers() # those who following user
-    return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':len(followees), 'followers':len(followers)})
+    return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'likes':likes, 'follows':len(followees), 'followers':len(followers)})
 
 @login_required
 def edit(request, user_id):
