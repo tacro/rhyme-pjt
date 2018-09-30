@@ -84,7 +84,7 @@ def answer(request, verse_id):
                         tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
-            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' answered to you:'), target=target, description = 'answer')
+            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' answered to you:'), action_object=verse, target=target, description = 'answer')
             return redirect('/verses/index')
         else:
             return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
@@ -121,7 +121,7 @@ def beef(request, verse_id):
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitter account doesn't exist, associate it first
-            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' is battling with you:'), target=target, description = 'beef')
+            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' is battling with you:'),  action_object=verse, target=target, description = 'beef')
             return redirect('/verses/index')
         else:
             return render(request, 'verses/beef.html', {'error': 'Something went wrong'})

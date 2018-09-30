@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.models import User
 # notificatons
 from notifications.signals import notify
+from notifications.models import Notification
 
 
 def detail(request, user_id):
@@ -17,21 +18,24 @@ def detail(request, user_id):
 @login_required
 def edit(request, user_id):
     user = get_object_or_404(User, pk = user_id)
-    if request.method == 'POST':
-        if request.POST['username']:
-            user.username = request.POST['username']
-        if request.POST['mcname']:
-            user.mcname = request.POST['mcname']
-        if request.POST['biography']:
-            user.biography = request.POST['biography']
-        if request.POST['email']:
-            user.email = request.POST['email']
-        if 'icon' in request.FILES:
-            user.icon = request.FILES['icon']
-        user.save()
-        return redirect('/rhymers/' + str(user_id))
+    if user == request.user:
+        if request.method == 'POST':
+            if request.POST['username']:
+                user.username = request.POST['username']
+            if request.POST['mcname']:
+                user.mcname = request.POST['mcname']
+            if request.POST['biography']:
+                user.biography = request.POST['biography']
+            if request.POST['email']:
+                user.email = request.POST['email']
+            if 'icon' in request.FILES:
+                user.icon = request.FILES['icon']
+            user.save()
+            return redirect('/rhymers/' + str(user_id))
+        else:
+            return render(request, 'users/edit.html', {'user':user})
     else:
-        return render(request, 'users/edit.html', {'user':user})
+        return render(request, 'verses/index.html', {'error': 'You are not allowed to this page'})
 
 @login_required
 def follow(request, user_id):
@@ -49,7 +53,7 @@ def follow(request, user_id):
         # make new relationship between them
         relationship = Relationship(follow = followee, follower = follower, )
         relationship.save()
-        notify.send(follower, recipient = followee, verb = (follower.username + ' followed you:'), target=followee, description = 'follow')
+        notify.send(follower, recipient = followee, verb = (follower.username + ' followed you:'), action_object=follower, target=followee, description = 'follow')
         # back to previous page
         return redirect('/rhymers/' + str(user_id))
     else:
@@ -78,3 +82,12 @@ def show_followers(request, user_id):
     # get those who follow user
     followers = user.get_followers()
     return render(request, 'users/show_followers.html', {'followers':followers})
+
+@login_required
+def notification(request, user_id):
+    user = get_object_or_404(User, pk = user_id)
+    if user == request.user:
+        notifications = Notification.objects.filter(recipient = user).order_by('-timestamp')
+        return render(request, 'users/notification.html', {'user':user, 'notifications':notifications})
+    else:
+        return render(request, 'verses/index.html', {'error': 'You are not allowed to this page'})
