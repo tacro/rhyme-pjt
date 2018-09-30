@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from requests_oauthlib import OAuth1Session
 import json
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
+# notificatons
+from notifications.signals import notify
 
 
 @login_required
@@ -35,6 +37,7 @@ def create(request):
                     tweet = verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
+                # if twitterAccount doesn't exist, associate it first.
             return redirect('/verses/index')
         else:
             return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
@@ -81,6 +84,7 @@ def answer(request, verse_id):
                         tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
+            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' answered to you:'), target=target, description = 'answer')
             return redirect('/verses/index')
         else:
             return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
@@ -116,6 +120,8 @@ def beef(request, verse_id):
                         tweet = "Battle with " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
+                # if twitter account doesn't exist, associate it first
+            notify.send(request.user, recipient = target.rhymer, verb = (request.user.username + ' is battling with you:'), target=target, description = 'beef')
             return redirect('/verses/index')
         else:
             return render(request, 'verses/beef.html', {'error': 'Something went wrong'})
@@ -135,6 +141,7 @@ class PostLikeToggle(RedirectView):
                 verse.likes.remove(user)
             else:
                 verse.likes.add(user)
+                notify.send(user, recipient = verse.rhymer, verb = (user.username + ' liked your verse:'), target=verse, description = 'like')
         return url_
 
 
@@ -156,6 +163,8 @@ class PostLikeAPIToggle(APIView):
             else:
                 liked = True
                 verse.likes.add(user)
+                notify.send(user, recipient = verse.rhymer, verb = (user.username + ' liked your verse:'), target=verse, description = 'like')
+                # print('liked!')
             updated = True
         data = {
             "updated": updated,

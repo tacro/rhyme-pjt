@@ -3,6 +3,8 @@ from .models import User, Relationship
 from verses.models import Verse
 from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.models import User
+# notificatons
+from notifications.signals import notify
 
 
 def detail(request, user_id):
@@ -47,6 +49,7 @@ def follow(request, user_id):
         # make new relationship between them
         relationship = Relationship(follow = followee, follower = follower, )
         relationship.save()
+        notify.send(follower, recipient = followee, verb = (follower.username + ' followed you:'), target=followee, description = 'follow')
         # back to previous page
         return redirect('/rhymers/' + str(user_id))
     else:

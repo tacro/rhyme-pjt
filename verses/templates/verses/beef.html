@@ -71,7 +71,7 @@
         <div class="col-5 text-left"><i class="fas fa-bolt"></i></div>
       </div>
       <h4 class="text-right">Your verse</h4>
-      <form method="POST" action="{% url 'verses:answer' target.id %}">
+      <form method="POST" action="{% url 'verses:beef' target.id %}">
         {% csrf_token %}
         <div class="form-group">
           <div class="row">

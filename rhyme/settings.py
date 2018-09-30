@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 
     # REST framework
     'rest_framework',
+
+    # notificatons
+    'notifications',
 ]
 
 
