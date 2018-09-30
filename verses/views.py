@@ -20,20 +20,21 @@ def create(request):
             verse.body = request.POST['body']
             verse.rhymer = request.user
             verse.save()
-            # if user is associated with twitter
-            # specify the uesr's twitter account
-            # if request.POST['tweetBtn'] == 1:
-            twitterAccount = get_object_or_404(SocialAccount, user = request.user, provider = 'twitter')
-            if twitterAccount:
-                # post to twitter
-                # specify the app from SocialApp objs (by what?)
-                twitterApp = get_object_or_404(SocialApp, name = 'twitter')
-                # to authenticate, get client_id and secret key of app and access key and secret key of account
-                accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
-                twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
-                params = {"status": tweet}
-                req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
+            # if user chose to share post on twitter
+            if request.POST.get('tweetBtn', False):
+                # specify the uesr's twitter account
+                # if request.POST['tweetBtn'] == 1:
+                twitterAccount = get_object_or_404(SocialAccount, user = request.user, provider = 'twitter')
+                if twitterAccount:
+                    # post to twitter
+                    # specify the app from SocialApp objs (by what?)
+                    twitterApp = get_object_or_404(SocialApp, name = 'twitter')
+                    # to authenticate, get client_id and secret key of app and access key and secret key of account
+                    accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
+                    twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
+                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    params = {"status": tweet}
+                    req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
         else:
             return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
@@ -63,6 +64,20 @@ def answer(request, verse_id):
             verse.target = target
             verse.type = 1
             verse.save()
+            if request.POST.get('tweetBtn', False):
+                # specify the uesr's twitter account
+                # if request.POST['tweetBtn'] == 1:
+                twitterAccount = get_object_or_404(SocialAccount, user = request.user, provider = 'twitter')
+                if twitterAccount:
+                    # post to twitter
+                    # specify the app from SocialApp objs (by what?)
+                    twitterApp = get_object_or_404(SocialApp, name = 'twitter')
+                    # to authenticate, get client_id and secret key of app and access key and secret key of account
+                    accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
+                    twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
+                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    params = {"status": tweet}
+                    req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
         else:
             return render(request, 'verses/answer.html', {'error': 'Something went wrong'})
@@ -81,6 +96,20 @@ def beef(request, verse_id):
             verse.target = target
             verse.type = 2
             verse.save()
+            if request.POST.get('tweetBtn', False):
+                # specify the uesr's twitter account
+                # if request.POST['tweetBtn'] == 1:
+                twitterAccount = get_object_or_404(SocialAccount, user = request.user, provider = 'twitter')
+                if twitterAccount:
+                    # post to twitter
+                    # specify the app from SocialApp objs (by what?)
+                    twitterApp = get_object_or_404(SocialApp, name = 'twitter')
+                    # to authenticate, get client_id and secret key of app and access key and secret key of account
+                    accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
+                    twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
+                    tweet = verse.tweet() + " #rhymeyourvibes http://rhyme.live/verses/{}".format(verse.id)
+                    params = {"status": tweet}
+                    req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             return redirect('/verses/index')
         else:
             return render(request, 'verses/beef.html', {'error': 'Something went wrong'})

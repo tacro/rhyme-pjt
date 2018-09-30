@@ -70,20 +70,23 @@
         <div class="col-2 text-center"><h3> V.S. </h3></div>
         <div class="col-5 text-left"><i class="fas fa-bolt"></i></div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <h4 class="text-right">Your verse</h4>
-          <form method="POST" action="{% url 'verses:answer' target.id %}">
-            {% csrf_token %}
-            <div class="form-group">
+      <h4 class="text-right">Your verse</h4>
+      <form method="POST" action="{% url 'verses:answer' target.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="row">
+            <div class="col-12">
               <textarea name="body" class="form-control" rows="6"></textarea>
             </div>
+            <div class="col-12">
+              <input type="checkbox" name="tweetBtn" value="tweet"><i class="fab fa-twitter"></i><span>Share on Twitter</span>
+            </div>
+            <div class="col-12">
+              <input class="btn btn-general btn-black" type="submit" role="button" value="On Air!" />
+            </div>
           </div>
-          <div class="col-12">
-            <input class="btn btn-general btn-black" type="submit" role="button" value="On Air!" />
-          </form>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
