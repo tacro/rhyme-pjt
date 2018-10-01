@@ -41,7 +41,6 @@ $('.like-btn').click(function(e){
 })
 
 
-
 /* =====================================
  Infinite Scroll
 ======================================*/
@@ -52,5 +51,22 @@ var infinite = new Waypoint.Infinite({
   },
   onAfterPageLoad: function ($items) {
     $('.loading').hide();
+  }
+});
+
+/* =====================================
+ Pull to refresh
+======================================*/
+PullToRefresh.init({
+  mainElement: '#verses-index',
+  onRefresh: function(){
+    var promise = new Promise(
+      function(resolve, reject){
+        setTimeout(()=>{
+          resolve();
+        }, 1500);
+      }
+    );
+    return promise;
   }
 });
