@@ -105,7 +105,15 @@ def show_followers(request, user_id):
 def notification(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     if user == request.user:
-        notifications = Notification.objects.filter(recipient = user).order_by('-timestamp')
+        notifications_list = Notification.objects.filter(recipient = user).order_by('-timestamp')
+        page = request.GET.get('page',1)
+        paginator = Paginator(notifications_list, 10)
+        try:
+            notifications = paginator.page(page)
+        except PageNotAnInteger:
+            notifications = paginator.page(1)
+        except EmptyPage:
+            notifications = paginator.page(paginator.num_pages)
         return render(request, 'users/notification.html', {'user':user, 'notifications':notifications})
     else:
         return render(request, 'verses/index.html', {'error': 'You are not allowed to this page'})
