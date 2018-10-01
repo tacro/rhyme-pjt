@@ -48,3 +48,16 @@ $(function(){
       $(".popup-overlay, .popup-content").removeClass("active");
   });
 });
+
+/* =====================================
+ Infinite Scroll
+======================================*/
+var infinite = new Waypoint.Infinite({
+  element: $('.infinite-container')[0],
+  onBeforePageLoad: function () {
+    $('.loading').show();
+  },
+  onAfterPageLoad: function ($items) {
+    $('.loading').hide();
+  }
+});

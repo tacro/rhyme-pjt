@@ -6,13 +6,29 @@ from django.contrib.auth.decorators import login_required
 # notificatons
 from notifications.signals import notify
 from notifications.models import Notification
-
+# infinite scroll
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
-    posts = Verse.objects.filter(rhymer=user).order_by('-pub_date')
-    likes = Verse.objects.filter(likes = user).order_by('-pub_date')
+    page = request.GET.get('page',1)
+    posts_list = Verse.objects.filter(rhymer=user).order_by('-pub_date')
+    posts_paginator = Paginator(posts_list, 5)
+    try:
+        posts = posts_paginator.page(page)
+    except PageNotAnInteger:
+        posts = posts_paginator.page(1)
+    except EmptyPage:
+        posts = posts_paginator.page(posts_paginator.num_pages)
+    likes_list = Verse.objects.filter(likes = user).order_by('-pub_date')
+    likes_paginator = Paginator(likes_list, 15)
+    try:
+        likes = likes_paginator.page(page)
+    except PageNotAnInteger:
+        likes = likes_paginator.page(1)
+    except EmptyPage:
+        likes = likes_paginator.page(likes_paginator.num_pages)
     followees = user.get_follows() # those who user follows
     followers = user.get_followers() # those who following user
     return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'likes':likes, 'follows':len(followees), 'followers':len(followers)})
@@ -93,3 +109,5 @@ def notification(request, user_id):
         return render(request, 'users/notification.html', {'user':user, 'notifications':notifications})
     else:
         return render(request, 'verses/index.html', {'error': 'You are not allowed to this page'})
+
+# define timeline method to show user's own timeline

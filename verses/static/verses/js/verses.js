@@ -17,6 +17,7 @@ function updateText(btn, id, newCount){
 $('.like-btn').click(function(e){
   e.preventDefault()
   var likeUrl = $(this).attr("data-href")
+  console.log("likeurl : " + likeUrl)
   var likeCount = parseInt($(this).attr("data-likes"))
   $.ajax({
     url: likeUrl,
@@ -57,16 +58,28 @@ var infinite = new Waypoint.Infinite({
 /* =====================================
  Pull to refresh
 ======================================*/
-PullToRefresh.init({
-  mainElement: '#verses-index',
-  onRefresh: function(){
-    var promise = new Promise(
-      function(resolve, reject){
-        setTimeout(()=>{
-          resolve();
-        }, 1500);
-      }
-    );
-    return promise;
-  }
-});
+// PullToRefresh.init({
+//   mainElement: '#verses-index',
+//   onRefresh: function(){
+//     indexUrl = "/verses/index"
+//     console.log(indexUrl)
+//     $.ajax({
+//       url: indexUrl,
+//       method: 'GET',
+//       success: function(){
+//         console.log(indexUrl)
+//       },
+//       error: function(error){
+//         console.log(error)
+//       }
+//     })
+//     var promise = new Promise(
+//       function(resolve, reject){
+//         setTimeout(()=>{
+//           resolve();
+//         }, 1000);
+//       }
+//     );
+//     return promise;
+//   }
+// });

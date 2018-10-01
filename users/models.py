@@ -71,6 +71,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         relations = Relationship.objects.filter(follow=self)
         return [relation.follower for relation in relations]
 
+"""
+    def get_index_url(self):
+        return "/verses/index/{}".format(self.id)
+"""
 
 
 '''
