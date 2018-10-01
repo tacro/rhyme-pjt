@@ -49,3 +49,6 @@ class Verse(models.Model):
             return self.body
         else:
             return self.body[:46] + '...'
+
+    def like_text_id(self):
+        return "like-text-{}".format(self.id)

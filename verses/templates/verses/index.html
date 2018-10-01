@@ -44,7 +44,7 @@
               <div class="offset-lg-1"></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' verse.id %}"><i class="fas fa-reply"></i> {{ verse.get_answers.count }}</a></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' verse.id %}"><i class="fas fa-bolt"></i> {{ verse.get_beefs.count }}</a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ verse.likes.count }}</span></a></div>
+              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}" verse-id = "{{ verse.id }}"><i class="fas fa-hand-peace"></i><span id="{{ verse.like_text_id }}"> {{ verse.likes.count }}</span></a></div>
               <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
               <div class="offset-lg-1"></div>
             </div>

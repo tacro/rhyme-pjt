@@ -56,7 +56,7 @@ def index(request):
         verses = paginator.page(1)
     except EmptyPage:
         verses = paginator.page(paginator.num_pages)
-    return render(request, 'verses/index.html', {'verses':verses})
+    return render(request, 'verses/index.html', {'verses':verses })
 
 # First I have to write verse/detail page
 
