@@ -12,6 +12,8 @@ import json
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 # notificatons
 from notifications.signals import notify
+# infinite scroll
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 @login_required
@@ -45,7 +47,15 @@ def create(request):
         return render(request, 'verses/create.html')
 
 def index(request):
-    verses = Verse.objects.order_by('-pub_date')
+    verses_list = Verse.objects.order_by('-pub_date')
+    page = request.GET.get('page',1)
+    paginator = Paginator(verses_list, 20)
+    try:
+        verses = paginator.page(page)
+    except PageNotAnInteger:
+        verses = paginator.page(1)
+    except EmptyPage:
+        verses = paginator.page(paginator.num_pages)
     return render(request, 'verses/index.html', {'verses':verses})
 
 # First I have to write verse/detail page

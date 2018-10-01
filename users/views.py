@@ -8,6 +8,7 @@ from notifications.signals import notify
 from notifications.models import Notification
 
 
+
 def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     posts = Verse.objects.filter(rhymer=user).order_by('-pub_date')
