@@ -12,7 +12,7 @@
   <div class="container-fluid pt-2">
     <div class="infinite-container">
       {% for verse in verses %}
-      <div class="row verse">
+      <div class="row verse infinite-item">
         <div class="col-2" id="verse-left">
           {% if verse.rhymer.icon %}
             <a href="{% url 'users:detail' verse.rhymer.id %}">
@@ -57,13 +57,15 @@
     <a class="infinite-more-link" href="?page={{ verses.next_page_number }}">More</a>
     {% endif %}
 
-    <script>
-      var infinite = new Waypoint.Infinite({
-        element: $('.infinite-container')[0]
-      });
-    </script>
+    <div class="loading" style="display: none;">
+     Loading...
+    </div>
 
   </div>
 </section>
 
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'verses/js/verses.js' %}"></script>
 {% endblock %}

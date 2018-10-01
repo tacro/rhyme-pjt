@@ -49,7 +49,7 @@ def create(request):
 def index(request):
     verses_list = Verse.objects.order_by('-pub_date')
     page = request.GET.get('page',1)
-    paginator = Paginator(verses_list, 20)
+    paginator = Paginator(verses_list, 10)
     try:
         verses = paginator.page(page)
     except PageNotAnInteger:
