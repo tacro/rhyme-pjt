@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load account socialaccount %}
 
 {% load i18n %}
 {% load bootstrap4 %}
@@ -13,6 +14,22 @@
   <h2>{% trans "Sign Up" %}</h2>
 
   <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+  <div class="container my-4">
+    <div id="oauth" class="row text-center my-1">
+      <div class="col-12">
+        <a id="oauth-twitter" href="{% provider_login_url 'twitter' %}" class="btn btn-general"><i class="fab fa-twitter"></i><span>Sign up with Twitter</span></a>
+      </div>
+      <!-- <div class="col-12">
+        <a id="oauth-instagram" href="{% provider_login_url 'google' %}" class="btn btn-general"><i class="fab fa-instagram"></i><span>Sign in with Instagram</span></a>
+      </div> -->
+      <div class="col-12 my-1">
+        <a id="oauth-google" href="{% provider_login_url 'google' %}"  class="btn btn-general"><i class="fab fa-google"></i><span>Sign up with Google</span></a>
+      </div>
+    </div>
+  </div>
+
+  <h4>Create an account</h4>
 
   <form class="form-vertical" id="signup-form" method="post" action="{% url 'account_signup' %}">
     {% csrf_token %}
