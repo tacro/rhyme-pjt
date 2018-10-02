@@ -15,13 +15,27 @@
   font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   margin: 15px 5px;
 }
-/*
-#create-post .form-control form textarea,
-#answer-post .form-control form textarea,
-#beef-post .form-control form textarea, {
-  margin: 30px auto 50px auto;
-  border: 150px solid #242423;
-} */
+
+#create-post .shareBtn {
+  font-size: 14px;
+  border-radius: 28px;
+  padding: 5px 0 5px 10px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  border: 1px solid #00aced;
+  color: #00aced;
+}
+
+
+#create-post .shareBtn label{
+  padding: 0;
+}
+#create-post .shareBtn:hover,
+#create-post .shareBtn:focus {
+  color: #fff;
+  background-color: #00aced;
+  border: 1px solid #00aced;
+}
 
 /* Answer, Beef */
 #answer-post .target,

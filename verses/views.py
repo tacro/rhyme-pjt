@@ -36,7 +36,7 @@ def create(request):
                     # to authenticate, get client_id and secret key of app and access key and secret key of account
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                    tweet = verse.tweet() + "\n#rhymeyourvibes\nhttp://rhyme.live/verses/{}".format(verse.id)
+                    tweet = verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitterAccount doesn't exist, associate it first.
@@ -89,9 +89,9 @@ def answer(request, verse_id):
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
                     if target.rhymer.mcname:
-                        tweet = "Answering to " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttp://rhyme.live/verses/{}".format(verse.id)
+                        tweet = "Answering to " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     else:
-                        tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttp://rhyme.live/verses/{}".format(verse.id)
+                        tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
             notify.send(request.user, recipient = target.rhymer, verb = ' answered to you:', action_object=verse, target=target, description = 'answer')
@@ -125,9 +125,9 @@ def beef(request, verse_id):
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
                     if target.rhymer.mcname:
-                        tweet = "Battle with " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttp://rhyme.live/verses/{}".format(verse.id)
+                        tweet = "Battle with " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     else:
-                        tweet = "Battle with " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttp://rhyme.live/verses/{}".format(verse.id)
+                        tweet = "Battle with " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitter account doesn't exist, associate it first
