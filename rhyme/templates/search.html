@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<section class="text-center" id="search">
+<section id="search">
   <div class="content-box-sm">
-    <div class="container">
+    <div class="container text-center">
     <h2>Search</h2>
     <form method="POST" action="{% url 'search' %}">
       {% csrf_token %}
