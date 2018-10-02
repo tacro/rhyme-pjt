@@ -16,7 +16,9 @@
   margin: 15px 5px;
 }
 
-#create-post .shareBtn {
+#create-post .shareBtn,
+#answer-post .shareBtn,
+#beef-post .shareBtn {
   font-size: 14px;
   border-radius: 28px;
   padding: 5px 0 5px 10px;
@@ -27,11 +29,19 @@
 }
 
 
-#create-post .shareBtn label{
+#create-post .shareBtn label,
+#answer-post .shareBtn label,
+#beef-post .shareBtn label{
   padding: 0;
 }
+
+
 #create-post .shareBtn:hover,
-#create-post .shareBtn:focus {
+#create-post .shareBtn:focus,
+#answer-post .shareBtn:hover,
+#answer-post .shareBtn:focus,
+#beef-post .shareBtn:hover,
+#beef-post .shareBtn:focus {
   color: #fff;
   background-color: #00aced;
   border: 1px solid #00aced;
