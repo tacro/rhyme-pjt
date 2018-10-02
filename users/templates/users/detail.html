@@ -146,4 +146,7 @@
 {% endblock %}
 {% block js %}
 <script src="{% static 'users/js/users.js' %}"></script>
+<script>
+  pullRefresh("#user-mypage", "{% url 'users:detail' user.id %}")
+</script>
 {% endblock %}

@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 
-<section id="user-mypage">
+<section id="user-mypage-likes">
   <div class="container">
 
     <!-- Popup menu for setting and logout, cancellation -->
@@ -142,4 +142,7 @@
 {% endblock %}
 {% block js %}
 <script src="{% static 'users/js/users.js' %}"></script>
+<script>
+  pullRefresh("#user-mypage-likes", "{% url 'users:likes' user.id %}")
+</script>
 {% endblock %}

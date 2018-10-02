@@ -67,7 +67,8 @@
 }
 
 /* Content */
-#user-mypage {
+#user-mypage,
+#user-mypage-likes {
   margin-bottom: 45px;
 }
 
