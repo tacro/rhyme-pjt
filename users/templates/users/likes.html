@@ -84,7 +84,7 @@
             <div class="infinite-container">
               {% for like in likes %}
               <div class="row post infinite-item">
-                <div class="col-2" id="like-left">
+                <div class="col-2" id="post-left">
                   {% if like.rhymer.icon %}
                   <a href="{% url 'users:detail' like.rhymer.id %}">
                     <img src="{{ like.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
@@ -95,9 +95,9 @@
                   </a>
                   {% endif %}
                 </div>
-                <div class="col-10" id="like-right">
+                <div class="col-10" id="post-right">
                     <div class="row">
-                      <div class="col-12" id="like-rhymer">
+                      <div class="col-12" id="post-rhymer">
                         <a href="{% url 'users:detail' like.rhymer.id %}">
                         {% if like.rhymer.mcname %}
                           <h5>{{ like.rhymer.mcname }} </h5>
@@ -107,7 +107,7 @@
                         {% endif %}
                         </a>
                       </div>
-                      <div class="col-12" id="like-body">
+                      <div class="col-12" id="post-body">
                         <a href="{% url 'verses:detail' like.id %}">
                           <p>{{ like.body|linebreaks }}</p>
                         </a>

@@ -114,7 +114,7 @@ def notification(request, user_id):
     if user == request.user:
         notifications_list = Notification.objects.filter(recipient = user).order_by('-timestamp')
         page = request.GET.get('page',1)
-        paginator = Paginator(notifications_list, 10)
+        paginator = Paginator(notifications_list, 8)
         try:
             notifications = paginator.page(page)
         except PageNotAnInteger:

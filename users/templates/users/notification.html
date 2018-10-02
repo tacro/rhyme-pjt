@@ -100,12 +100,11 @@
         {% endif %}
         <div class="offset-1"></div>
       </div>
-
       {% endif %}
     {% endfor %}
     </div>
 
-    {% if verses.has_next %}
+    {% if notifications.has_next %}
     <a class="infinite-more-link" href="?page={{ notifications.next_page_number }}"></a>
     {% endif %}
 
