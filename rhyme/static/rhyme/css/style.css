@@ -436,6 +436,62 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
   margin: 30px 25px 40px 25px;
 }
 
+
+/* =====================================
+  Search
+======================================*/
+#search input[type=submit]{
+  font-family: FontAwesome !important;
+}
+
+.verse {
+  margin: 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #B4B8C5;
+}
+
+.verse-reaction a {
+  color: #242423;
+}
+
+.verse-reaction a:hover {
+  color: #FFCF35;
+}
+
+#verse-left {
+  margin: 0;
+}
+
+#verse-left img {
+  width: 50px;
+  object-fit: contain;
+  padding-right: 5px;
+}
+
+#verse-right,
+#verse-rhymer,
+#verse-body {
+  padding: 0 0 0 5px;
+}
+
+#verse-rhymer h5 {
+  font-size: 18px;
+  word-wrap: break-word;
+}
+
+#verse-rhymer h6 {
+  color: #B4B8C5;
+  font-weight: 300;
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#verse-body p {
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+
+
 /* =====================================
   Footer
 ======================================*/

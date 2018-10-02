@@ -10,20 +10,21 @@
     <form method="POST" action="{% url 'search' %}">
       {% csrf_token %}
       <div class="form-group">
-        <div class="row">
-          <div class="col-12">
+        <div class="row no-gutters">
+          <div class="offset-lg-1"></div>
+          <div class="col-lg-8 col-9">
             <input type="text" class="form-control" placeholder="Search verses" name="w">
           </div>
-          <div class="col-12">
-            <input class="btn btn-general btn-black" type="submit" role="button" value="Srearch" />
+          <div class="col-lg-2 col-3">
+            <input class="btn btn-general btn-black fas" type="submit" role="button" value="&#xf002;"/>
           </div>
+          <div class="offset-lg-1"></div>
         </div>
       </div>
     </form>
     </div>
 
   <div class="container-fluid pt-2">
-    <div class="row verse">
     {% if results %}
       {% for result in results %}
       <div class="row verse">
@@ -58,7 +59,11 @@
               <div class="offset-lg-1"></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' result.id %}"><i class="fas fa-reply"></i> {{ result.get_answers.count }}</a></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' result.id %}"><i class="fas fa-bolt"></i> {{ result.get_beefs.count }}</a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ result.get_api_like_url }}" data-likes="{{ result.likes.count }}" href="{{ result.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ result.likes.count }}</span></a></div>
+              <div class="col-3 col-lg-2 verse-reaction">
+                <a class="like-btn" data-href="{{ result.get_api_like_url }}" data-likes="{{ result.likes.count }}" href="{{ result.get_like_url }}" verse-id = "{{ result.id }}">
+                  <i class="fas fa-hand-peace"></i><span id="{{ result.like_text_id }}"> {{ result.likes.count }}</span>
+                </a>
+              </div>
               <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
               <div class="offset-lg-1"></div>
             </div>
@@ -99,7 +104,11 @@
               <div class="offset-lg-1"></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' trend.id %}"><i class="fas fa-reply"></i> {{ trend.get_answers.count }}</a></div>
               <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' trend.id %}"><i class="fas fa-bolt"></i> {{ trend.get_beefs.count }}</a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ trend.get_api_like_url }}" data-likes="{{ trend.likes.count }}" href="{{ trend.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ trend.likes.count }}</span></a></div>
+              <div class="col-3 col-lg-2 verse-reaction">
+                <a class="like-btn" data-href="{{ trend.get_api_like_url }}" data-likes="{{ trend.likes.count }}" href="{{ trend.get_like_url }}" verse-id = "{{ trend.id }}">
+                  <i class="fas fa-hand-peace"></i><span id="{{ trend.like_text_id }}"> {{ trend.likes.count }}</span>
+                </a>
+              </div>
               <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
               <div class="offset-lg-1"></div>
             </div>
@@ -107,7 +116,6 @@
       </div>
       {% endfor %}
     {% endif %}
-    </div>
   </div>
 </section>
 
