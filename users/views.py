@@ -14,24 +14,31 @@ def detail(request, user_id):
     user = get_object_or_404(User, pk = user_id)
     page = request.GET.get('page',1)
     posts_list = Verse.objects.filter(rhymer=user).order_by('-pub_date')
-    posts_paginator = Paginator(posts_list, 5)
+    paginator = Paginator(posts_list, 10)
     try:
-        posts = posts_paginator.page(page)
+        posts = paginator.page(page)
     except PageNotAnInteger:
-        posts = posts_paginator.page(1)
+        posts = paginator.page(1)
     except EmptyPage:
-        posts = posts_paginator.page(posts_paginator.num_pages)
-    likes_list = Verse.objects.filter(likes = user).order_by('-pub_date')
-    likes_paginator = Paginator(likes_list, 15)
-    try:
-        likes = likes_paginator.page(page)
-    except PageNotAnInteger:
-        likes = likes_paginator.page(1)
-    except EmptyPage:
-        likes = likes_paginator.page(likes_paginator.num_pages)
+        posts = paginator.page(paginator.num_pages)
     followees = user.get_follows() # those who user follows
     followers = user.get_followers() # those who following user
-    return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'likes':likes, 'follows':len(followees), 'followers':len(followers)})
+    return render(request, 'users/detail.html', {'user':user, 'posts':posts, 'follows':len(followees), 'followers':len(followers)})
+
+def likes(request, user_id):
+    user = get_object_or_404(User, pk = user_id)
+    page = request.GET.get('page',1)
+    likes_list = Verse.objects.filter(likes = user).order_by('-pub_date')
+    paginator = Paginator(likes_list, 10)
+    try:
+        likes = paginator.page(page)
+    except PageNotAnInteger:
+        likes = paginator.page(1)
+    except EmptyPage:
+        likes = paginator.page(paginator.num_pages)
+    followees = user.get_follows() # those who user follows
+    followers = user.get_followers() # those who following user
+    return render(request, 'users/likes.html', {'user':user, 'likes':likes, 'follows':len(followees), 'followers':len(followers)})
 
 @login_required
 def edit(request, user_id):

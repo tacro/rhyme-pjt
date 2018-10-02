@@ -5,6 +5,7 @@ app_name = 'users'
 
 urlpatterns = [
     path('<int:user_id>',  views.detail, name = 'detail'),
+    path('<int:user_id>/likes',  views.likes, name = 'likes'),
     path('<int:user_id>/edit', views.edit, name = 'edit'),
     path('<int:user_id>/follow', views.follow, name = 'follow'),
     path('<int:user_id>/unfollow', views.unfollow, name = 'unfollow'),
