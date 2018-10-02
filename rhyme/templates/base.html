@@ -60,11 +60,11 @@
       </nav>
     {% endif %}
     </header>
-    <div id="space"></div>
+    <div id="space-top"></div>
       {% block content %}
 
       {% endblock %}
-
+    <div id="space-bottom"></div>
       {% if user.is_authenticated %}
         <section id="footer-menu" class="text-center">
           <div class="col-1-5">

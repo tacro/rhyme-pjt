@@ -173,11 +173,13 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
   color: #FFCF35;
 }
 
-#space {
+#space-top {
   margin-top: 50px;
 }
 
-
+#space-bottom {
+  height: 60px;
+}
 /* =====================================
   Footer Menu
 ======================================*/
