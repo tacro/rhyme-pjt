@@ -9,33 +9,46 @@
 
 {% block content %}
 
-<section class="text-center" id="beef-post">
+<section id="beef-post">
   <div class="content-box-sm">
     <div class="container">
-      <h2>Beef</h2>
-      <div class="row target">
-        <div class="col-3 col-sm-2"  id="beef-target-left">
-          {% if target.rhymer.icon %}
-          <img src="{{ target.rhymer.icon.url }}" class="img-fluid rounded-circle" alt="user's icon">
-          {% else %}
-          <img src="{% static 'users/img/default_icon.png' %}" alt="user's icon">
-          {% endif %}
+      <h2 class="text-center">Beef</h2>
+        <div class="row verse">
+          <div class="col-3 col-sm-2" id="verse-left">
+            <a href="{% url 'users:detail' target.rhymer.id %}">
+            {% if target.rhymer.icon %}
+              <img src="{{ target.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            {% else %}
+              <img src="{% static 'users/img/default_icon.png' %}" class="img-fluid rounded-circle float-right" alt="user's icon">
+            {% endif %}
+            </a>
+          </div>
+          <div class="col-7 col-sm-8" id="verse-right">
+              <div class="row">
+                <div class="col-12" id="verse-rhymer">
+                  <a href="{% url 'users:detail' target.rhymer.id %}">
+                  {% if target.rhymer.mcname %}
+                    <h5>{{ target.rhymer.mcname }} </h5>
+                    <h6>a.k.a. {{ target.rhymer.username}}</h6>
+                  {% else %}
+                    <h5>{{ target.rhymer.username}} </h5>
+                  {% endif %}
+                  </a>
+                </div>
+                <div class="col-12" id="verse-body">
+                  <p>{{ target.body|linebreaks }} </p>
+                </div>
+              </div>
+          </div>
+          <div class="offset-2"></div>
         </div>
-        <div class="col-7 col-sm-8 text-left" id="beef-target-right">
-          {% if target.rhymer.mcname %}
-          <h6>{{ target.rhymer.mcname }}</h6>
-          {% else %}
-          <h6>{{ target.rhymer.username }}</h6>
-          {% endif %}
-          <p>{{ target.body|linebreaks }}</p>
-        </div>
-        <div class="offset-2"></div>
 
         <!-- Existing Beefs -->
         {% if beefs %}
+        <h3 class="my-3">Other beefs :</h3>
         <div class="row verse">
           {% for beef in beefs %}
-          <div class="col-2" id="beef-left">
+          <div class="col-3 col-sm-2" id="beef-left">
             <a href="{% url 'users:detail' beef.rhymer.id %}">
             {% if beef.rhymer.icon %}
               <img src="{{ beef.rhymer.icon.url }}" class="img-fluid rounded-circle float-right" alt="user's icon">
@@ -44,7 +57,7 @@
             {% endif %}
             </a>
           </div>
-          <div class="col-10" id="beef-right">
+          <div class="col-9 col-sm-10" id="beef-right">
               <div class="row">
                 <div class="col-12" id="beef-rhymer">
                   <a href="{% url 'users:detail' beef.rhymer.id %}">
@@ -64,16 +77,15 @@
             {% endfor %}
         </div>
         {% endif %}
-      </div>
       <div class="row vs">
         <div class="col-5 text-right"><i class="fas fa-bolt"></i></div>
         <div class="col-2 text-center"><h3> V.S. </h3></div>
         <div class="col-5 text-left"><i class="fas fa-bolt"></i></div>
       </div>
-      <h4 class="text-right">Your verse</h4>
+      <h4 class="text-left">Your verse : </h4>
       <form method="POST" action="{% url 'verses:beef' target.id %}">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-group text-center">
           <div class="row">
             <div class="col-12">
               <textarea name="body" class="form-control" rows="6"></textarea>

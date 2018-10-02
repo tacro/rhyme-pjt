@@ -48,20 +48,6 @@
 }
 
 /* Answer, Beef */
-#answer-post .target,
-#beef-post .target {
-  margin: 15px auto;
-}
-
-#answer-post .target h6,
-#beef-post .target h6 {
-  margin: 5px 0 0 0;
-}
-
-#answer-post .target img,
-#beef-post .target img {
-  max-height: 60px;
-}
 
 #answer-post h4,
 #beef-post h4 {
@@ -75,7 +61,6 @@
 #beef-post .vs i {
   color: #FFCF35;
 }
-
 
 
 /* =====================================
@@ -106,11 +91,15 @@
   color: #FFCF35;
 }
 
-#verse-left {
+#verse-left,
+#answer-left,
+#beef-left {
   margin: 0;
 }
 
-#verse-left img {
+#verse-left img,
+#answer-left img,
+#beef-left img {
   width: 50px;
   object-fit: contain;
   padding-right: 5px;
@@ -118,22 +107,34 @@
 
 #verse-right,
 #verse-rhymer,
-#verse-body {
+#verse-body,
+#answer-right,
+#answer-rhymer,
+#answer-body,
+#beef-right,
+#beef-rhymer,
+#beef-body {
   padding: 0 0 0 5px;
 }
 
-#verse-rhymer h5 {
+#verse-rhymer h5,
+#answer-rhymer h5,
+#beef-rhymer h5 {
   font-size: 18px;
   word-wrap: break-word;
 }
 
-#verse-rhymer h6 {
+#verse-rhymer h6,
+#answer-rhymer h6,
+#beef-rhymer h6 {
   color: #B4B8C5;
   font-weight: 300;
   font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-#verse-body p {
+#verse-body p,
+#answer-body p,
+#beef-body p {
   font-size: 15px;
   word-wrap: break-word;
 }
