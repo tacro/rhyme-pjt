@@ -15,12 +15,12 @@
     {% for notification in notifications %}
       {% if notification.actor != user %}
       <div class="row no-gutters infinite-item notif-item">
-        <div class="offset-1 offset-lg-2"></div>
+        <div class="offset-1 offset-md-2"></div>
         {% if notification.description == 'like' %}
           <div class="col-2 text-center notif-type"><i class="fas fa-hand-peace"></i></div>
-          <div class="col-8 col-lg-6 notif-body">
+          <div class="col-8 col-md-6 notif-body">
             <div class="row no-gutters">
-              <div class="col-2 col-lg-1 notif-actor-icon">
+              <div class="col-2 col-md-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
                   {% if notification.actor.icon %}
                     <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
@@ -29,7 +29,7 @@
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10 col-lg-11 notif-summary">
+              <div class="col-10 col-md-11 notif-summary">
                 <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
               <div class="col-12 notif-verse">
@@ -39,9 +39,9 @@
           </div>
         {% elif notification.description == 'answer' %}
           <div class="col-2 text-center notif-type"><i class="fas fa-reply"></i></div>
-          <div class="col-8 col-lg-6 notif-body">
+          <div class="col-8 col-md-6 notif-body">
             <div class="row no-gutters">
-              <div class="col-2 col-lg-1 notif-actor-icon">
+              <div class="col-2 col-md-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
                   {% if notification.actor.icon %}
                     <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
@@ -50,7 +50,7 @@
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10 col-lg-11 notif-summary">
+              <div class="col-10 col-md-11 notif-summary">
                 <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
               <div class="col-12 notif-verse">
@@ -60,9 +60,9 @@
           </div>
         {% elif notification.description == 'beef' %}
           <div class="col-2 text-center notif-type"><i class="fas fa-bolt"></i></div>
-          <div class="col-8 col-lg-6 notif-body">
+          <div class="col-8 col-md-6 notif-body">
             <div class="row no-gutters">
-              <div class="col-2 col-lg-1 notif-actor-icon">
+              <div class="col-2 col-md-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
                   {% if notification.actor.icon %}
                     <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
@@ -71,7 +71,7 @@
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10 col-lg-11 notif-summary">
+              <div class="col-10 col-md-11 notif-summary">
                 <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
               <div class="col-12 notif-verse">
@@ -89,7 +89,7 @@
               {% endif %}
             </a>
           </div>
-          <div class="col-8 col-lg-6 notif-body">
+          <div class="col-8 col-md-6 notif-body">
             <div class="row no-gutters">
               <div class="col-12 notif-summary">
                 <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
@@ -97,7 +97,7 @@
             </div>
           </div>
         {% endif %}
-        <div class="offset-1 offset-lg-2"></div>
+        <div class="offset-1 offset-md-2"></div>
       </div>
       {% endif %}
     {% endfor %}
