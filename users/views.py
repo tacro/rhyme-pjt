@@ -97,15 +97,31 @@ def unfollow(request, user_id):
 
 def show_follows(request, user_id):
     user = get_object_or_404(User, pk = user_id)
+    page = request.GET.get('page',1)
     # get those who user follows
-    followees = user.get_follows()
+    followees_list = user.get_follows()
+    paginator = Paginator(followees_list, 10)
+    try:
+        followees = paginator.page(page)
+    except PageNotAnInteger:
+        followees = paginator.page(1)
+    except EmptyPage:
+        followees = paginator.page(paginator.num_pages)
     return render(request, 'users/show_follows.html', {'followees':followees})
 
 
 def show_followers(request, user_id):
     user = get_object_or_404(User, pk = user_id)
+    page = request.GET.get('page',1)
     # get those who follow user
-    followers = user.get_followers()
+    followers_list = user.get_followers()
+    paginator = Paginator(followers_list, 10)
+    try:
+        followers = paginator.page(page)
+    except PageNotAnInteger:
+        followers = paginator.page(1)
+    except EmptyPage:
+        followers = paginator.page(paginator.num_pages)
     return render(request, 'users/show_followers.html', {'followers':followers})
 
 @login_required

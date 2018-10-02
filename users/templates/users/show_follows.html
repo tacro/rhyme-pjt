@@ -10,8 +10,9 @@
 
 <div id="followees">
   <div class="container-fluid">
+    <div class="infinite-container">
     {% for followee in followees %}
-    <div class="user-summary">
+    <div class="user-summary infinite-item">
       <div class="row">
         <div class="offset-lg-1"></div>
         <div class="col-3 col-sm-2 col-lg-2">
@@ -37,9 +38,9 @@
           <div class="follow-btn">
             {% if followee != request.user %}
               {% if followee in request.user.get_follows %}
-                <a href="{% url 'users:unfollow' followee.id %}" class="btn btn-general btn-yellow" role="button" value="following">following</a>
+                <a href="{% url 'users:unfollow' followee.id %}" class="btn btn-general btn-yellow btn-following" role="button" value="following">following</a>
               {% else %}
-                <a href="{% url 'users:follow' followee.id %}" class="btn btn-general" role="button" value="follow">follow</a>
+                <a href="{% url 'users:follow' followee.id %}" class="btn btn-general btn-follow" role="button" value="follow">follow</a>
               {% endif %}
             {% endif %}
           </div>
@@ -48,7 +49,20 @@
       </div>
     </div>
     {% endfor %}
+    </div>
+
+    {% if followees.has_next %}
+    <a class="infinite-more-link" href="?page={{ followees.next_page_number }}"></a>
+    {% endif %}
+
+    <div class="loading mx-auto" style="display: none;">
+     <img src="{% static 'rhyme/img/loading.gif' %}" alt="Loading...">
+    </div>
+
   </div>
 </div>
 
+{% endblock %}
+{% block js %}
+<script src="{% static 'users/js/users.js' %}"></script>
 {% endblock %}
