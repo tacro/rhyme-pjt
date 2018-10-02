@@ -16,7 +16,7 @@
             <input type="text" class="form-control" placeholder="Search verses" name="w">
           </div>
           <div class="col-lg-2 col-3">
-            <input class="btn btn-general btn-black fas" type="submit" role="button" value="&#xf002;"/>
+            <button class="btn btn-general btn-black fas" type="submit"><i class="fas fa-search"></i></button>
           </div>
           <div class="offset-lg-1"></div>
         </div>
@@ -26,8 +26,9 @@
 
   <div class="container-fluid pt-2">
     {% if results %}
+      <div class="infinite-container">
       {% for result in results %}
-      <div class="row verse">
+      <div class="row verse infinite-item">
         <div class="col-2" id="verse-left">
           {% if result.rhymer.icon %}
             <a href="{% url 'users:detail' result.rhymer.id %}">
@@ -70,9 +71,20 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+
+    {% if results.has_next %}
+    <a class="infinite-more-link" href="?page={{ results.next_page_number }}"></a>
+    {% endif %}
+
+    <div class="loading text-center" style="display: none;">
+     <img src="{% static 'rhyme/img/loading.gif' %}" alt="Loading...">
+    </div>
+
     {% else %}
+    <div class="infinite-container">
       {% for trend in trends %}
-      <div class="row verse">
+      <div class="row verse infinite-item">
         <div class="col-2" id="verse-left">
           {% if trend.rhymer.icon %}
             <a href="{% url 'users:detail' trend.rhymer.id %}">
@@ -115,6 +127,16 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+
+    {% if trends.has_next %}
+    <a class="infinite-more-link" href="?page={{ trends.next_page_number }}"></a>
+    {% endif %}
+
+    <div class="loading text-center" style="display: none;">
+     <img src="{% static 'rhyme/img/loading.gif' %}" alt="Loading...">
+    </div>
+
     {% endif %}
   </div>
 </section>

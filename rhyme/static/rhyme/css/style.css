@@ -442,9 +442,7 @@ ul.navbar-nav>li>a:hover, ul.navbar-nav>li>a:focus {
 /* =====================================
   Search
 ======================================*/
-#search input[type=submit]{
-  font-family: FontAwesome !important;
-}
+
 
 .verse {
   margin: 8px 0;
