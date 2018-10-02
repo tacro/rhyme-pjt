@@ -9,96 +9,95 @@
 {% block content %}
 
 <div id="notifications">
-  <h3>notifications</h3>
+  <h3 class="text-center">notifications</h3>
   <div class="container-fluid">
     <div class="infinite-container">
     {% for notification in notifications %}
       {% if notification.actor != user %}
-      <div class="row infinite-item">
-        <div class="offset-1"></div>
+      <div class="row no-gutters infinite-item notif-item">
+        <div class="offset-1 offset-lg-2"></div>
         {% if notification.description == 'like' %}
-          <div class="col-2"><i class="fas fa-hand-peace"></i></div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col-2">
+          <div class="col-2 text-center notif-type"><i class="fas fa-hand-peace"></i></div>
+          <div class="col-8 col-lg-6 notif-body">
+            <div class="row no-gutters">
+              <div class="col-2 col-lg-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
-                  {% if followee.icon %}
-                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid float-right">
+                  {% if notification.actor.icon %}
+                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
                   {% else %}
-                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid float-right">
+                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10">
-                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
+              <div class="col-10 col-lg-11 notif-summary">
+                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
-              <div class="col-12">
+              <div class="col-12 notif-verse">
                 <p> {{ notification.target.body }}</p>
               </div>
             </div>
           </div>
         {% elif notification.description == 'answer' %}
-          <div class="col-2"><i class="fas fa-reply"></i></div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col-2">
+          <div class="col-2 text-center notif-type"><i class="fas fa-reply"></i></div>
+          <div class="col-8 col-lg-6 notif-body">
+            <div class="row no-gutters">
+              <div class="col-2 col-lg-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
                   {% if notification.actor.icon %}
-                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid float-right">
+                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
                   {% else %}
-                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid float-right">
+                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10">
-                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
+              <div class="col-10 col-lg-11 notif-summary">
+                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
-              <div class="col-12">
+              <div class="col-12 notif-verse">
                 <p> {{ notification.action_object.body }}</p>
               </div>
             </div>
           </div>
         {% elif notification.description == 'beef' %}
-          <div class="col-2"><i class="fas fa-bolt"></i></div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col-2">
+          <div class="col-2 text-center notif-type"><i class="fas fa-bolt"></i></div>
+          <div class="col-8 col-lg-6 notif-body">
+            <div class="row no-gutters">
+              <div class="col-2 col-lg-1 notif-actor-icon">
                 <a href="{% url 'users:detail' notification.actor.id %}">
-                  {% if followee.icon %}
-                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid float-right">
+                  {% if notification.actor.icon %}
+                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
                   {% else %}
-                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid float-right">
+                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
                   {% endif %}
                 </a>
               </div>
-              <div class="col-10">
-                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
+              <div class="col-10 col-lg-11 notif-summary">
+                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
-              <div class="col-12">
+              <div class="col-12 notif-verse">
                 <p> {{ notification.action_object.body }}</p>
               </div>
             </div>
           </div>
         {% elif notification.description == 'follow' %}
-          <div class="offset-2"></div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col-2">
-                <a href="{% url 'users:detail' notification.actor.id %}">
-                  {% if followee.icon %}
-                    <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid float-right">
-                  {% else %}
-                    <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid float-right">
-                  {% endif %}
-                </a>
-              </div>
-              <div class="col-10">
-                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a>{{ notification.verb }}</h5>
+          <div class="col-2 notif-actor-icon text-center">
+            <a href="{% url 'users:detail' notification.actor.id %}">
+              {% if notification.actor.icon %}
+                <img src="{{ notification.actor.icon.url }}" alt="icon" class="img-fluid">
+              {% else %}
+                <img src="{% static "users/img/default_icon.png" %}" alt="icon" class="img-fluid">
+              {% endif %}
+            </a>
+          </div>
+          <div class="col-8 col-lg-6 notif-body">
+            <div class="row no-gutters">
+              <div class="col-12 notif-summary">
+                <h5><a href="{% url 'users:detail' notification.actor.id %}">{{ notification.actor.username }}</a> {{ notification.verb }}</h5>
               </div>
             </div>
           </div>
         {% endif %}
-        <div class="offset-1"></div>
+        <div class="offset-1 offset-lg-2"></div>
       </div>
       {% endif %}
     {% endfor %}

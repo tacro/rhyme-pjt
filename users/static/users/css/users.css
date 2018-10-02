@@ -212,3 +212,24 @@
 #user-summary-right{
   padding: 30px 0 5px 0;
 }
+
+/* =====================================
+  notifications
+======================================*/
+.notif-item{
+  padding: 20px 0;
+  border-bottom: 1px solid #242423;
+}
+
+.notif-type i {
+  font-size: 22px;
+}
+
+.notif-actor-icon img{
+  height: 40px;
+}
+
+.notif-body p{
+  font-size: 22px;
+  line-height: 32px;
+}
