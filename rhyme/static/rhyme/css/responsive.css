@@ -259,6 +259,11 @@
     font-size: 15px;
   }
 
+  /* connections */
+  #connections h6{
+    font-size: 13px;
+  }
+
   /* footer */
   footer p {
     font-size: 12px;
@@ -348,6 +353,12 @@
     padding-right: 5px;
     font-size: 13px;
   }
+
+  /* connections */
+  #connections h6{
+    font-size: 11px;
+  }
+
 
 
   /* footer */
