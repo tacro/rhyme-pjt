@@ -39,11 +39,8 @@ def create(request):
             # img.save()
             img.save(img_io, format='PNG')
             img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
-            print(img_file)
             verse.image = img_file
-            print(verse.image)
             verse.save()
-
             url_ = '/verses/index'
             # if user chose to share post on twitter
             if request.POST.get('tweetBtn', False):
@@ -95,6 +92,20 @@ def answer(request, verse_id):
             verse.rhymer = request.user
             verse.target = target
             verse.type = 1
+            # make a verse's image for twitter card
+            font_size = 100
+            font_name = "static/verses/fonts/Yu_Gothic_Medium.otf"
+            img_io = io.BytesIO()
+            img = Image.open("static/verses/img/verse_bg.png")
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.truetype(font_name, font_size)
+            text_origin = request.POST['body']
+            text = textwrap.fill(text_origin, 20, max_lines = 4)
+            draw.multiline_text((235, 380), text, fill ='#FFCF35', font = font, spacing = 35, align = 'left')
+            # img.save()
+            img.save(img_io, format='PNG')
+            img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
+            verse.image = img_file
             verse.save()
             url_ = '/verses/index'
             if request.POST.get('tweetBtn', False):
@@ -131,6 +142,20 @@ def beef(request, verse_id):
             verse.rhymer = request.user
             verse.target = target
             verse.type = 2
+            # make a verse's image for twitter card
+            font_size = 100
+            font_name = "static/verses/fonts/Yu_Gothic_Medium.otf"
+            img_io = io.BytesIO()
+            img = Image.open("static/verses/img/verse_bg.png")
+            draw = ImageDraw.Draw(img)
+            font = ImageFont.truetype(font_name, font_size)
+            text_origin = request.POST['body']
+            text = textwrap.fill(text_origin, 20, max_lines = 4)
+            draw.multiline_text((235, 380), text, fill ='#FFCF35', font = font, spacing = 35, align = 'left')
+            # img.save()
+            img.save(img_io, format='PNG')
+            img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
+            verse.image = img_file
             verse.save()
             url_ = '/verses/index'
             if request.POST.get('tweetBtn', False):
