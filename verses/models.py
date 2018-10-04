@@ -45,11 +45,8 @@ class Verse(models.Model):
         beefs = Verse.objects.filter(target = self, type = 2)
         return beefs
 
-    def tweet(self):
-        if len(self.body) < 50:
-            return self.body
-        else:
-            return self.body[:46] + '...'
+    def getOgCardUrl(self):
+        return 'https://rhyme.live/{}'.format(self.image.url)
 
     def like_text_id(self):
         return "like-text-{}".format(self.id)
