@@ -45,8 +45,5 @@ class Verse(models.Model):
         beefs = Verse.objects.filter(target = self, type = 2)
         return beefs
 
-    def getOgCardUrl(self):
-        return 'https://rhyme.live/{}'.format(self.image.url)
-
     def like_text_id(self):
         return "like-text-{}".format(self.id)

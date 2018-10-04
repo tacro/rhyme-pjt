@@ -6,7 +6,7 @@
 {% load staticfiles %}
 {% block meta %}
 <meta name="twitter:card" content="summary">
-<meta property="og:image" content="{% static 'rhyme/img/rhymer_live.jpg' %}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'rhyme/img/rhymer_live.jpg' %}">
 {% endblock %}
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 

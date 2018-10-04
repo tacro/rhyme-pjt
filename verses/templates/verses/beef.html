@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block meta %}
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="{{ target.image.url }}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ target.image.url }}">
 {% endblock %}
 {% block css %}
   <!-- Stylesheet for verses app -->

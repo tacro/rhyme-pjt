@@ -4,9 +4,9 @@
 {% block meta %}
 <meta name="twitter:card" content="summary">
 {% if user.icon %}
-<meta property="og:image" content="{{ user.icon.url }}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ user.icon.url }}">
 {% else %}
-<meta property="og:image" content="{% static "users/img/default_icon.png" %}">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'users/img/default_icon.png' %}">
 {% endif %}
 {% endblock %}
 {% block css %}

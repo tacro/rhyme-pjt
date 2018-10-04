@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from verses.models import Verse
 import operator
@@ -13,13 +13,13 @@ def home(request):
         return render(request, 'home.html')
 
 def help(request):
-    return render_to_response('help.html')
+    return render(request, 'help.html')
 
 def privacy(request):
-    return render_to_response('privacy.html')
+    return render(request,'privacy.html')
 
 def terms(request):
-    return render_to_response('terms.html')
+    return render(request, 'terms.html')
 
 def search(request):
     page = request.GET.get('page',1)
