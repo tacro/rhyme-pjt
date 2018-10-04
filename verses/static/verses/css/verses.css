@@ -1,3 +1,40 @@
+#bg {
+  width: 1200px;
+  height: 640px;
+  background-color: #242423;
+  position: relative;
+}
+
+#waku1{
+  background-color: #FFCF35;
+  height: 100px;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+}
+
+#waku2{
+  background-color: #FFCF35;
+  color: #242423;
+  height: 110px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+
+#waku2 h2{
+  margin: 5px 30px 0 0;
+  font-size: 40px;
+}
+
+#waku2 h3{
+  margin: 0 30px 0 0;
+  font-size: 24px;
+}
+
 /* =====================================
   Create, Answer, Beef
 ======================================*/
@@ -136,6 +173,7 @@
 #verse-body p,
 #answer-body p,
 #beef-body p {
+  font-family: "Open Sans", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   font-size: 15px;
   word-wrap: break-word;
 }
