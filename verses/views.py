@@ -191,8 +191,6 @@ def beef(request, verse_id):
         beefs = target.get_beefs().order_by('-pub_date')
         return render(request, 'verses/beef.html', {'target':target, 'beefs':beefs})
 
-def hogehoge(request):
-    return render(request,'verses/hogehoge.html')
 
 class PostLikeToggle(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
