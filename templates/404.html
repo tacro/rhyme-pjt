@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+{% block meta %}
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{% static 'rhyme/img/rhymer_live.jpg' %}">
+{% endblock %}
 {% block content %}
 <section id="page404">
   <img src="{% static 'rhyme/img/404-bg.jpg' %}" class="img-fluid" id="page404-bg-img"/>

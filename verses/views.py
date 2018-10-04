@@ -34,7 +34,7 @@ def create(request):
             draw = ImageDraw.Draw(img)
             font = ImageFont.truetype(font_name, font_size)
             text_origin = request.POST['body']
-            text = textwrap.fill(text_origin, 20, max_lines = 4)
+            text = textwrap.fill(text_origin, 20, max_lines = 4, placeholder='...')
             draw.multiline_text((235, 380), text, fill ='#FFCF35', font = font, spacing = 35, align = 'left')
             # img.save()
             img.save(img_io, format='PNG')
@@ -50,7 +50,10 @@ def create(request):
                     twitterApp = get_object_or_404(SocialApp, name = 'twitter')
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
-                    tweet = verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                    if verse.rhymer.mcname:
+                        tweet = verse.rhymer.mcname + " が1バースKickしました！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                    else:
+                        tweet = verse.rhymer.username + " が1バースKickしました！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitterAccount doesn't exist, associate it first.
@@ -100,7 +103,7 @@ def answer(request, verse_id):
             draw = ImageDraw.Draw(img)
             font = ImageFont.truetype(font_name, font_size)
             text_origin = request.POST['body']
-            text = textwrap.fill(text_origin, 20, max_lines = 4)
+            text = textwrap.fill(text_origin, 20, max_lines = 4, placeholder='...')
             draw.multiline_text((235, 380), text, fill ='#FFCF35', font = font, spacing = 35, align = 'left')
             # img.save()
             img.save(img_io, format='PNG')
@@ -116,9 +119,9 @@ def answer(request, verse_id):
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
                     if target.rhymer.mcname:
-                        tweet = "Answering to " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        tweet = target.rhymer.mcname + "のバースにアンサーしました！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     else:
-                        tweet = "Answering to " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        tweet = target.rhymer.username + "のバースにアンサーしました！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitterAccount doesn't exist, associate it first.
@@ -150,7 +153,7 @@ def beef(request, verse_id):
             draw = ImageDraw.Draw(img)
             font = ImageFont.truetype(font_name, font_size)
             text_origin = request.POST['body']
-            text = textwrap.fill(text_origin, 20, max_lines = 4)
+            text = textwrap.fill(text_origin, 20, max_lines = 4, placeholder='...')
             draw.multiline_text((235, 380), text, fill ='#FFCF35', font = font, spacing = 35, align = 'left')
             # img.save()
             img.save(img_io, format='PNG')
@@ -166,9 +169,15 @@ def beef(request, verse_id):
                     accessToken = get_object_or_404(SocialToken, app = twitterApp, account = twitterAccount)
                     twitter = OAuth1Session(twitterApp.client_id, twitterApp.secret, accessToken.token, accessToken.token_secret)
                     if target.rhymer.mcname:
-                        tweet = "Battle with " + target.rhymer.mcname + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        if verse.rhymer.mcname:
+                            tweet = verse.rhymer.mcname + "が" + target.rhymer.mcname + "とラップバトル中！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        else:
+                            tweet = verse.rhymer.username + "が" + target.rhymer.mcname + "とラップバトル中！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     else:
-                        tweet = "Battle with " + target.rhymer.username + "'s verse:\n" + verse.tweet() + "\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        if verse.rhymer.mcname:
+                            tweet = verse.rhymer.mcname + "が" + target.rhymer.username + "とラップバトル中！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
+                        else:
+                            tweet = verse.rhymer.username + "が" + target.rhymer.username + "とラップバトル中！\n#rhymeyourvibes\nhttps://rhyme.live/verses/{}".format(verse.id)
                     params = {"status": tweet}
                     req = twitter.post("https://api.twitter.com/1.1/statuses/update.json",params = params)
                 # if twitterAccount doesn't exist, associate it first.

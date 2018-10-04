@@ -3,6 +3,10 @@
 {% load account socialaccount %}
 {% load bootstrap4 %}
 {% load staticfiles %}
+{% block meta %}
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{% static 'rhyme/img/rhymer_live.jpg' %}">
+{% endblock %}
 {% block content %}
 
 <div class="content-box-sm">

@@ -2,6 +2,10 @@
 
 {% load i18n %}
 {% load staticfiles %}
+{% block meta %}
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{% static 'rhyme/img/rhymer_live.jpg' %}">
+{% endblock %}
 
 {% block title %}{% trans "Sign Out" %}{% endblock %}
 
