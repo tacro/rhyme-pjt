@@ -21,6 +21,7 @@ class Verse(models.Model):
                                blank = True,
                                null = True)
     type = models.IntegerField(default = 0)
+    image = models.ImageField(upload_to = 'images/verses', default = '/rhyme/static/rhyme/img/rhymer_live.jpg')
 
     def __str__(self):
         return self.body[:15]
