@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'verses.apps.VersesConfig',
     'users.apps.UsersConfig',
+    'beats.apps.BeatsConfig',
 
     # to activate OAuth
     'allauth',
