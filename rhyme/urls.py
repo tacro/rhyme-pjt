@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('verses/', include('verses.urls')),
+    path('beats/', include('beats.urls')),
     path('rhymers/', include('users.urls')),
     path('notifications/', include('notifications.urls')),
     path('', views.home, name='home'),

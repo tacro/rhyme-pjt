@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from beats.models import Beat
 
 class Verse(models.Model):
     """
@@ -21,7 +22,11 @@ class Verse(models.Model):
                                blank = True,
                                null = True)
     type = models.IntegerField(default = 0)
-    image = models.ImageField(upload_to = 'images/verses', default = '/rhyme/static/rhyme/img/rhymer_live.jpg')
+    image = models.ImageField(upload_to = 'images/verses', default = '/static/rhyme/img/rhymer_live.jpg')
+    beat = models.ForeignKey(Beat,
+                             on_delete = models.SET_NULL,
+                             blank = True,
+                             null = True)
 
     def __str__(self):
         return self.body[:15]
@@ -34,7 +39,6 @@ class Verse(models.Model):
 
     def get_api_like_url(self):
         url_ = '/verses/api/%i/like' % self.id
-        # print(url_)
         return url_
 
     def get_answers(self):

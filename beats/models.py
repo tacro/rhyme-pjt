@@ -10,7 +10,7 @@ class Beat(models.Model):
     track = models.FileField(upload_to = 'music/beats')
     title = models.CharField(max_length = 50,
                              unique = False,)
-    image = models.ImageField(upload_to = 'images/beats', default = '/beats/static/beats/img/vinyl.png')
+    image = models.ImageField(upload_to = 'images/beats', default = '/static/beats/img/vinyl.png')
 
     def __str__(self):
         return self.title[:20]
