@@ -20,18 +20,18 @@
       <div class="form-group">
         <div class="row">
           <div class="col-12">
-            <select class="beats-list" name="beats-list">
+            <select id="beats-list" name="beats-list">
+              <option class="text-center">Please select beat</option>
+              <option class="text-center">No beat</option>
               {% for beat in beats.all %}
-              <option value="beat-{{beat.id}}">{{ beat.title }}</option>
+              <option class="text-center" value="{{beat.track.url}}">{{ beat.title }}</option>
               {% endfor %}
             </select>
           </div>
-          {% for beat in beats.all %}
           <div class="col-12">
-
-            <audio src="{{ beat.track.url }}" loop controls></audio>
+            <audio id="beat-player" src="#" loop controls></audio>
           </div>
-          {% endfor %}
+          <div class="col-12 text-right"><p>All tracks by <a href="https://twitter.com/piano_flava" target='_blank'>PIANO FLAVA</a>.</p></div>
           <div class="col-12">
             <textarea name="body" class="form-control" rows="6"></textarea>
           </div>
@@ -54,4 +54,8 @@
 </section>
 
 
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'verses/js/verses.js' %}"></script>
 {% endblock %}
