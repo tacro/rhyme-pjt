@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
 from .models import Verse
+from beats.models import Beat
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
@@ -63,7 +64,8 @@ def create(request):
         else:
             return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
     else:
-        return render(request, 'verses/create.html')
+        beats = Beat.objects
+        return render(request, 'verses/create.html', {'beats':beats})
 
 def index(request):
     verses_list = Verse.objects.order_by('-pub_date')

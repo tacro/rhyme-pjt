@@ -20,6 +20,19 @@
       <div class="form-group">
         <div class="row">
           <div class="col-12">
+            <select class="beats-list" name="beats-list">
+              {% for beat in beats.all %}
+              <option value="beat-{{beat.id}}">{{ beat.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          {% for beat in beats.all %}
+          <div class="col-12">
+
+            <audio src="{{ beat.track.url }}" loop controls></audio>
+          </div>
+          {% endfor %}
+          <div class="col-12">
             <textarea name="body" class="form-control" rows="6"></textarea>
           </div>
           <div class="offset-2 offset-sm-3"></div>
