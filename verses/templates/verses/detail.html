@@ -26,30 +26,36 @@
           </a>
         </div>
         <div class="col-10" id="verse-right">
-            <div class="row">
-              <div class="col-12" id="verse-rhymer">
-                <a href="{% url 'users:detail' verse.rhymer.id %}">
-                {% if verse.rhymer.mcname %}
-                  <h5>{{ verse.rhymer.mcname }} </h5>
-                  <h6>a.k.a. {{ verse.rhymer.username}}</h6>
-                {% else %}
-                  <h5>{{ verse.rhymer.username}} </h5>
-                {% endif %}
-                </a>
-              </div>
-              <div class="col-12" id="verse-body">
-                <p>{{ verse.body|linebreaks }} </p>
-              </div>
+          <div class="row">
+            <div class="col-12" id="verse-rhymer">
+              <a href="{% url 'users:detail' verse.rhymer.id %}">
+              {% if verse.rhymer.mcname %}
+                <h5>{{ verse.rhymer.mcname }} </h5>
+                <h6>a.k.a. {{ verse.rhymer.username}}</h6>
+              {% else %}
+                <h5>{{ verse.rhymer.username}} </h5>
+              {% endif %}
+              </a>
             </div>
-            <div class="row">
-              <div class="offset-lg-1"></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:answer' verse.id %}"><i class="fas fa-reply"></i></a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a href="{% url 'verses:beef' verse.id %}"><i class="fas fa-bolt"></i></a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}" verse-id = "{{ verse.id }}"><i class="fas fa-hand-peace"></i><span id="{{ verse.like_text_id }}">{{ verse.likes.count }}</span></a></div>
-              <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
-              <div class="offset-lg-1"></div>
+            <div class="col-12" id="verse-body">
+              <p>{{ verse.body|linebreaks }} </p>
             </div>
+          </div>
         </div>
+        {% if verse.beat %}
+        <div class="col-12 text-center">
+          <p>Beat : <span>{{verse.beat.title}} by {{verse.beat.maker.username}}</span></p>
+        </div>
+        <div class="col-12 text-center">
+          <audio id="beat-player" src="{{verse.beat.track.url}}" loop controls></audio>
+        </div>
+        {% endif %}
+          <div class="offset-lg-1"></div>
+          <div class="col-3 col-lg-2 verse-reaction text-center"><a href="{% url 'verses:answer' verse.id %}"><i class="fas fa-reply"></i></a></div>
+          <div class="col-3 col-lg-2 verse-reaction text-center"><a href="{% url 'verses:beef' verse.id %}"><i class="fas fa-bolt"></i></a></div>
+          <div class="col-3 col-lg-2 verse-reaction text-center"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}" verse-id = "{{ verse.id }}"><i class="fas fa-hand-peace"></i><span id="{{ verse.like_text_id }}">{{ verse.likes.count }}</span></a></div>
+          <div class="col-3 col-lg-2 verse-reaction text-center"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="offset-lg-1"></div>
       </div>
       {% if answers %}
       <!-- Answers -->
@@ -122,8 +128,4 @@
   </div>
 </section>
 
-{% endblock %}
-
-{% block js %}
-<script src="{% static 'verses/js/verses.js' %}"></script>
 {% endblock %}

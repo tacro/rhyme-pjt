@@ -43,6 +43,14 @@
             </div>
           </div>
       </div>
+      {% if target.beat %}
+      <div class="col-12 text-center">
+        <p>Beat : <span>{{target.beat.title}} by {{target.beat.maker.username}}</span></p>
+      </div>
+      <div class="col-12 text-center">
+        <audio id="beat-player" src="{{target.beat.track.url}}" loop controls></audio>
+      </div>
+      {% endif %}
     </div>
 
       <!-- Existing answers -->

@@ -104,6 +104,7 @@ def answer(request, verse_id):
             verse.rhymer = request.user
             verse.target = target
             verse.type = 1
+            verse.beat = target.beat
             # make a verse's image for twitter card
             font_size = 100
             font_name = "static/verses/fonts/Yu_Gothic_Medium.otf"
@@ -154,6 +155,7 @@ def beef(request, verse_id):
             verse.rhymer = request.user
             verse.target = target
             verse.type = 2
+            verse.beat = target.beat
             # make a verse's image for twitter card
             font_size = 100
             font_name = "static/verses/fonts/Yu_Gothic_Medium.otf"
