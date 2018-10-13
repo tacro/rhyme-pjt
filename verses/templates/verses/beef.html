@@ -17,7 +17,7 @@
   <div class="content-box-sm">
     <div class="container">
       <h2 class="text-center">Beef</h2>
-        <div class="row verse">
+        <div class="row no-gutters verse">
           <div class="col-3 col-sm-2" id="verse-left">
             <a href="{% url 'users:detail' target.rhymer.id %}">
             {% if target.rhymer.icon %}
@@ -46,8 +46,11 @@
           </div>
           <div class="offset-2"></div>
           {% if target.beat %}
-          <div class="col-12 text-center">
-            <p>Beat : <span>{{target.beat.title}} by {{target.beat.maker.username}}</span></p>
+          <div class="col-2 beat-info">
+            <img src="{% static 'verses/img/record_player.png'%}" alt="Beat :" class="img-fluid float-right">
+          </div>
+          <div class="col-10 text-center beat-info">
+            <p class="float-left">{{target.beat.title}} by {{target.beat.maker.username}}</p>
           </div>
           <div class="col-12 text-center">
             <audio id="beat-player" src="{{target.beat.track.url}}" loop controls></audio>

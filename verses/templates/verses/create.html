@@ -18,8 +18,11 @@
     <form method="POST" action="{% url 'verses:create' %}">
       {% csrf_token %}
       <div class="form-group">
-        <div class="row">
-          <div class="col-12">
+        <div class="row no-gutters">
+          <div class="col-2">
+            <img src="{% static 'verses/img/record_player.png'%}" alt="Beats :" class="img-fluid">
+          </div>
+          <div class="col-10">
             <select id="beats-list" class="form-control" name="beats-list">
               <option class="text-center" value="default">Please select beat</option>
               <option class="text-center" value="no-beat">No beat</option>
@@ -32,6 +35,9 @@
             <audio id="beat-player" src="#" loop controls></audio>
           </div>
           <div class="col-12 text-right"><p>All tracks by <a href="https://twitter.com/piano_flava" target='_blank'>PIANO FLAVA</a>.</p></div>
+          <div class="col-12 text-left">
+            <h6>Verse : </h6>
+          </div>
           <div class="col-12">
             <textarea name="body" class="form-control" rows="6"></textarea>
           </div>

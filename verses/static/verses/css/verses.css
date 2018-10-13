@@ -47,6 +47,28 @@
   border: 1px solid #00aced;
 }
 
+.beat-info img{
+  height: 20px;
+  margin: 2px 0;
+}
+
+.beat-info p{
+  line-height: 20px;
+  margin-left: 5px;
+}
+
+/* Create */
+#create-post img{
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 18px 0;
+}
+
+#beats-list{
+  margin: 15px 0;
+}
+
 /* Answer, Beef */
 
 #answer-post h4,
@@ -96,6 +118,7 @@
 #answer-left,
 #beef-left {
   margin: 0;
+  padding-right: 10px;
 }
 
 #verse-left img,

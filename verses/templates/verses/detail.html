@@ -15,7 +15,7 @@
 <section id="verse-detail">
   <div class="container-fluid">
     <!-- Verse -->
-      <div class="row verse">
+      <div class="row no-gutters verse">
         <div class="col-2" id="verse-left">
           <a href="{% url 'users:detail' verse.rhymer.id %}">
           {% if verse.rhymer.icon %}
@@ -43,8 +43,11 @@
           </div>
         </div>
         {% if verse.beat %}
-        <div class="col-12 text-center">
-          <p>Beat : <span>{{verse.beat.title}} by {{verse.beat.maker.username}}</span></p>
+        <div class="col-3 beat-info">
+          <img src="{% static 'verses/img/record_player.png'%}" alt="Beat :" class="img-fluid float-right">
+        </div>
+        <div class="col-9 text-center beat-info">
+          <p class="float-left">{{verse.beat.title}} by {{verse.beat.maker.username}}</p>
         </div>
         <div class="col-12 text-center">
           <audio id="beat-player" src="{{verse.beat.track.url}}" loop controls></audio>
