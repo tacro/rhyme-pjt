@@ -27,6 +27,11 @@ def create(request):
             verse = Verse()
             verse.body = request.POST['body']
             verse.rhymer = request.user
+            if request.POST['beats-list'] == 'no-beat' or request.POST['beats-list'] =='default':
+                verse.beat = None
+            else:
+                beat = get_object_or_404(Beat, id = request.POST['beats-list'])
+                verse.beat = beat
             # make a verse's image for twitter card
             font_size = 100
             font_name = "static/verses/fonts/Yu_Gothic_Medium.otf"
@@ -62,7 +67,9 @@ def create(request):
                     url_ ='/accounts/social/connections/'
             return redirect(url_)
         else:
-            return render(request, 'verses/create.html', {'error': 'Please enter your verse'})
+            print(request.POST['beats-list'])
+            beats = Beat.objects
+            return render(request, 'verses/create.html', {'error': 'Please enter your verse', 'beats':beats})
     else:
         beats = Beat.objects
         return render(request, 'verses/create.html', {'beats':beats})

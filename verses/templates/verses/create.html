@@ -20,11 +20,11 @@
       <div class="form-group">
         <div class="row">
           <div class="col-12">
-            <select id="beats-list" name="beats-list">
-              <option class="text-center">Please select beat</option>
-              <option class="text-center">No beat</option>
+            <select id="beats-list" class="form-control" name="beats-list">
+              <option class="text-center" value="default">Please select beat</option>
+              <option class="text-center" value="no-beat">No beat</option>
               {% for beat in beats.all %}
-              <option class="text-center" value="{{beat.track.url}}">{{ beat.title }}</option>
+              <option class="text-center" value="{{beat.id}}" trackUrl="{{beat.track.url}}">{{ beat.title }}</option>
               {% endfor %}
             </select>
           </div>
