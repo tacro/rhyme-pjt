@@ -50,7 +50,7 @@
             <img src="{% static 'verses/img/record_player.png'%}" alt="Beat :" class="img-fluid float-right">
           </div>
           <div class="col-10 text-center beat-info">
-            <p class="float-left">{{target.beat.title}} by {{target.beat.maker.username}}</p>
+            <p class="float-left">{{target.beat.title}} by {{target.beat.maker.mcname}}</p>
           </div>
           <div class="col-12 col-md-8 col-lg-6 text-center">
             <audio id="beat-player" src="{{target.beat.track.url}}" loop controls></audio>
