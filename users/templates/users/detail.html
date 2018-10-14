@@ -129,7 +129,11 @@
                         </a>
                       </div>
                       {% if post.rhymer == request.user %}
-                        <div class="col-3 col-lg-2 post-reaction"><i class="fas fa-trash-alt"></i></div>
+                        <div class="col-3 col-lg-2 post-reaction">
+                          <a onclick="return confirm('このバースを削除しますか？')" href="{% url 'verses:delete' post.id %}">
+                            <i class="fas fa-trash-alt"></i>
+                          </a>
+                        </div>
                       {% endif %}
                       <div class="offset-lg-1"></div>
                     </div>

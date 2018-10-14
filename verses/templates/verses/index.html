@@ -53,7 +53,13 @@
                   <i class="fas fa-hand-peace"></i><span id="{{ verse.like_text_id }}"> {{ verse.likes.count }}</span>
                 </a>
               </div>
-              <div class="col-3 col-lg-2 verse-reaction"><i class="fas fa-ellipsis-h"></i></div>
+              {% if verse.rhymer == request.user %}
+                <div class="col-3 col-lg-2 verse-reaction">
+                  <a onclick="return confirm('このバースを削除しますか？')" href="{% url 'verses:delete' verse.id %}">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </div>
+              {% endif %}
               <div class="offset-lg-1"></div>
             </div>
         </div>

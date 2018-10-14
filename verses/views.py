@@ -47,7 +47,7 @@ def create(request):
             img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
             verse.image = img_file
             verse.save()
-            url_ = '/verses/index'
+            url_ = 'home'
             # if user chose to share post on twitter
             if request.POST.get('tweetBtn', False):
                 # specify the uesr's twitter account
@@ -74,6 +74,17 @@ def create(request):
         beats = Beat.objects
         return render(request, 'verses/create.html', {'beats':beats})
 
+@login_required
+def delete(request, verse_id):
+    verse = get_object_or_404(Verse, pk = verse_id)
+    if verse.rhymer == request.user:
+        if verse.image and verse.image != '/static/rhyme/img/rhymer_live.jpg':
+            verse.image.delete()
+        verse.delete()
+        return redirect('home')
+    else:
+        return redirect('home', {'error': 'You are not allowed to delete this'})
+
 def index(request):
     verses_list = Verse.objects.order_by('-pub_date')
     page = request.GET.get('page',1)
@@ -84,9 +95,7 @@ def index(request):
         verses = paginator.page(1)
     except EmptyPage:
         verses = paginator.page(paginator.num_pages)
-    return render(request, 'verses/index.html', {'verses':verses })
-
-# First I have to write verse/detail page
+    return render(request, 'verses/index.html', {'verses':verses})
 
 def detail(request, verse_id):
     verse = get_object_or_404(Verse, pk = verse_id)
@@ -120,7 +129,7 @@ def answer(request, verse_id):
             img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
             verse.image = img_file
             verse.save()
-            url_ = '/verses/index'
+            url_ = 'home'
             if request.POST.get('tweetBtn', False):
                 # specify the uesr's twitter account
                 try:
@@ -171,7 +180,7 @@ def beef(request, verse_id):
             img_file = ContentFile(img_io.getvalue(), '{}.jpg'.format(uuid.uuid4()))
             verse.image = img_file
             verse.save()
-            url_ = '/verses/index'
+            url_ = 'home'
             if request.POST.get('tweetBtn', False):
                 # specify the uesr's twitter account
                 try:
