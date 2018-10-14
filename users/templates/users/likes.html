@@ -124,9 +124,9 @@
                       <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:answer' like.id %}"><i class="fas fa-reply"></i> {{ like.get_answers.count }}</a></div>
                       <div class="col-3 col-lg-2 post-reaction"><a href="{% url 'verses:beef' like.id %}"><i class="fas fa-bolt"></i> {{ like.get_beefs.count }}</a></div>
                       <div class="col-3 col-lg-2 post-reaction"><a class="like-btn" data-href="{{ like.get_api_like_url }}" data-likes="{{ like.likes.count }}" href="{{ like.get_like_url }}"><i class="fas fa-hand-peace"></i><span class="like-text"> {{ like.likes.count }}</span></a></div>
-                      {% if post.rhymer == request.user %}
+                      {% if like.rhymer == request.user %}
                         <div class="col-3 col-lg-2 post-reaction">
-                          <a onclick="return confirm('このバースを削除しますか？')" href="{% url 'verses:delete' post.id %}">
+                          <a onclick="return confirm('このバースを削除しますか？')" href="{% url 'verses:delete' like.id %}">
                             <i class="fas fa-trash-alt"></i>
                           </a>
                         </div>

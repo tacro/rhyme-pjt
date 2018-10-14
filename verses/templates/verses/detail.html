@@ -60,7 +60,7 @@
           <div class="col-3 col-lg-2 verse-reaction text-center"><a href="{% url 'verses:beef' verse.id %}"><i class="fas fa-bolt"></i></a></div>
           <div class="col-3 col-lg-2 verse-reaction text-center"><a class="like-btn" data-href="{{ verse.get_api_like_url }}" data-likes="{{ verse.likes.count }}" href="{{ verse.get_like_url }}" verse-id = "{{ verse.id }}"><i class="fas fa-hand-peace"></i><span id="{{ verse.like_text_id }}">{{ verse.likes.count }}</span></a></div>
           {% if verse.rhymer == request.user %}
-            <div class="col-3 col-lg-2 verse-reaction">
+            <div class="col-3 col-lg-2 verse-reaction text-center">
               <a onclick="return confirm('このバースを削除しますか？')" href="{% url 'verses:delete' verse.id %}">
                 <i class="fas fa-trash-alt"></i>
               </a>
