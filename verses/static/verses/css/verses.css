@@ -69,6 +69,10 @@
   margin: 15px 0;
 }
 
+#beat-maker-credit a{
+  color: #FFCF35;
+}
+
 /* Answer, Beef */
 
 #answer-post h4,

@@ -2,13 +2,24 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from verses.models import Verse
+from users.models import User
 import operator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from itertools import chain
 
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect('/verses/index')
+        user = request.user
+        followees = user.get_follows();
+        verse_list = Verse.objects.filter(rhymer = user)
+        for followee in followees:
+            verses = Verse.objects.filter(rhymer = followee)
+            verse_list = list(chain(verse_list, verses))
+        if len(verse_list) == 0:
+            return redirect('/verses/index')
+        verse_list = sorted(verse_list, key = operator.attrgetter('pub_date'), reverse = True)
+        return render(request, 'timeline.html', {'verses':verse_list})
     else:
         return render(request, 'home.html')
 
