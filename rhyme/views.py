@@ -14,12 +14,20 @@ def home(request):
         followees = user.get_follows();
         verse_list = Verse.objects.filter(rhymer = user)
         for followee in followees:
-            verses = Verse.objects.filter(rhymer = followee)
-            verse_list = list(chain(verse_list, verses))
+            followee_verses = Verse.objects.filter(rhymer = followee)
+            verse_list = list(chain(verse_list, followee_verses))
         if len(verse_list) == 0:
             return redirect('/verses/index')
         verse_list = sorted(verse_list, key = operator.attrgetter('pub_date'), reverse = True)
-        return render(request, 'timeline.html', {'verses':verse_list})
+        page = request.GET.get('page',1)
+        paginator = Paginator(verse_list, 15)
+        try:
+            verses = paginator.page(page)
+        except PageNotAnInteger:
+            verses = paginator.page(1)
+        except EmptyPage:
+            verses = paginator.page(paginator.num_pages)
+        return render(request, 'timeline.html', {'verses':verses})
     else:
         return render(request, 'home.html')
 
