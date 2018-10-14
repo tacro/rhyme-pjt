@@ -43,12 +43,14 @@
           </div>
         </div>
         {% if verse.beat %}
-        <div class="col-3 beat-info">
+        <div class="offset-md-1 offset-lg-2"></div>
+        <div class="col-3 col-1 beat-info">
           <img src="{% static 'verses/img/record_player.png'%}" alt="Beat :" class="img-fluid float-right">
         </div>
-        <div class="col-9 text-center beat-info">
+        <div class="col-9 col-md-7 text-center beat-info">
           <p class="float-left">{{verse.beat.title}} by {{verse.beat.maker.username}}</p>
         </div>
+        <div class="offset-md-1 offset-lg-2"></div>
         <div class="col-12 text-center">
           <audio id="beat-player" src="{{verse.beat.track.url}}" loop controls></audio>
         </div>

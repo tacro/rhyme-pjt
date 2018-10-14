@@ -52,9 +52,10 @@
           <div class="col-10 text-center beat-info">
             <p class="float-left">{{target.beat.title}} by {{target.beat.maker.username}}</p>
           </div>
-          <div class="col-12 text-center">
+          <div class="col-12 col-md-8 col-lg-6 text-center">
             <audio id="beat-player" src="{{target.beat.track.url}}" loop controls></audio>
           </div>
+          <div class="offset-md-4 offset-lg-6"></div>
           {% endif %}
         </div>
 
@@ -97,14 +98,20 @@
         <div class="col-2 text-center"><h3> V.S. </h3></div>
         <div class="col-5 text-left"><i class="fas fa-bolt"></i></div>
       </div>
-      <h4 class="text-left">Your verse : </h4>
       <form method="POST" action="{% url 'verses:beef' target.id %}">
         {% csrf_token %}
         <div class="form-group text-center">
           <div class="row">
-            <div class="col-12">
+            <div class="offset-md-1"></div>
+            <div class="col-12 col-md-10">
+              <h4 class="text-left">Your verse : </h4>
+            </div>
+            <div class="offset-md-1"></div>
+            <div class="offset-md-1"></div>
+            <div class="col-12 col-md-10">
               <textarea name="body" class="form-control" rows="6"></textarea>
             </div>
+            <div class="offset-md-1"></div>
             <div class="offset-2 offset-sm-3"></div>
             <div class="shareBtn col-8 col-sm-6 my-2">
               <input type="checkbox" id="shareOnTwitter" class="form-check-input" name="tweetBtn" value="tweet">

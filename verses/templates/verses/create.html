@@ -7,6 +7,7 @@
 {% block css %}
   <!-- Stylesheet for verses app -->
   <link rel="stylesheet" href="{% static 'verses/css/verses.css' %}">
+  <link rel="stylesheet" href="{% static 'verses/css/verses-responsive.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -19,10 +20,11 @@
       {% csrf_token %}
       <div class="form-group">
         <div class="row no-gutters">
-          <div class="col-2">
+          <div class="offset-md-2"></div>
+          <div class="col-2 col-md-1">
             <img src="{% static 'verses/img/record_player.png'%}" alt="Beats :" class="img-fluid">
           </div>
-          <div class="col-10">
+          <div class="col-10 col-md-6">
             <select id="beats-list" class="form-control" name="beats-list">
               <option class="text-center" value="default">Please select beat</option>
               <option class="text-center" value="no-beat">No beat</option>
@@ -31,16 +33,23 @@
               {% endfor %}
             </select>
           </div>
+          <div class="offset-md-2"></div>
           <div class="col-12">
             <audio id="beat-player" src="#" loop controls></audio>
           </div>
-          <div class="col-12 text-right"><p>All tracks by <a href="https://twitter.com/piano_flava" target='_blank'>PIANO FLAVA</a>.</p></div>
-          <div class="col-12 text-left">
+          <div class="offset-md-2"></div>
+          <div class="col-12 col-md-8 text-right"><p>All tracks by <a href="https://twitter.com/piano_flava" target='_blank'>PIANO FLAVA</a>.</p></div>
+          <div class="offset-md-2"></div>
+          <div class="offset-md-1"></div>
+          <div class="col-12 col-md-10 text-left">
             <h6>Verse : </h6>
           </div>
-          <div class="col-12">
+          <div class="offset-md-1"></div>
+          <div class="offset-md-1"></div>
+          <div class="col-12 col-md-10">
             <textarea name="body" class="form-control" rows="6"></textarea>
           </div>
+          <div class="offset-md-1"></div>
           <div class="offset-2 offset-sm-3"></div>
           <div class="shareBtn col-8 col-sm-6 my-2">
             <input type="checkbox" id="shareOnTwitter" class="form-check-input" name="tweetBtn" value="tweet">

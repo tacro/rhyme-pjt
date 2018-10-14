@@ -186,4 +186,10 @@
     padding-right: 5px;
     font-size: 13px;
   }
+
+  #beat-player{
+    width: 240px;
+    height: 40px;
+    margin: 10px 0;
+  }
 }
