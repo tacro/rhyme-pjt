@@ -140,5 +140,3 @@ def notification(request, user_id):
         return render(request, 'users/notification.html', {'user':user, 'notifications':notifications})
     else:
         return render(request, 'verses/index.html', {'error': 'You are not allowed to this page'})
-
-# define timeline method to show user's own timeline
