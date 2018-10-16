@@ -67,7 +67,6 @@ def create(request):
                     url_ ='/accounts/social/connections/'
             return redirect(url_)
         else:
-            print(request.POST['beats-list'])
             beats = Beat.objects
             return render(request, 'verses/create.html', {'error': 'Please enter your verse', 'beats':beats})
     else:
